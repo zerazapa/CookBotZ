@@ -5,18 +5,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject platePrefab;
-    public Transform plateSpawnPoint;
+    public Transform plateSpawn;
 
     public float speed = 5f;
     public bool canDash = true;
 
     public float hFacing = 0f;
 
-    private bool hHold = false;
     private bool jHold = false;
     private bool kHold = false;
     private bool lHold = false;
-    private bool ÒHold = false;
 
     private bool isTouchingPlate = false;
     private bool isSpawningPlate = false;
@@ -24,19 +22,11 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H) && !hHold)
-        {
-            hHold = true;
-        }
-        if (Input.GetKeyUp(KeyCode.H))
-        {
-            hHold = false;
-        }
 
         if (Input.GetKeyDown(KeyCode.J) && !jHold)
         {
@@ -65,16 +55,7 @@ public class PlayerMovement : MonoBehaviour
             lHold = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.BackQuote) && !ÒHold)
-        {
-            ÒHold = true;
-        }
-        if (Input.GetKeyUp(KeyCode.BackQuote))
-        {
-            ÒHold = false;
-        }
-
-        if (isTouchingPlate && hHold && !isSpawningPlate)
+        if (isTouchingPlate && kHold && !isSpawningPlate)
         {
             StartCoroutine(SpawnPlate());
         }
@@ -98,14 +79,24 @@ public class PlayerMovement : MonoBehaviour
             hFacing = 1f;
         }
 
-        // Cambiar la posiciÛn X de los hijos del jugador seg˙n hFacing
+        // Cambiar el eje X de los hijos del jugador seg√∫n hFacing
         foreach (Transform child in transform)
         {
-            Vector3 childPosition = child.localPosition;
-            childPosition.x = Mathf.Abs(childPosition.x) * hFacing;
-            child.localPosition = childPosition;
+            
+            if (hFacing == -1)
+            {
+                Vector3 childPosition = child.localPosition;
+                childPosition.x = Mathf.Abs(childPosition.x) * hFacing;
+                child.localPosition = childPosition;
+            }
+            
+            if (hFacing == 1)
+            {
+                Vector3 childPosition = child.localPosition;
+                childPosition.x = Mathf.Abs(childPosition.x) * hFacing;
+                child.localPosition = childPosition;
+            }
         }
-        Debug.Log(hFacing);
     }
 
     private IEnumerator SpawnPlate()
@@ -122,13 +113,13 @@ public class PlayerMovement : MonoBehaviour
             rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
-        GameObject plate = Instantiate(platePrefab, plateSpawnPoint.position, rotation);
+        GameObject plate = Instantiate(platePrefab, plateSpawn.position, rotation);
         Rigidbody2D plateRigidbody = plate.GetComponent<Rigidbody2D>();
         plate.transform.SetParent(transform); // Establecer el jugador como padre del objeto "plate"
-        plateSpawnPoint.position += 0.3f * Vector3.up;
+        plateSpawn.position += 0.3f * Vector3.up;
 
         yield return new WaitForSeconds(1f);
-
+        
         isSpawningPlate = false;
     }
 
