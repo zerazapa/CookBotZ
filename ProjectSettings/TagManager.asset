@@ -8,7 +8,18 @@ TagManager:
   - Meat
   - Cheese
   - Lettuce
-  - Plate
+  - Dish
+  - hDish
+  - dDish
+  - hBread
+  - dBread
+  - hMeat
+  - dMeat
+  - hCheese
+  - dCheese
+  - hLettuce
+  - dLettuce
+  - spawn
   layers:
   - Default
   - TransparentFX
