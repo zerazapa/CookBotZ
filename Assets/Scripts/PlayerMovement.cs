@@ -6,13 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject dishPrefab;
     public GameObject breadPrefab;
+    public GameObject bread2Prefab;
     public GameObject meatPrefab;
     public GameObject cheesePrefab;
     public GameObject lettucePrefab;
     public Transform spawn;
 
     public float speed = 5f;
-    public bool canDash = true;
 
     public float hFacing = 0f;
 
@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isSpawningDish = false;
     public bool isTouchingBread = false;
     public bool isSpawningBread = false;
+    public bool isTouchingBread2 = false;
+    public bool isSpawningBread2 = false;
     public bool isTouchingMeat = false;
     public bool isSpawningMeat = false;
     public bool isTouchingCheese = false;
@@ -31,8 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isTouchingLettuce = false;
     public bool isSpawningLettuce = false;
 
-    public Transform ff;
-    public float ffY = 0f;
+    public int whichHold = 1;      //max = 10
 
     // Start is called before the first frame update
     void Start()
@@ -81,6 +82,11 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(SpawnBread());
             }
 
+            if (isTouchingBread2 && kPressed && !isSpawningBread2)
+            {
+                StartCoroutine(SpawnBread2());
+            }
+
             if (isTouchingMeat && kPressed && !isSpawningMeat)
             {
                 StartCoroutine(SpawnMeat());
@@ -102,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log(whichHold);
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
         float verticalMovement = Input.GetAxisRaw("Vertical");
         transform.position += Vector3.right * horizontalMovement * speed * Time.deltaTime;
@@ -116,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
             hFacing = 1f;
         }
         
-        // Cambiar la posición X de los hijos del jugador según hFacing
+        // Cambiar la posiciï¿½n X de los hijos del jugador segï¿½n hFacing
         foreach (Transform child in transform)
         {
             Vector3 childRotation = child.localRotation.eulerAngles;
@@ -131,6 +138,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (!lHold)     //si se suelta la L, se devuelve a la posiciÃ³n original
+        {
+            spawn.localPosition = new Vector3 (0.9f, -0.2f, 0f);
+            whichHold = 0;
+        }
 
 
     }
@@ -143,10 +155,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (isTouchingDish && lHold)
         { 
-            GameObject dish = Instantiate(dishPrefab, spawn.position, spawn.rotation);
-            Rigidbody2D dishRigidbody = dish.GetComponent<Rigidbody2D>();
-            dish.transform.SetParent(transform); // Establecer el jugador como padre del objeto "dish"
-            spawn.position += 0.3f * Vector3.up;
+            if (whichHold < 10)
+            {
+                GameObject dish = Instantiate(dishPrefab, spawn.position, spawn.rotation);
+                Rigidbody2D dishRigidbody = dish.GetComponent<Rigidbody2D>();
+                dish.transform.SetParent(transform); // Establecer el jugador como padre del objeto "dish"
+                spawn.position += 0.3f * Vector3.up;
+                whichHold += 1;
+            }
         }
 
         isSpawningDish = false;
@@ -160,10 +176,35 @@ public class PlayerMovement : MonoBehaviour
 
         if (isTouchingBread && lHold)
         {
-            GameObject bread = Instantiate(breadPrefab, spawn.position, spawn.rotation);
-            Rigidbody2D breadRigidbody = bread.GetComponent<Rigidbody2D>();
-            bread.transform.SetParent(transform); // Establecer el jugador como padre del objeto "dish"
-            spawn.position += 0.3f * Vector3.up;
+            if (whichHold < 10)
+            {
+                GameObject bread = Instantiate(breadPrefab, spawn.position, spawn.rotation);
+                Rigidbody2D breadRigidbody = bread.GetComponent<Rigidbody2D>();
+                bread.transform.SetParent(transform); // Establecer el jugador como padre del objeto "dish"
+                spawn.position += 0.3f * Vector3.up;
+                whichHold += 1;
+            }
+        }
+
+        isSpawningBread = false;
+    }
+
+    private IEnumerator SpawnBread2()
+    {
+        isSpawningBread2 = true;
+
+        yield return new WaitForSeconds(1f);
+
+        if (isTouchingBread2 && lHold)
+        {
+            if (whichHold < 10)
+            {
+                GameObject bread2 = Instantiate(bread2Prefab, spawn.position, spawn.rotation);
+                Rigidbody2D bread2Rigidbody = bread2.GetComponent<Rigidbody2D>();
+                bread2.transform.SetParent(transform); // Establecer el jugador como padre del objeto "dish"
+                spawn.position += 0.3f * Vector3.up;
+                whichHold += 1;
+            }
         }
 
         isSpawningBread = false;
@@ -177,10 +218,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (isTouchingMeat && lHold)
         {
-            GameObject meat = Instantiate(meatPrefab, spawn.position, spawn.rotation);
-            Rigidbody2D meatRigidbody = meat.GetComponent<Rigidbody2D>();
-            meat.transform.SetParent(transform);
-            spawn.position += 0.3f * Vector3.up;
+            if (whichHold < 10)
+            {
+                GameObject meat = Instantiate(meatPrefab, spawn.position, spawn.rotation);
+                Rigidbody2D meatRigidbody = meat.GetComponent<Rigidbody2D>();
+                meat.transform.SetParent(transform);
+                spawn.position += 0.3f * Vector3.up;
+                whichHold += 1;
+            }
         }
         isSpawningMeat = false;
     }
@@ -193,10 +238,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (isTouchingCheese && lHold)
         {
-            GameObject cheese = Instantiate(cheesePrefab, spawn.position, spawn.rotation);
-            Rigidbody2D cheeseRigidbody = cheese.GetComponent<Rigidbody2D>();
-            cheese.transform.SetParent(transform);
-            spawn.position += 0.3f * Vector3.up;
+            if (whichHold < 10)
+            {
+                GameObject cheese = Instantiate(cheesePrefab, spawn.position, spawn.rotation);
+                Rigidbody2D cheeseRigidbody = cheese.GetComponent<Rigidbody2D>();
+                cheese.transform.SetParent(transform);
+                spawn.position += 0.3f * Vector3.up;
+                whichHold += 1;
+            }
         }
 
         isSpawningCheese = false;
@@ -210,10 +259,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (isTouchingLettuce && lHold)
         {
-            GameObject lettuce = Instantiate(lettucePrefab, spawn.position, spawn.rotation);
-            Rigidbody2D lettuceRigidbody = lettuce.GetComponent<Rigidbody2D>();
-            lettuce.transform.SetParent(transform);
-            spawn.position += 0.3f * Vector3.up;
+            if (whichHold < 10)
+            {
+                GameObject lettuce = Instantiate(lettucePrefab, spawn.position, spawn.rotation);
+                Rigidbody2D lettuceRigidbody = lettuce.GetComponent<Rigidbody2D>();
+                lettuce.transform.SetParent(transform);
+                spawn.position += 0.3f * Vector3.up;
+                whichHold += 1;
+            }
         }
 
         isSpawningLettuce = false;
@@ -228,6 +281,10 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Bread"))
         {
             isTouchingBread = true;
+        }
+        if (collision.gameObject.CompareTag("Bread2"))
+        {
+            isTouchingBread2 = true;
         }
         if (collision.gameObject.CompareTag("Meat"))
         {
@@ -252,6 +309,10 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Bread"))
         {
             isTouchingBread = false;
+        }
+        if (collision.gameObject.CompareTag("Bread2"))
+        {
+            isTouchingBread2 = false;
         }
         if (collision.gameObject.CompareTag("Meat"))
         {

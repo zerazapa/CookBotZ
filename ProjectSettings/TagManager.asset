@@ -20,6 +20,7 @@ TagManager:
   - hLettuce
   - dLettuce
   - spawn
+  - Bread2
   layers:
   - Default
   - TransparentFX
