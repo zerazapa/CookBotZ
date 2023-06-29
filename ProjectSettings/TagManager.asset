@@ -11,8 +11,6 @@ TagManager:
   - Dish
   - hDish
   - dDish
-  - hBread
-  - dBread
   - hMeat
   - dMeat
   - hCheese
@@ -21,6 +19,13 @@ TagManager:
   - dLettuce
   - spawn
   - Bread2
+  - hBread2
+  - dBread2
+  - hBread1
+  - dBread1
+  - Bread1
+  - hBread
+  - hand
   layers:
   - Default
   - TransparentFX
