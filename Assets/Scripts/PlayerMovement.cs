@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
             hand.SetActive(true);
-            hand.transform.localPosition = new Vector3 ((0.9f * hFacing) , -0.4f, 0f);
+            hand.transform.localPosition = new Vector3 ((0.24f * hFacing) , -0.086f, 0f);
 
             if (isTouchingDish && kPressed && !isSpawningDish)
             {
