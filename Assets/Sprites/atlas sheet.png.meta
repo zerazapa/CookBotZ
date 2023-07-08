@@ -1478,7 +1478,7 @@ TextureImporter:
         width: 8
         height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1486,6 +1486,132 @@ TextureImporter:
       bones: []
       spriteID: 237a9fd7c248784409341da46088dbdd
       internalID: 349210592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas sheet_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 248
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd67f99417c13c64cbd950215672c6d7
+      internalID: 2041191851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas sheet_1
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 248
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae8695464017e06418796ab35ce49c46
+      internalID: 935442982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas sheet_2
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 248
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dff142873f953884abaaa8cea6f76e0a
+      internalID: -480834734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas sheet_3
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 248
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32c48b1458caaea4499de8257697dd6a
+      internalID: -1855979887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas sheet_4
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 248
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 838eb7ac0b2580f40935dbe8bd7379fb
+      internalID: -766799069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas sheet_5
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 248
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d0c2b9b374b0b4c85fcdc9ae8eb53e
+      internalID: 1674791642
       vertices: []
       indices: 
       edges: []
@@ -1510,6 +1636,7 @@ TextureImporter:
       spawn_bread2: 1470186563
       font__point: -1784114947
       font_5: -2078570275
+      atlas sheet_1: 935442982
       atlas sheet_52: 826886227
       font_s: 1441200775
       atlas sheet_54: -1273679496
@@ -1525,6 +1652,7 @@ TextureImporter:
       font_k: 467791856
       atlas sheet_53: -423848920
       font_j: -789533773
+      atlas sheet_3: -1855979887
       font_a: 1339270937
       table: -18403747
       atlas sheet_48: 1916868101
@@ -1545,9 +1673,11 @@ TextureImporter:
       font__exclamation: 1328091788
       font_e: 141618500
       font_2: 1267674310
+      atlas sheet_2: -480834734
       font_x: -336569652
       font_7: -34565909
       font_4: -1175989189
+      atlas sheet_0: 2041191851
       font_g: -158086198
       atlas sheet_50: -689085020
       heart_alt: -792135044
@@ -1559,7 +1689,9 @@ TextureImporter:
       plate_warning1: -518106424
       font_0: -1418994134
       font_1: 1457787323
+      atlas sheet_5: 1674791642
       font_8: -925114100
+      atlas sheet_4: -766799069
       font_9: 1542294641
       bread1_warning2: 463715579
       font_d: 1763269233

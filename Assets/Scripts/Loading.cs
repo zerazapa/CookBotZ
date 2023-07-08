@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Loading : MonoBehaviour
 {
-    public PlayerMovement playerMovement;
-
     public bool isTouchingDish = false;
     public bool isSpawningDish = false;
     public bool isTouchingBread1 = false;
@@ -23,30 +21,31 @@ public class Loading : MonoBehaviour
 
     private Animator animator;
 
+    public GameObject handObject;
+    public HandScript handScript;
+
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        PlayerMovement playerMovement = playerObject.GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        isSpawningDish = playerMovement.isSpawningDish;
-        isSpawningBread1 = playerMovement.isSpawningBread1;
-        isSpawningBread2 = playerMovement.isSpawningBread2;
-        isSpawningMeat = playerMovement.isSpawningMeat;
-        isSpawningCheese = playerMovement.isSpawningCheese;
-        isSpawningLettuce = playerMovement.isSpawningLettuce;
+        isSpawningDish = handScript.isSpawningDish;
+        isSpawningBread1 = handScript.isSpawningBread1;
+        isSpawningBread2 = handScript.isSpawningBread2;
+        isSpawningMeat = handScript.isSpawningMeat;
+        isSpawningCheese = handScript.isSpawningCheese;
+        isSpawningLettuce = handScript.isSpawningLettuce;
 
-        isTouchingDish = playerMovement.isTouchingDish;
-        isTouchingBread1 = playerMovement.isTouchingBread1;
-        isTouchingBread2 = playerMovement.isTouchingBread2;
-        isTouchingMeat = playerMovement.isTouchingMeat;
-        isTouchingCheese = playerMovement.isTouchingCheese;
-        isTouchingLettuce = playerMovement.isTouchingLettuce;
+        isTouchingDish = handScript.isTouchingDish;
+        isTouchingBread1 = handScript.isTouchingBread1;
+        isTouchingBread2 = handScript.isTouchingBread2;
+        isTouchingMeat = handScript.isTouchingMeat;
+        isTouchingCheese = handScript.isTouchingCheese;
+        isTouchingLettuce = handScript.isTouchingLettuce;
 
 
         spawn10used = Numerator.spawn10used;

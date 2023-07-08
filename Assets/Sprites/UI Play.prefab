@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5897763227777102990
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 106196414133050728, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 106196414133050728, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274095123962660972, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274095123962660972, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098388835606369498, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098388835606369498, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098388835606369498, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098388835606369498, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098388835606369498, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098388835606369498, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098388835606369498, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098388835606369498, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098388835606369498, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098388835606369498, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098388835606369498, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872384838129600578, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872384838129600578, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1513517327
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617418382729589469, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3617418382729589469, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1513517327
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686876828181518293, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_Name
+      value: UI Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705377049648271177, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742202650947517150, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742202650947517150, guid: e1f289c8b6252694287028e63fb512b5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1513517327
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e1f289c8b6252694287028e63fb512b5, type: 3}

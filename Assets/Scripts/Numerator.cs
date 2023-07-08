@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Numerator : MonoBehaviour
 {
-    public PlayerMovement playerMovement;
+    public HandScript handScript;
 
-    public bool lHold = false;
-    public bool kPressed = false;
+    public bool spacePressed = false;
+    public bool rClick = false;
     
     public Transform Player;
     public Transform spawn1;
@@ -44,8 +44,8 @@ public class Numerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        playerMovement = playerObject.GetComponent<PlayerMovement>();
+        GameObject handObject = GameObject.FindGameObjectWithTag("hand");
+        handScript = handObject.GetComponent<HandScript>();
 
         Player = GameObject.Find("Player").transform;
         spawn1 = GameObject.Find("spawn1").transform;
@@ -64,26 +64,26 @@ public class Numerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawn1used = playerMovement.spawn1used;
-        spawn2used = playerMovement.spawn2used;
-        spawn3used = playerMovement.spawn3used;
-        spawn4used = playerMovement.spawn4used;
-        spawn5used = playerMovement.spawn5used;
-        spawn6used = playerMovement.spawn6used;
-        spawn7used = playerMovement.spawn7used;
-        spawn8used = playerMovement.spawn8used;
-        spawn9used = playerMovement.spawn9used;
-        spawn10used = playerMovement.spawn10used;
+        spawn1used = handScript.spawn1used;
+        spawn2used = handScript.spawn2used;
+        spawn3used = handScript.spawn3used;
+        spawn4used = handScript.spawn4used;
+        spawn5used = handScript.spawn5used;
+        spawn6used = handScript.spawn6used;
+        spawn7used = handScript.spawn7used;
+        spawn8used = handScript.spawn8used;
+        spawn9used = handScript.spawn9used;
+        spawn10used = handScript.spawn10used;
 
-        isSpawningDish = playerMovement.isSpawningDish;
-        isSpawningBread1 = playerMovement.isSpawningBread1;
-        isSpawningBread2 = playerMovement.isSpawningBread2;
-        isSpawningMeat = playerMovement.isSpawningMeat;
-        isSpawningCheese = playerMovement.isSpawningCheese;
-        isSpawningLettuce = playerMovement.isSpawningLettuce;
+        isSpawningDish = handScript.isSpawningDish;
+        isSpawningBread1 = handScript.isSpawningBread1;
+        isSpawningBread2 = handScript.isSpawningBread2;
+        isSpawningMeat = handScript.isSpawningMeat;
+        isSpawningCheese = handScript.isSpawningCheese;
+        isSpawningLettuce = handScript.isSpawningLettuce;
 
-        lHold = playerMovement.lHold;
-        kPressed = playerMovement.kPressed;
+        spacePressed = handScript.spacePressed;
+        rClick = handScript.rClick;
 
         if (gameObject.CompareTag("hDish") || gameObject.CompareTag("hBread1") || gameObject.CompareTag("hBread2") || gameObject.CompareTag("hMeat") || gameObject.CompareTag("hCheese") || gameObject.CompareTag("hLettuce"))
         {
@@ -96,7 +96,7 @@ public class Numerator : MonoBehaviour
         }
         
 
-        if (!lHold && (gameObject.CompareTag("hDish") || gameObject.CompareTag("hBread1") || gameObject.CompareTag("hBread2") || gameObject.CompareTag("hMeat") || gameObject.CompareTag("hCheese") || gameObject.CompareTag("hLettuce")))
+        if (spacePressed && (gameObject.CompareTag("hDish") || gameObject.CompareTag("hBread1") || gameObject.CompareTag("hBread2") || gameObject.CompareTag("hMeat") || gameObject.CompareTag("hCheese") || gameObject.CompareTag("hLettuce")))
         {
             StartCoroutine(Drop());
         }
@@ -280,7 +280,7 @@ public class Numerator : MonoBehaviour
     void OnTriggerStay2D(Collider2D collision)
     {
         Debug.Log ("tocando");
-        if (lHold && kPressed && collision.gameObject.CompareTag("hand") && !spawn10used)
+        if (!spacePressed && rClick && collision.gameObject.CompareTag("hand") && !spawn10used)
             {
                 StartCoroutine(Grab());
             }
