@@ -17,7 +17,7 @@ public class Loading : MonoBehaviour
     public bool isTouchingLettuce = false;
     public bool isSpawningLettuce = false;
 
-    public bool spawn10used; 
+    public bool spawn6used; 
 
     private Animator animator;
 
@@ -48,11 +48,11 @@ public class Loading : MonoBehaviour
         isTouchingLettuce = handScript.isTouchingLettuce;
 
 
-        spawn10used = Numerator.spawn10used;
+        spawn6used = GrabNDrop.spawn6used;
 
         if (transform.parent.gameObject.CompareTag("Dish"))
         {
-            if (isSpawningDish && isTouchingDish && !spawn10used)
+            if (isSpawningDish && isTouchingDish && !spawn6used)
             {
                 animator.SetBool("load", true);
             }
@@ -64,7 +64,7 @@ public class Loading : MonoBehaviour
 
         if (transform.parent.gameObject.CompareTag("Bread1"))
         {
-            if (isSpawningBread1 && isTouchingBread1 && !spawn10used)
+            if (isSpawningBread1 && isTouchingBread1 && !spawn6used)
             {
                 animator.SetBool("load", true);
             }
@@ -76,7 +76,7 @@ public class Loading : MonoBehaviour
 
         if (transform.parent.gameObject.CompareTag("Bread2"))
         {
-            if (isSpawningBread2 && isTouchingBread2 && !spawn10used)
+            if (isSpawningBread2 && isTouchingBread2 && !spawn6used)
             {
                 animator.SetBool("load", true);
             }
@@ -88,7 +88,7 @@ public class Loading : MonoBehaviour
 
         if (transform.parent.gameObject.CompareTag("Meat"))
         {
-            if (isSpawningMeat && isTouchingMeat && !spawn10used)
+            if (isSpawningMeat && isTouchingMeat && !spawn6used)
             {
                 animator.SetBool("load", true);
             }
@@ -100,7 +100,7 @@ public class Loading : MonoBehaviour
 
         if (transform.parent.gameObject.CompareTag("Cheese"))
         {
-            if (isSpawningCheese && isTouchingCheese && !spawn10used)
+            if (isSpawningCheese && isTouchingCheese && !spawn6used)
             {
                 animator.SetBool("load", true);
             }
@@ -112,7 +112,7 @@ public class Loading : MonoBehaviour
 
         if (transform.parent.gameObject.CompareTag("Lettuce"))
         {
-            if (isSpawningLettuce && isTouchingLettuce && !spawn10used)
+            if (isSpawningLettuce && isTouchingLettuce && !spawn6used)
             {
                 animator.SetBool("load", true);
             }

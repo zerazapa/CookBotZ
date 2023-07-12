@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 55621615252618588}
   - component: {fileID: 55621615252618591}
   - component: {fileID: 55621615252618589}
+  - component: {fileID: 2071693401096600220}
   m_Layer: 0
   m_Name: spawn_meat
   m_TagString: Untagged
@@ -133,8 +134,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 1382668778, guid: 626b5773674f6b84f85826155090ee9f, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 1153832460, guid: 97c2d94f0590bd44db35547063a49b9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -158,7 +159,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -169,8 +170,23 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18, y: 0.31}
+  m_Size: {x: 0.18, y: 0.2}
   m_EdgeRadius: 0
+--- !u!114 &2071693401096600220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55621615252618590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c93526444cb0943bc85a072f363f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerUp: 0
+  layerDown: 0
+  target: {fileID: 0}
 --- !u!1001 &55621613415124725
 PrefabInstance:
   m_ObjectHideFlags: 0

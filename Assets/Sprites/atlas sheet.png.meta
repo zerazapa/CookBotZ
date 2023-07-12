@@ -1616,6 +1616,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: atlas sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 210
+        width: 23
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7678a451e5bc3ce4b85a95392d46123c
+      internalID: -1824002960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1674,6 +1695,7 @@ TextureImporter:
       font_e: 141618500
       font_2: 1267674310
       atlas sheet_2: -480834734
+      atlas sheet_6: -1824002960
       font_x: -336569652
       font_7: -34565909
       font_4: -1175989189

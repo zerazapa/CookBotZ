@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6804893940141013631}
   - component: {fileID: 7871179799602176131}
   - component: {fileID: 7247773916564803286}
+  - component: {fileID: 7535827244022786566}
   m_Layer: 0
   m_Name: Lettuce
   m_TagString: hLettuce
@@ -31,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1713386162091653306}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 1286379658, guid: c41831d0879ba0547ba771ad2fee2b72, type: 3}
+  m_Sprite: {fileID: -1360740163, guid: 97c2d94f0590bd44db35547063a49b9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,18 +102,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0012667812}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0.01, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.6}
-    oldSize: {x: 0.16, y: 0.06}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.18, y: 0.07}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16113527, y: 0.04872691}
+  m_Size: {x: 0.18, y: 0.07}
   m_EdgeRadius: 0
 --- !u!50 &7871179799602176131
 Rigidbody2D:
@@ -148,8 +150,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handScript: {fileID: 0}
   spacePressed: 0
+  lClick: 0
   rClick: 0
   Player: {fileID: 0}
+  hand: {fileID: 0}
   spawn1: {fileID: 0}
   spawn2: {fileID: 0}
   spawn3: {fileID: 0}
@@ -166,4 +170,79 @@ MonoBehaviour:
   isSpawningMeat: 0
   isSpawningCheese: 0
   isSpawningLettuce: 0
-  position: 1
+  playerMovement: {fileID: 0}
+  hFacing: 0
+  isOnTable: 0
+  thisIsClosest: 0
+--- !u!114 &7535827244022786566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7585370017316391473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea0add9f13212034da86218e59e12c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  thisIsClosest: 0
+--- !u!1 &8767690705650596638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1713386162091653306}
+  - component: {fileID: 5180467357589766033}
+  m_Layer: 3
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1713386162091653306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8767690705650596638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2800709080354476109}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &5180467357589766033
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8767690705650596638}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0.03}
+    pivot: {x: 0.5, y: 0.25}
+    oldSize: {x: 0.16, y: 0.06}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.18, y: 0.07}
+  m_EdgeRadius: 0

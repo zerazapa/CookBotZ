@@ -26,11 +26,13 @@ TagManager:
   - Bread1
   - hBread
   - hand
+  - mouse
+  - movableUi
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ingredientes
   - Water
   - UI
   - 
