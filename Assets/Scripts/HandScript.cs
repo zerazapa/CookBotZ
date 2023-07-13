@@ -18,7 +18,7 @@ public class HandScript : MonoBehaviour
     public Transform spawn5;
     public Transform spawn6;
 
-    public bool lToque = false;
+    public static bool lToque = false;
     public bool lClick = false;
     public bool rClick = false;
     public bool spacePressed = false;
@@ -66,11 +66,11 @@ public class HandScript : MonoBehaviour
             lClick = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !lToque)
+        if (Input.GetMouseButtonDown(0))
         {
             lToque = true;
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        else
         {
             lToque = false;
         }
@@ -98,32 +98,32 @@ public class HandScript : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = true;
             transform.localPosition = new Vector3 ((0.24f * hFacing), -0.12f, 0f);
 
-            if (isTouchingDish && rClick && !isSpawningDish)
+            if (isTouchingDish && rClick && !isSpawningDish && GrabNDrop.canSpawn)
             {
                 StartCoroutine(SpawnDish());
             }
 
-            if (isTouchingBread1 && rClick && !isSpawningBread1)
+            if (isTouchingBread1 && rClick && !isSpawningBread1 && GrabNDrop.canSpawn)
             {
                 StartCoroutine(SpawnBread1());
             }
 
-            if (isTouchingBread2 && rClick && !isSpawningBread2)
+            if (isTouchingBread2 && rClick && !isSpawningBread2 && GrabNDrop.canSpawn)
             {
                 StartCoroutine(SpawnBread2());
             }
 
-            if (isTouchingMeat && rClick && !isSpawningMeat)
+            if (isTouchingMeat && rClick && !isSpawningMeat && GrabNDrop.canSpawn)
             {
                 StartCoroutine(SpawnMeat());
             }
 
-            if (isTouchingCheese && rClick && !isSpawningCheese)
+            if (isTouchingCheese && rClick && !isSpawningCheese && GrabNDrop.canSpawn)
             {
                 StartCoroutine(SpawnCheese());
             }
 
-            if (isTouchingLettuce && rClick && !isSpawningLettuce)
+            if (isTouchingLettuce && rClick && !isSpawningLettuce && GrabNDrop.canSpawn)
             {
                 StartCoroutine(SpawnLettuce());
             }
@@ -229,6 +229,7 @@ public class HandScript : MonoBehaviour
             GameObject dish = Instantiate(dishPrefab, spawn1.position, spawn1.rotation);
             Rigidbody2D dishRigidbody = dish.GetComponent<Rigidbody2D>();
             dish.transform.SetParent(spawn1);
+            yield return new WaitForSeconds(0.1f);
             isSpawningDish = false;
         }
 	    else if (isTouchingDish && !spawn2used && spawn1used && !isSpawningDish)
@@ -238,6 +239,7 @@ public class HandScript : MonoBehaviour
             GameObject dish = Instantiate(dishPrefab, spawn2.position, spawn2.rotation);
             Rigidbody2D dishRigidbody = dish.GetComponent<Rigidbody2D>();
             dish.transform.SetParent(spawn2);
+            yield return new WaitForSeconds(0.1f);
             isSpawningDish = false;
         }
 	    else if (isTouchingDish && !spawn3used && spawn2used && !isSpawningDish)
@@ -247,6 +249,7 @@ public class HandScript : MonoBehaviour
             GameObject dish = Instantiate(dishPrefab, spawn3.position, spawn3.rotation);
             Rigidbody2D dishRigidbody = dish.GetComponent<Rigidbody2D>();
             dish.transform.SetParent(spawn3);
+            yield return new WaitForSeconds(0.1f);
             isSpawningDish = false;
         }
 	    else if (isTouchingDish && !spawn4used && spawn3used && !isSpawningDish)
@@ -256,6 +259,7 @@ public class HandScript : MonoBehaviour
             GameObject dish = Instantiate(dishPrefab, spawn4.position, spawn4.rotation);
             Rigidbody2D dishRigidbody = dish.GetComponent<Rigidbody2D>();
             dish.transform.SetParent(spawn4);
+            yield return new WaitForSeconds(0.1f);
             isSpawningDish = false;
         }
 	    else if (isTouchingDish && !spawn5used && spawn4used && !isSpawningDish)
@@ -265,6 +269,7 @@ public class HandScript : MonoBehaviour
             GameObject dish = Instantiate(dishPrefab, spawn5.position, spawn5.rotation);
             Rigidbody2D dishRigidbody = dish.GetComponent<Rigidbody2D>();
             dish.transform.SetParent(spawn5);
+            yield return new WaitForSeconds(0.1f);
             isSpawningDish = false;
         }
 	    else if (isTouchingDish && !spawn6used && spawn5used && !isSpawningDish)
@@ -273,7 +278,8 @@ public class HandScript : MonoBehaviour
             yield return new WaitForSeconds(1f);
             GameObject dish = Instantiate(dishPrefab, spawn6.position, spawn6.rotation);
             Rigidbody2D dishRigidbody = dish.GetComponent<Rigidbody2D>();
-	    dish.transform.SetParent(spawn6);
+	        dish.transform.SetParent(spawn6);
+            yield return new WaitForSeconds(0.1f);
             isSpawningDish = false;
         }
     }
@@ -287,6 +293,7 @@ public class HandScript : MonoBehaviour
             GameObject bread1 = Instantiate(bread1Prefab, spawn1.position, spawn1.rotation);
             Rigidbody2D bread1Rigidbody = bread1.GetComponent<Rigidbody2D>();
             bread1.transform.SetParent(spawn1);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread1 = false;
         }
 	    else if (isTouchingBread1 && !spawn2used && spawn1used && !isSpawningBread1)
@@ -296,6 +303,7 @@ public class HandScript : MonoBehaviour
             GameObject bread1 = Instantiate(bread1Prefab, spawn2.position, spawn2.rotation);
             Rigidbody2D bread1Rigidbody = bread1.GetComponent<Rigidbody2D>();
             bread1.transform.SetParent(spawn2);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread1 = false;
         }
 	    else if (isTouchingBread1 && !spawn3used && spawn2used && !isSpawningBread1)
@@ -305,6 +313,7 @@ public class HandScript : MonoBehaviour
             GameObject bread1 = Instantiate(bread1Prefab, spawn3.position, spawn3.rotation);
             Rigidbody2D bread1Rigidbody = bread1.GetComponent<Rigidbody2D>();
             bread1.transform.SetParent(spawn3);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread1 = false;
         }
 	    else if (isTouchingBread1 && !spawn4used && spawn3used && !isSpawningBread1)
@@ -314,6 +323,7 @@ public class HandScript : MonoBehaviour
             GameObject bread1 = Instantiate(bread1Prefab, spawn4.position, spawn4.rotation);
             Rigidbody2D bread1Rigidbody = bread1.GetComponent<Rigidbody2D>();
             bread1.transform.SetParent(spawn4);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread1 = false;
         }
 	    else if (isTouchingBread1 && !spawn5used && spawn4used && !isSpawningBread1)
@@ -323,6 +333,7 @@ public class HandScript : MonoBehaviour
             GameObject bread1 = Instantiate(bread1Prefab, spawn5.position, spawn5.rotation);
             Rigidbody2D bread1Rigidbody = bread1.GetComponent<Rigidbody2D>();
             bread1.transform.SetParent(spawn5);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread1 = false;
         }
 	    else if (isTouchingBread1 && !spawn6used && spawn5used && !isSpawningBread1)
@@ -331,7 +342,8 @@ public class HandScript : MonoBehaviour
             yield return new WaitForSeconds(1f);
             GameObject bread1 = Instantiate(bread1Prefab, spawn6.position, spawn6.rotation);
             Rigidbody2D bread1Rigidbody = bread1.GetComponent<Rigidbody2D>();
-	    bread1.transform.SetParent(spawn6);
+	        bread1.transform.SetParent(spawn6);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread1 = false;
         }
     }
@@ -345,6 +357,7 @@ public class HandScript : MonoBehaviour
             GameObject bread2 = Instantiate(bread2Prefab, spawn1.position, spawn1.rotation);
             Rigidbody2D bread2Rigidbody = bread2.GetComponent<Rigidbody2D>();
             bread2.transform.SetParent(spawn1);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread2 = false;
         }
 	    else if (isTouchingBread2 && !spawn2used && spawn1used && !isSpawningBread2)
@@ -354,6 +367,7 @@ public class HandScript : MonoBehaviour
             GameObject bread2 = Instantiate(bread2Prefab, spawn2.position, spawn2.rotation);
             Rigidbody2D bread2Rigidbody = bread2.GetComponent<Rigidbody2D>();
             bread2.transform.SetParent(spawn2);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread2 = false;
         }
 	    else if (isTouchingBread2 && !spawn3used && spawn2used && !isSpawningBread2)
@@ -363,6 +377,7 @@ public class HandScript : MonoBehaviour
             GameObject bread2 = Instantiate(bread2Prefab, spawn3.position, spawn3.rotation);
             Rigidbody2D bread2Rigidbody = bread2.GetComponent<Rigidbody2D>();
             bread2.transform.SetParent(spawn3);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread2 = false;
         }
 	    else if (isTouchingBread2 && !spawn4used && spawn3used && !isSpawningBread2)
@@ -372,6 +387,7 @@ public class HandScript : MonoBehaviour
             GameObject bread2 = Instantiate(bread2Prefab, spawn4.position, spawn4.rotation);
             Rigidbody2D bread2Rigidbody = bread2.GetComponent<Rigidbody2D>();
             bread2.transform.SetParent(spawn4);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread2 = false;
         }
 	    else if (isTouchingBread2 && !spawn5used && spawn4used && !isSpawningBread2)
@@ -381,6 +397,7 @@ public class HandScript : MonoBehaviour
             GameObject bread2 = Instantiate(bread2Prefab, spawn5.position, spawn5.rotation);
             Rigidbody2D bread2Rigidbody = bread2.GetComponent<Rigidbody2D>();
             bread2.transform.SetParent(spawn5);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread2 = false;
         }
 	    else if (isTouchingBread2 && !spawn6used && spawn5used && !isSpawningBread2)
@@ -389,7 +406,8 @@ public class HandScript : MonoBehaviour
             yield return new WaitForSeconds(1f);
             GameObject bread2 = Instantiate(bread2Prefab, spawn6.position, spawn6.rotation);
             Rigidbody2D bread2Rigidbody = bread2.GetComponent<Rigidbody2D>();
-	    bread2.transform.SetParent(spawn6);
+	        bread2.transform.SetParent(spawn6);
+            yield return new WaitForSeconds(0.1f);
             isSpawningBread2 = false;
         }
     }
@@ -403,6 +421,7 @@ public class HandScript : MonoBehaviour
             GameObject meat = Instantiate(meatPrefab, spawn1.position, spawn1.rotation);
             Rigidbody2D meatRigidbody = meat.GetComponent<Rigidbody2D>();
             meat.transform.SetParent(spawn1);
+            yield return new WaitForSeconds(0.1f);
             isSpawningMeat = false;
         }
 	    else if (isTouchingMeat && !spawn2used && spawn1used && !isSpawningMeat)
@@ -412,6 +431,7 @@ public class HandScript : MonoBehaviour
             GameObject meat = Instantiate(meatPrefab, spawn2.position, spawn2.rotation);
             Rigidbody2D meatRigidbody = meat.GetComponent<Rigidbody2D>();
             meat.transform.SetParent(spawn2);
+            yield return new WaitForSeconds(0.1f);
             isSpawningMeat = false;
         }
 	    else if (isTouchingMeat && !spawn3used && spawn2used && !isSpawningMeat)
@@ -421,6 +441,7 @@ public class HandScript : MonoBehaviour
             GameObject meat = Instantiate(meatPrefab, spawn3.position, spawn3.rotation);
             Rigidbody2D meatRigidbody = meat.GetComponent<Rigidbody2D>();
             meat.transform.SetParent(spawn3);
+            yield return new WaitForSeconds(0.1f);
             isSpawningMeat = false;
         }
 	    else if (isTouchingMeat && !spawn4used && spawn3used && !isSpawningMeat)
@@ -430,6 +451,7 @@ public class HandScript : MonoBehaviour
             GameObject meat = Instantiate(meatPrefab, spawn4.position, spawn4.rotation);
             Rigidbody2D meatRigidbody = meat.GetComponent<Rigidbody2D>();
             meat.transform.SetParent(spawn4);
+            yield return new WaitForSeconds(0.1f);
             isSpawningMeat = false;
         }
 	    else if (isTouchingMeat && !spawn5used && spawn4used && !isSpawningMeat)
@@ -439,6 +461,7 @@ public class HandScript : MonoBehaviour
             GameObject meat = Instantiate(meatPrefab, spawn5.position, spawn5.rotation);
             Rigidbody2D meatRigidbody = meat.GetComponent<Rigidbody2D>();
             meat.transform.SetParent(spawn5);
+            yield return new WaitForSeconds(0.1f);
             isSpawningMeat = false;
         }
 	    else if (isTouchingMeat && !spawn6used && spawn5used && !isSpawningMeat)
@@ -447,7 +470,8 @@ public class HandScript : MonoBehaviour
             yield return new WaitForSeconds(1f);
             GameObject meat = Instantiate(meatPrefab, spawn6.position, spawn6.rotation);
             Rigidbody2D meatRigidbody = meat.GetComponent<Rigidbody2D>();
-	    meat.transform.SetParent(spawn6);
+	        meat.transform.SetParent(spawn6);
+            yield return new WaitForSeconds(0.1f);
             isSpawningMeat = false;
         }
     }
@@ -461,6 +485,7 @@ public class HandScript : MonoBehaviour
             GameObject cheese = Instantiate(cheesePrefab, spawn1.position, spawn1.rotation);
             Rigidbody2D cheeseRigidbody = cheese.GetComponent<Rigidbody2D>();
             cheese.transform.SetParent(spawn1);
+            yield return new WaitForSeconds(0.1f);
             isSpawningCheese = false;
         }
 	    else if (isTouchingCheese && !spawn2used && spawn1used && !isSpawningCheese)
@@ -470,6 +495,7 @@ public class HandScript : MonoBehaviour
             GameObject cheese = Instantiate(cheesePrefab, spawn2.position, spawn2.rotation);
             Rigidbody2D cheeseRigidbody = cheese.GetComponent<Rigidbody2D>();
             cheese.transform.SetParent(spawn2);
+            yield return new WaitForSeconds(0.1f);
             isSpawningCheese = false;
         }
 	    else if (isTouchingCheese && !spawn3used && spawn2used && !isSpawningCheese)
@@ -479,6 +505,7 @@ public class HandScript : MonoBehaviour
             GameObject cheese = Instantiate(cheesePrefab, spawn3.position, spawn3.rotation);
             Rigidbody2D cheeseRigidbody = cheese.GetComponent<Rigidbody2D>();
             cheese.transform.SetParent(spawn3);
+            yield return new WaitForSeconds(0.1f);
             isSpawningCheese = false;
         }
 	    else if (isTouchingCheese && !spawn4used && spawn3used && !isSpawningCheese)
@@ -488,6 +515,7 @@ public class HandScript : MonoBehaviour
             GameObject cheese = Instantiate(cheesePrefab, spawn4.position, spawn4.rotation);
             Rigidbody2D cheeseRigidbody = cheese.GetComponent<Rigidbody2D>();
             cheese.transform.SetParent(spawn4);
+            yield return new WaitForSeconds(0.1f);
             isSpawningCheese = false;
         }
 	    else if (isTouchingCheese && !spawn5used && spawn4used && !isSpawningCheese)
@@ -497,6 +525,7 @@ public class HandScript : MonoBehaviour
             GameObject cheese = Instantiate(cheesePrefab, spawn5.position, spawn5.rotation);
             Rigidbody2D cheeseRigidbody = cheese.GetComponent<Rigidbody2D>();
             cheese.transform.SetParent(spawn5);
+            yield return new WaitForSeconds(0.1f);
             isSpawningCheese = false;
         }
 	    else if (isTouchingCheese && !spawn6used && spawn5used && !isSpawningCheese)
@@ -505,7 +534,8 @@ public class HandScript : MonoBehaviour
             yield return new WaitForSeconds(1f);
             GameObject cheese = Instantiate(cheesePrefab, spawn6.position, spawn6.rotation);
             Rigidbody2D cheeseRigidbody = cheese.GetComponent<Rigidbody2D>();
-	    cheese.transform.SetParent(spawn6);
+	        cheese.transform.SetParent(spawn6);
+            yield return new WaitForSeconds(0.1f);
             isSpawningCheese = false;
         }
     }
@@ -519,6 +549,7 @@ public class HandScript : MonoBehaviour
             GameObject lettuce = Instantiate(lettucePrefab, spawn1.position, spawn1.rotation);
             Rigidbody2D lettuceRigidbody = lettuce.GetComponent<Rigidbody2D>();
             lettuce.transform.SetParent(spawn1);
+            yield return new WaitForSeconds(0.1f);
             isSpawningLettuce = false;
         }
 	    else if (isTouchingLettuce && !spawn2used && spawn1used && !isSpawningLettuce)
@@ -528,6 +559,7 @@ public class HandScript : MonoBehaviour
             GameObject lettuce = Instantiate(lettucePrefab, spawn2.position, spawn2.rotation);
             Rigidbody2D lettuceRigidbody = lettuce.GetComponent<Rigidbody2D>();
             lettuce.transform.SetParent(spawn2);
+            yield return new WaitForSeconds(0.1f);
             isSpawningLettuce = false;
         }
 	    else if (isTouchingLettuce && !spawn3used && spawn2used && !isSpawningLettuce)
@@ -537,6 +569,7 @@ public class HandScript : MonoBehaviour
             GameObject lettuce = Instantiate(lettucePrefab, spawn3.position, spawn3.rotation);
             Rigidbody2D lettuceRigidbody = lettuce.GetComponent<Rigidbody2D>();
             lettuce.transform.SetParent(spawn3);
+            yield return new WaitForSeconds(0.1f);
             isSpawningLettuce = false;
         }
 	    else if (isTouchingLettuce && !spawn4used && spawn3used && !isSpawningLettuce)
@@ -546,6 +579,7 @@ public class HandScript : MonoBehaviour
             GameObject lettuce = Instantiate(lettucePrefab, spawn4.position, spawn4.rotation);
             Rigidbody2D lettuceRigidbody = lettuce.GetComponent<Rigidbody2D>();
             lettuce.transform.SetParent(spawn4);
+            yield return new WaitForSeconds(0.1f);
             isSpawningLettuce = false;
         }
 	    else if (isTouchingLettuce && !spawn5used && spawn4used && !isSpawningLettuce)
@@ -555,6 +589,7 @@ public class HandScript : MonoBehaviour
             GameObject lettuce = Instantiate(lettucePrefab, spawn5.position, spawn5.rotation);
             Rigidbody2D lettuceRigidbody = lettuce.GetComponent<Rigidbody2D>();
             lettuce.transform.SetParent(spawn5);
+            yield return new WaitForSeconds(0.1f);
             isSpawningLettuce = false;
         }
 	    else if (isTouchingLettuce && !spawn6used && spawn5used && !isSpawningLettuce)
@@ -563,7 +598,8 @@ public class HandScript : MonoBehaviour
             yield return new WaitForSeconds(1f);
             GameObject lettuce = Instantiate(lettucePrefab, spawn6.position, spawn6.rotation);
             Rigidbody2D lettuceRigidbody = lettuce.GetComponent<Rigidbody2D>();
-	    lettuce.transform.SetParent(spawn6);
+	        lettuce.transform.SetParent(spawn6);
+            yield return new WaitForSeconds(0.1f);
             isSpawningLettuce = false;
         }
     }

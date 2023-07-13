@@ -160,10 +160,6 @@ MonoBehaviour:
   spawn4: {fileID: 0}
   spawn5: {fileID: 0}
   spawn6: {fileID: 0}
-  spawn7: {fileID: 0}
-  spawn8: {fileID: 0}
-  spawn9: {fileID: 0}
-  spawn10: {fileID: 0}
   isSpawningDish: 0
   isSpawningBread1: 0
   isSpawningBread2: 0
@@ -230,7 +226,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

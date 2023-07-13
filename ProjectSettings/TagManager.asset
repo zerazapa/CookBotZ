@@ -28,6 +28,10 @@ TagManager:
   - hand
   - mouse
   - movableUi
+  - ui
+  - platform
+  - despawner
+  - table
   layers:
   - Default
   - TransparentFX

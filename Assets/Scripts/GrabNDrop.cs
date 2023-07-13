@@ -44,6 +44,9 @@ public class GrabNDrop : MonoBehaviour
     public bool thisIsClosest = false;
     bool isGrabing = false;
     bool isDropping;
+    public static bool canSpawn = true;
+
+    public bool falling = false;
 
     void Start()
     {
@@ -69,6 +72,7 @@ public class GrabNDrop : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(falling);
         spawn1used = handScript.spawn1used;
         spawn2used = handScript.spawn2used;
         spawn3used = handScript.spawn3used;
@@ -135,6 +139,45 @@ public class GrabNDrop : MonoBehaviour
             }            
         }
         
+        int cloneCount = CountClones();
+
+        if (cloneCount >= 6)
+        {
+            canSpawn = false;
+        }else
+        {
+            canSpawn = true;
+        }
+    }
+
+    int CountClones()
+    {
+        int count = 0;
+
+        count += CountClonesWithName("Dish(Clone)");
+        count += CountClonesWithName("Bread1(Clone)");
+        count += CountClonesWithName("Bread2(Clone)");
+        count += CountClonesWithName("Meat(Clone)");
+        count += CountClonesWithName("Cheese(Clone)");
+        count += CountClonesWithName("Lettuce(Clone)");
+
+        return count;
+    }
+
+   int CountClonesWithName(string name)
+    {
+        GameObject[] clones = GameObject.FindObjectsOfType<GameObject>();
+
+        int count = 0;
+        foreach (GameObject clone in clones)
+        {
+            if (clone.name == name)
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     private IEnumerator DropAll()
@@ -193,9 +236,12 @@ public class GrabNDrop : MonoBehaviour
 
         transform.SetParent(null);
         rb.gravityScale = (1f);
-        yield return new WaitForSeconds(0.175f * (0.5f * position));
-        rb.gravityScale = 0f;
-        rb.velocity = new Vector2(0f, 0f);
+        if (!falling)
+        {
+            yield return new WaitForSeconds(0.4f * position);
+            rb.gravityScale = 0f;
+            rb.velocity = new Vector2(0f, 0f);
+        }
         position = 0;
     }
 
@@ -236,8 +282,12 @@ public class GrabNDrop : MonoBehaviour
             transform.localPosition = new Vector3 ((0.145f * hFacing) , 0f , 0f);
             transform.SetParent(null);
             rb.gravityScale = (1f);
-            yield return new WaitForSeconds(0.175f);
-            rb.gravityScale = 0f;
+            if (!falling)
+            {
+                yield return new WaitForSeconds(0.175f);
+                rb.gravityScale = 0f;
+                rb.velocity = new Vector2(0f, 0f);
+            }
             rb.velocity = new Vector2(0f, 0f);
         }
         isDropping = false;
@@ -311,7 +361,7 @@ public class GrabNDrop : MonoBehaviour
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-        if (gameObject.CompareTag("dDish") || gameObject.CompareTag("dBread1") || gameObject.CompareTag("dBread2") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce"))
+        if (!falling && (gameObject.CompareTag("dDish") || gameObject.CompareTag("dBread1") || gameObject.CompareTag("dBread2") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && !falling)
         {
             rb.gravityScale = 0f;
             rb.velocity = new Vector2(0f, 0f);
@@ -321,10 +371,36 @@ public class GrabNDrop : MonoBehaviour
     void OnTriggerStay2D(Collider2D collision)
     {
         if (!spacePressed && rClick && collision.gameObject.CompareTag("hand") && !spawn6used && !isGrabing)
-            {
-                isGrabing = true;
-                StartCoroutine(Grab());
-            }
+        {
+            isGrabing = true;
+            StartCoroutine(Grab());
+        }
+        
+        if (collision.gameObject.CompareTag("platform") && (gameObject.CompareTag("hDish") || gameObject.CompareTag("hBread1") || gameObject.CompareTag("hBread2") || gameObject.CompareTag("hCheese") || gameObject.CompareTag("hLettuce")))
+        {
+            falling = false;
+        }
+
+        if (collision.gameObject.CompareTag("table"))
+        {
+            Debug.Log("aqui");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("platform") && (gameObject.CompareTag("hDish") || gameObject.CompareTag("hBread1") || gameObject.CompareTag("hBread2") || gameObject.CompareTag("hCheese") || gameObject.CompareTag("hLettuce")))
+        {
+            falling = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("despawner"))
+        {
+            Destroy(gameObject);
+        }
     }
     
 }
