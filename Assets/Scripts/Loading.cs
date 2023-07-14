@@ -5,19 +5,11 @@ using UnityEngine;
 public class Loading : MonoBehaviour
 {
     public bool isTouchingDish = false;
-    public bool isSpawningDish = false;
     public bool isTouchingBread1 = false;
-    public bool isSpawningBread1 = false;
     public bool isTouchingBread2 = false;
-    public bool isSpawningBread2 = false;
     public bool isTouchingMeat = false;
-    public bool isSpawningMeat = false;
     public bool isTouchingCheese = false;
-    public bool isSpawningCheese = false;
     public bool isTouchingLettuce = false;
-    public bool isSpawningLettuce = false;
-
-    public bool spawn6used; 
 
     private Animator animator;
 
@@ -33,13 +25,6 @@ public class Loading : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isSpawningDish = handScript.isSpawningDish;
-        isSpawningBread1 = handScript.isSpawningBread1;
-        isSpawningBread2 = handScript.isSpawningBread2;
-        isSpawningMeat = handScript.isSpawningMeat;
-        isSpawningCheese = handScript.isSpawningCheese;
-        isSpawningLettuce = handScript.isSpawningLettuce;
-
         isTouchingDish = handScript.isTouchingDish;
         isTouchingBread1 = handScript.isTouchingBread1;
         isTouchingBread2 = handScript.isTouchingBread2;
@@ -47,12 +32,9 @@ public class Loading : MonoBehaviour
         isTouchingCheese = handScript.isTouchingCheese;
         isTouchingLettuce = handScript.isTouchingLettuce;
 
-
-        spawn6used = GrabNDrop.spawn6used;
-
         if (transform.parent.gameObject.CompareTag("Dish"))
         {
-            if (isSpawningDish && isTouchingDish && !spawn6used)
+            if (HandScript.isSpawning && isTouchingDish && !HandScript.spawn6used)
             {
                 animator.SetBool("load", true);
             }
@@ -64,7 +46,7 @@ public class Loading : MonoBehaviour
 
         if (transform.parent.gameObject.CompareTag("Bread1"))
         {
-            if (isSpawningBread1 && isTouchingBread1 && !spawn6used)
+            if (HandScript.isSpawning && isTouchingBread1 && !HandScript.spawn6used)
             {
                 animator.SetBool("load", true);
             }
@@ -76,7 +58,7 @@ public class Loading : MonoBehaviour
 
         if (transform.parent.gameObject.CompareTag("Bread2"))
         {
-            if (isSpawningBread2 && isTouchingBread2 && !spawn6used)
+            if (HandScript.isSpawning && isTouchingBread2 && !HandScript.spawn6used)
             {
                 animator.SetBool("load", true);
             }
@@ -88,7 +70,7 @@ public class Loading : MonoBehaviour
 
         if (transform.parent.gameObject.CompareTag("Meat"))
         {
-            if (isSpawningMeat && isTouchingMeat && !spawn6used)
+            if (HandScript.isSpawning && isTouchingMeat && !HandScript.spawn6used)
             {
                 animator.SetBool("load", true);
             }
@@ -100,7 +82,7 @@ public class Loading : MonoBehaviour
 
         if (transform.parent.gameObject.CompareTag("Cheese"))
         {
-            if (isSpawningCheese && isTouchingCheese && !spawn6used)
+            if (HandScript.isSpawning && isTouchingCheese && !HandScript.spawn6used)
             {
                 animator.SetBool("load", true);
             }
@@ -112,7 +94,7 @@ public class Loading : MonoBehaviour
 
         if (transform.parent.gameObject.CompareTag("Lettuce"))
         {
-            if (isSpawningLettuce && isTouchingLettuce && !spawn6used)
+            if (HandScript.isSpawning && isTouchingLettuce && !HandScript.spawn6used)
             {
                 animator.SetBool("load", true);
             }

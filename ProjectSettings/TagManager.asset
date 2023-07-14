@@ -32,6 +32,12 @@ TagManager:
   - platform
   - despawner
   - table
+  - tDish
+  - tBread1
+  - tBread2
+  - tMeat
+  - tCheese
+  - tLettuce
   layers:
   - Default
   - TransparentFX

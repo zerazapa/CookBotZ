@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerLoading : MonoBehaviour
 {
     bool lClick;
-    bool spawn1used;
+    public bool dropped;
 
     private Animator animator;
 
@@ -22,9 +22,8 @@ public class PlayerLoading : MonoBehaviour
     void Update()
     {
         lClick = handScript.lClick;
-        spawn1used = handScript.spawn1used;
 
-        if (lClick && spawn1used)
+        if (lClick && HandScript.spawn1used)
         {
             animator.SetBool("load", true);
         }
@@ -32,6 +31,5 @@ public class PlayerLoading : MonoBehaviour
         {
             animator.SetBool("load", false);
         }
-
     }
 }

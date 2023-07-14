@@ -356,6 +356,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: atlas2_12
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 185
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b0f028b35a87b5428f0780341b05024
+      internalID: -2041075011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -371,6 +392,7 @@ TextureImporter:
       atlas2_9: 306206294
       atlas2_6: 1279796109
       atlas2_4: -1360740163
+      atlas2_12: -2041075011
       atlas2_0: -1616378288
       atlas2_2: 1366668993
       atlas2_7: -1180623506

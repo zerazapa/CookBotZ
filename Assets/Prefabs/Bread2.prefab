@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 11
   m_Sprite: {fileID: 202509100, guid: 97c2d94f0590bd44db35547063a49b9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -160,10 +160,6 @@ MonoBehaviour:
   spawn4: {fileID: 0}
   spawn5: {fileID: 0}
   spawn6: {fileID: 0}
-  spawn7: {fileID: 0}
-  spawn8: {fileID: 0}
-  spawn9: {fileID: 0}
-  spawn10: {fileID: 0}
   isSpawningDish: 0
   isSpawningBread1: 0
   isSpawningBread2: 0
@@ -174,6 +170,7 @@ MonoBehaviour:
   hFacing: 0
   isOnTable: 0
   thisIsClosest: 0
+  falling: 0
 --- !u!114 &6638269435819945189
 MonoBehaviour:
   m_ObjectHideFlags: 0

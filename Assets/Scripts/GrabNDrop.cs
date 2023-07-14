@@ -5,6 +5,7 @@ using UnityEngine;
 public class GrabNDrop : MonoBehaviour
 {
     public HandScript handScript;
+    public tableScript tableScript;
     private PlayerLoading loaderScript;
     private Collider2D childCollider;
 
@@ -21,25 +22,9 @@ public class GrabNDrop : MonoBehaviour
     public Transform spawn5;
     public Transform spawn6;
 
-    public bool isSpawningDish = false;
-    public bool isSpawningBread1 = false;
-    public bool isSpawningBread2 = false;
-    public bool isSpawningMeat = false;
-    public bool isSpawningCheese = false;
-    public bool isSpawningLettuce = false;
-
-    public static bool spawn1used = false;
-    public static bool spawn2used = false;
-    public static bool spawn3used = false;
-    public static bool spawn4used = false;
-    public static bool spawn5used = false;
-    public static bool spawn6used = false;
-
     int position = 0;
     public PlayerMovement playerMovement;
     public float hFacing;
-
-    public bool isOnTable = false;
 
     public bool thisIsClosest = false;
     bool isGrabing = false;
@@ -47,6 +32,24 @@ public class GrabNDrop : MonoBehaviour
     public static bool canSpawn = true;
 
     public bool falling = false;
+
+    public Transform place1;
+    public Transform place2;
+    public Transform place3;
+    public Transform place4;
+    public Transform place5;
+    public Transform place6;
+    
+    public bool touchingTable = false;
+    public bool item1Right = false;
+    public bool item2Right = false;
+    public bool item3Right = false;
+    public bool item4Right = false;
+    public bool item5Right = false;
+    public bool item6Right = false;
+    public bool tieneTTag = false;
+    
+    
 
     void Start()
     {
@@ -59,6 +62,8 @@ public class GrabNDrop : MonoBehaviour
         playerMovement = player.GetComponent<PlayerMovement>();
         Transform child = transform.GetChild(0);
         childCollider = transform.GetChild(0).GetComponent<Collider2D>();
+        GameObject tableObject = GameObject.FindGameObjectWithTag("table");
+        tableScript = tableObject.GetComponent<tableScript>();
 
         Player = GameObject.Find("Player").transform;
         hand = GameObject.Find("hand").transform;
@@ -68,30 +73,26 @@ public class GrabNDrop : MonoBehaviour
         spawn4 = GameObject.Find("spawn4").transform;
         spawn5 = GameObject.Find("spawn5").transform;
         spawn6 = GameObject.Find("spawn6").transform;
+        place1 = GameObject.Find("place1").transform;
+        place2 = GameObject.Find("place2").transform;
+        place3 = GameObject.Find("place3").transform;
+        place4 = GameObject.Find("place4").transform;
+        place5 = GameObject.Find("place5").transform;
+        place6 = GameObject.Find("place6").transform;
     }
 
     void Update()
     {
-        Debug.Log(falling);
-        spawn1used = handScript.spawn1used;
-        spawn2used = handScript.spawn2used;
-        spawn3used = handScript.spawn3used;
-        spawn4used = handScript.spawn4used;
-        spawn5used = handScript.spawn5used;
-        spawn6used = handScript.spawn6used;
-
-        isSpawningDish = handScript.isSpawningDish;
-        isSpawningBread1 = handScript.isSpawningBread1;
-        isSpawningBread2 = handScript.isSpawningBread2;
-        isSpawningMeat = handScript.isSpawningMeat;
-        isSpawningCheese = handScript.isSpawningCheese;
-        isSpawningLettuce = handScript.isSpawningLettuce;
-
         hFacing = playerMovement.hFacing;
 
         spacePressed = handScript.spacePressed;
         lClick = handScript.lClick;
         rClick = handScript.rClick;
+
+        if (!lClick)
+        {
+            isDropping = false;
+        }
 
         if (gameObject.CompareTag("hDish") || gameObject.CompareTag("hBread1") || gameObject.CompareTag("hBread2") || gameObject.CompareTag("hMeat") || gameObject.CompareTag("hCheese") || gameObject.CompareTag("hLettuce"))
         {
@@ -105,6 +106,12 @@ public class GrabNDrop : MonoBehaviour
             childCollider.enabled = true;
         }
         
+        if (touchingTable && (gameObject.CompareTag("tDish") || gameObject.CompareTag("tBread1") || gameObject.CompareTag("tBread2") || gameObject.CompareTag("tMeat") || gameObject.CompareTag("tCheese") || gameObject.CompareTag("tLettuce")))
+        {
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            childCollider.enabled = false;
+        }
+        
 
         if (spacePressed && (gameObject.CompareTag("hDish") || gameObject.CompareTag("hBread1") || gameObject.CompareTag("hBread2") || gameObject.CompareTag("hMeat") || gameObject.CompareTag("hCheese") || gameObject.CompareTag("hLettuce")))
         {
@@ -113,27 +120,27 @@ public class GrabNDrop : MonoBehaviour
 
         if (lClick && (gameObject.CompareTag("hDish") || gameObject.CompareTag("hBread1") || gameObject.CompareTag("hBread2") || gameObject.CompareTag("hMeat") || gameObject.CompareTag("hCheese") || gameObject.CompareTag("hLettuce")))
         {
-            if (spawn1used && !isDropping && !spawn2used && transform.parent.gameObject.name == "spawn1")
+            if (HandScript.spawn1used && !isDropping && !HandScript.spawn2used && transform.parent.gameObject.name == "spawn1")
             {
                 StartCoroutine(Drop1());
             }
-            else if (spawn2used && !isDropping && !spawn3used && transform.parent.gameObject.name == "spawn2")
+            else if (HandScript.spawn2used && !isDropping && !HandScript.spawn3used && transform.parent.gameObject.name == "spawn2")
             {
                 StartCoroutine(Drop1());
             }
-            else if (spawn3used && !isDropping && !spawn4used && transform.parent.gameObject.name == "spawn3")
+            else if (HandScript.spawn3used && !isDropping && !HandScript.spawn4used && transform.parent.gameObject.name == "spawn3")
             {
                 StartCoroutine(Drop1());
             }
-            else if (spawn4used && !isDropping && !spawn5used && transform.parent.gameObject.name == "spawn4")
+            else if (HandScript.spawn4used && !isDropping && !HandScript.spawn5used && transform.parent.gameObject.name == "spawn4")
             {
                 StartCoroutine(Drop1());
             }
-            else if (spawn5used && !isDropping && !spawn6used && transform.parent.gameObject.name == "spawn5")
+            else if (HandScript.spawn5used && !isDropping && !HandScript.spawn6used && transform.parent.gameObject.name == "spawn5")
             {
                 StartCoroutine(Drop1());
             }
-            else if (spawn6used && !isDropping && transform.parent.gameObject.name == "spawn6")
+            else if (HandScript.spawn6used && !isDropping && transform.parent.gameObject.name == "spawn6")
             {
                 StartCoroutine(Drop1());
             }            
@@ -148,7 +155,133 @@ public class GrabNDrop : MonoBehaviour
         {
             canSpawn = true;
         }
+
+        if (touchingTable && (item1Right || item2Right || item3Right || item4Right || item5Right || item6Right) && (gameObject.CompareTag("dDish") || gameObject.CompareTag("dBread1") || gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")))
+        {
+            TurnTableTag();
+        }//giveTTag
+
+        if (gameObject.CompareTag("tDish") || gameObject.CompareTag("tBread1") || gameObject.CompareTag("tBread2") || gameObject.CompareTag("tMeat") || gameObject.CompareTag("tCheese") || gameObject.CompareTag("tLettuce"))
+        {
+                tieneTTag = true;
+            }
+            else
+            {
+                tieneTTag = false;
+        } //tieneTTag?
+
+        if (gameObject.CompareTag("dDish") && !tableScript.place1used)
+        {
+                item1Right = true;
+            }
+            else
+            {
+                item1Right = false;
+            }
+            if (gameObject.CompareTag("dBread1") && tableScript.place1used && !tableScript.place2used)
+            {
+                item2Right = true;
+            }
+            else
+            {
+                item2Right = false;
+            }
+            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (tableScript.place2used && !tableScript.place3used))
+            {
+                item3Right = true;
+            }
+            else
+            {
+                item3Right = false;
+            }
+            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (tableScript.place3used && !tableScript.place4used))
+            {
+                item4Right = true;
+            }
+            else
+            {
+                item4Right = false;
+            }
+            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (tableScript.place4used && !tableScript.place5used))
+            {
+                item5Right = true;
+            }
+            else
+            {
+                item5Right = false;
+            }
+            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (tableScript.place5used && !tableScript.place6used))
+            {
+                item6Right = true;
+            }
+            else
+            {
+                item6Right = false;
+        } //itemXRight
+
+        if (touchingTable)
+        {
+            if (!tableScript.place1used && item1Right)
+            {
+                transform.SetParent(place1);
+                transform.localPosition = Vector2.zero;
+            }
+            else if (!tableScript.place2used && tableScript.place1used && item2Right)
+            {
+                transform.SetParent(place2);
+                transform.localPosition = Vector2.zero;
+            }
+            else if (!tableScript.place3used && tableScript.place2used && item3Right)
+            {
+                transform.SetParent(place3);
+                transform.localPosition = Vector2.zero;
+            }
+            else if (!tableScript.place4used && tableScript.place3used && item4Right)
+            {
+                transform.SetParent(place4);
+                transform.localPosition = Vector2.zero;
+            }
+            else if (!tableScript.place5used && tableScript.place4used && item5Right)
+            {
+                transform.SetParent(place5);
+                transform.localPosition = Vector2.zero;
+            }
+            else if (!tableScript.place6used && tableScript.place5used && item6Right)
+            {
+                transform.SetParent(place6);
+                transform.localPosition = Vector2.zero;
+            }
+        }
     }
+
+    void TurnTableTag()
+    {
+        if (gameObject.tag == "dDish")
+            {
+                gameObject.tag = "tDish";
+            }
+            if (gameObject.tag == "dBread1")
+            {
+                gameObject.tag = "tBread1";
+            }
+            if (gameObject.tag == "dBread2")
+            {
+                gameObject.tag = "tBread2";
+            }
+            if (gameObject.tag == "dMeat")
+            {
+                gameObject.tag = "tMeat";
+            }
+            if (gameObject.tag == "dCheese")
+            {
+                gameObject.tag = "tCheese";
+            }
+            if (gameObject.tag == "dLettuce")
+            {
+                gameObject.tag = "tLettuce";
+        }
+    }
+    
 
     int CountClones()
     {
@@ -164,7 +297,7 @@ public class GrabNDrop : MonoBehaviour
         return count;
     }
 
-   int CountClonesWithName(string name)
+    int CountClonesWithName(string name)
     {
         GameObject[] clones = GameObject.FindObjectsOfType<GameObject>();
 
@@ -234,6 +367,11 @@ public class GrabNDrop : MonoBehaviour
                 gameObject.tag = "dLettuce";
         }
 
+        if (touchingTable && (item1Right || item2Right || item3Right || item4Right || item5Right || item6Right))
+        {
+            TurnTableTag();
+        }
+        
         transform.SetParent(null);
         rb.gravityScale = (1f);
         if (!falling)
@@ -249,11 +387,11 @@ public class GrabNDrop : MonoBehaviour
     {
         isDropping = true;
         yield return new WaitForSeconds(1f);
-        if (lClick)
+        if (lClick && isDropping)
         {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-            if (gameObject.tag == "hDish") //al tag que tuviera, le otorga su contraparte "dropped"
+            if (gameObject.tag == "hDish") //tag h->d
             {
                     gameObject.tag = "dDish";
                 }
@@ -278,6 +416,11 @@ public class GrabNDrop : MonoBehaviour
                     gameObject.tag = "dLettuce";
             }
 
+            if (touchingTable && (item1Right || item2Right || item3Right || item4Right || item5Right || item6Right))
+            {
+                TurnTableTag();
+            }
+
             transform.SetParent(hand);
             transform.localPosition = new Vector3 ((0.145f * hFacing) , 0f , 0f);
             transform.SetParent(null);
@@ -289,6 +432,8 @@ public class GrabNDrop : MonoBehaviour
                 rb.velocity = new Vector2(0f, 0f);
             }
             rb.velocity = new Vector2(0f, 0f);
+            
+            
         }
         isDropping = false;
     }
@@ -321,35 +466,29 @@ public class GrabNDrop : MonoBehaviour
             gameObject.tag = "hLettuce";
         }
 
-        if (!spawn1used)
+        if (!HandScript.spawn1used)
         {
             transform.SetParent(spawn1);
-            spawn1used = true;
         }
-        else if (!spawn2used && spawn1used)
+        else if (!HandScript.spawn2used && HandScript.spawn1used)
         {
             transform.SetParent(spawn2);
-            spawn2used = true;
         }
-        else if (!spawn3used && spawn2used)
+        else if (!HandScript.spawn3used && HandScript.spawn2used)
         {
             transform.SetParent(spawn3);
-            spawn3used = true;
         }
-        else if (!spawn4used && spawn3used)
+        else if (!HandScript.spawn4used && HandScript.spawn3used)
         {
             transform.SetParent(spawn4);
-            spawn4used = true;
         }
-        else if (!spawn5used && spawn4used)
+        else if (!HandScript.spawn5used && HandScript.spawn4used)
         {
             transform.SetParent(spawn5);
-            spawn5used = true;
         }
-        else if (!spawn6used && spawn5used)
+        else if (!HandScript.spawn6used && HandScript.spawn5used)
         {
             transform.SetParent(spawn6);
-            spawn6used = true;
         }
 
         transform.localPosition = Vector3.zero;
@@ -370,7 +509,7 @@ public class GrabNDrop : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (!spacePressed && rClick && collision.gameObject.CompareTag("hand") && !spawn6used && !isGrabing)
+        if (!spacePressed && rClick && collision.gameObject.CompareTag("hand") && !HandScript.spawn6used && !isGrabing && (gameObject.CompareTag("dDish") || gameObject.CompareTag("dBread1") || gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")))
         {
             isGrabing = true;
             StartCoroutine(Grab());
@@ -383,7 +522,7 @@ public class GrabNDrop : MonoBehaviour
 
         if (collision.gameObject.CompareTag("table"))
         {
-            Debug.Log("aqui");
+            touchingTable = true;
         }
     }
 
@@ -392,6 +531,11 @@ public class GrabNDrop : MonoBehaviour
         if (collision.gameObject.CompareTag("platform") && (gameObject.CompareTag("hDish") || gameObject.CompareTag("hBread1") || gameObject.CompareTag("hBread2") || gameObject.CompareTag("hCheese") || gameObject.CompareTag("hLettuce")))
         {
             falling = true;
+        }
+
+        if (collision.gameObject.CompareTag("table"))
+        {
+            touchingTable = false;
         }
     }
 
