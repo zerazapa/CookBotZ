@@ -68,8 +68,6 @@ public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             Time.timeScale = 1f;
         }
-
-        Debug.Log(canBePaused);
     }
 
     public void Restart()

@@ -93,32 +93,32 @@ public class HandScript : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = true;
             transform.localPosition = new Vector3 ((0.24f * hFacing), -0.12f, 0f);
 
-            if (isTouchingDish && rClick && !isSpawning && GrabNDrop.canSpawn)
+            if (isTouchingDish && rClick && !isSpawning && ContarClones.canSpawn)
             {
                 StartCoroutine(SpawnDish());
             }
 
-            if (isTouchingBread1 && rClick && !isSpawning && GrabNDrop.canSpawn)
+            if (isTouchingBread1 && rClick && !isSpawning && ContarClones.canSpawn)
             {
                 StartCoroutine(SpawnBread1());
             }
 
-            if (isTouchingBread2 && rClick && !isSpawning && GrabNDrop.canSpawn)
+            if (isTouchingBread2 && rClick && !isSpawning && ContarClones.canSpawn)
             {
                 StartCoroutine(SpawnBread2());
             }
 
-            if (isTouchingMeat && rClick && !isSpawning && GrabNDrop.canSpawn)
+            if (isTouchingMeat && rClick && !isSpawning && ContarClones.canSpawn)
             {
                 StartCoroutine(SpawnMeat());
             }
 
-            if (isTouchingCheese && rClick && !isSpawning && GrabNDrop.canSpawn)
+            if (isTouchingCheese && rClick && !isSpawning && ContarClones.canSpawn)
             {
                 StartCoroutine(SpawnCheese());
             }
 
-            if (isTouchingLettuce && rClick && !isSpawning && GrabNDrop.canSpawn)
+            if (isTouchingLettuce && rClick && !isSpawning && ContarClones.canSpawn)
             {
                 StartCoroutine(SpawnLettuce());
             }

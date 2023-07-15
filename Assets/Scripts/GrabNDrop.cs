@@ -5,7 +5,6 @@ using UnityEngine;
 public class GrabNDrop : MonoBehaviour
 {
     public HandScript handScript;
-    public tableScript tableScript;
     private PlayerLoading loaderScript;
     private Collider2D childCollider;
 
@@ -29,7 +28,6 @@ public class GrabNDrop : MonoBehaviour
     public bool thisIsClosest = false;
     bool isGrabing = false;
     bool isDropping;
-    public static bool canSpawn = true;
 
     public bool falling = false;
 
@@ -49,7 +47,7 @@ public class GrabNDrop : MonoBehaviour
     public bool item6Right = false;
     public bool tieneTTag = false;
     
-    
+    public static bool callDestroyed = false;
 
     void Start()
     {
@@ -62,8 +60,6 @@ public class GrabNDrop : MonoBehaviour
         playerMovement = player.GetComponent<PlayerMovement>();
         Transform child = transform.GetChild(0);
         childCollider = transform.GetChild(0).GetComponent<Collider2D>();
-        GameObject tableObject = GameObject.FindGameObjectWithTag("table");
-        tableScript = tableObject.GetComponent<tableScript>();
 
         Player = GameObject.Find("Player").transform;
         hand = GameObject.Find("hand").transform;
@@ -83,6 +79,7 @@ public class GrabNDrop : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(callDestroyed);
         hFacing = playerMovement.hFacing;
 
         spacePressed = handScript.spacePressed;
@@ -146,15 +143,7 @@ public class GrabNDrop : MonoBehaviour
             }            
         }
         
-        int cloneCount = CountClones();
-
-        if (cloneCount >= 6)
-        {
-            canSpawn = false;
-        }else
-        {
-            canSpawn = true;
-        }
+        
 
         if (touchingTable && (item1Right || item2Right || item3Right || item4Right || item5Right || item6Right) && (gameObject.CompareTag("dDish") || gameObject.CompareTag("dBread1") || gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")))
         {
@@ -170,7 +159,7 @@ public class GrabNDrop : MonoBehaviour
                 tieneTTag = false;
         } //tieneTTag?
 
-        if (gameObject.CompareTag("dDish") && !tableScript.place1used)
+        if (gameObject.CompareTag("dDish") && !TableScript.place1used)
         {
                 item1Right = true;
             }
@@ -178,7 +167,7 @@ public class GrabNDrop : MonoBehaviour
             {
                 item1Right = false;
             }
-            if (gameObject.CompareTag("dBread1") && tableScript.place1used && !tableScript.place2used)
+            if (gameObject.CompareTag("dBread1") && TableScript.place1used && !TableScript.place2used)
             {
                 item2Right = true;
             }
@@ -186,7 +175,7 @@ public class GrabNDrop : MonoBehaviour
             {
                 item2Right = false;
             }
-            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (tableScript.place2used && !tableScript.place3used))
+            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (TableScript.place2used && !TableScript.place3used))
             {
                 item3Right = true;
             }
@@ -194,7 +183,7 @@ public class GrabNDrop : MonoBehaviour
             {
                 item3Right = false;
             }
-            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (tableScript.place3used && !tableScript.place4used))
+            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (TableScript.place3used && !TableScript.place4used))
             {
                 item4Right = true;
             }
@@ -202,7 +191,7 @@ public class GrabNDrop : MonoBehaviour
             {
                 item4Right = false;
             }
-            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (tableScript.place4used && !tableScript.place5used))
+            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (TableScript.place4used && !TableScript.place5used))
             {
                 item5Right = true;
             }
@@ -210,7 +199,7 @@ public class GrabNDrop : MonoBehaviour
             {
                 item5Right = false;
             }
-            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (tableScript.place5used && !tableScript.place6used))
+            if ((gameObject.CompareTag("dBread2") || gameObject.CompareTag("dMeat") || gameObject.CompareTag("dCheese") || gameObject.CompareTag("dLettuce")) && (TableScript.place5used && !TableScript.place6used))
             {
                 item6Right = true;
             }
@@ -221,32 +210,32 @@ public class GrabNDrop : MonoBehaviour
 
         if (touchingTable)
         {
-            if (!tableScript.place1used && item1Right)
+            if (!TableScript.place1used && item1Right)
             {
                 transform.SetParent(place1);
                 transform.localPosition = Vector2.zero;
             }
-            else if (!tableScript.place2used && tableScript.place1used && item2Right)
+            else if (!TableScript.place2used && TableScript.place1used && item2Right)
             {
                 transform.SetParent(place2);
                 transform.localPosition = Vector2.zero;
             }
-            else if (!tableScript.place3used && tableScript.place2used && item3Right)
+            else if (!TableScript.place3used && TableScript.place2used && item3Right)
             {
                 transform.SetParent(place3);
                 transform.localPosition = Vector2.zero;
             }
-            else if (!tableScript.place4used && tableScript.place3used && item4Right)
+            else if (!TableScript.place4used && TableScript.place3used && item4Right)
             {
                 transform.SetParent(place4);
                 transform.localPosition = Vector2.zero;
             }
-            else if (!tableScript.place5used && tableScript.place4used && item5Right)
+            else if (!TableScript.place5used && TableScript.place4used && item5Right)
             {
                 transform.SetParent(place5);
                 transform.localPosition = Vector2.zero;
             }
-            else if (!tableScript.place6used && tableScript.place5used && item6Right)
+            else if (!TableScript.place6used && TableScript.place5used && item6Right)
             {
                 transform.SetParent(place6);
                 transform.localPosition = Vector2.zero;
@@ -283,35 +272,9 @@ public class GrabNDrop : MonoBehaviour
     }
     
 
-    int CountClones()
-    {
-        int count = 0;
+    
 
-        count += CountClonesWithName("Dish(Clone)");
-        count += CountClonesWithName("Bread1(Clone)");
-        count += CountClonesWithName("Bread2(Clone)");
-        count += CountClonesWithName("Meat(Clone)");
-        count += CountClonesWithName("Cheese(Clone)");
-        count += CountClonesWithName("Lettuce(Clone)");
-
-        return count;
-    }
-
-    int CountClonesWithName(string name)
-    {
-        GameObject[] clones = GameObject.FindObjectsOfType<GameObject>();
-
-        int count = 0;
-        foreach (GameObject clone in clones)
-        {
-            if (clone.name == name)
-            {
-                count++;
-            }
-        }
-
-        return count;
-    }
+    
 
     private IEnumerator DropAll()
     {
@@ -543,7 +506,7 @@ public class GrabNDrop : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("despawner"))
         {
-            Destroy(gameObject);
+            Destroy(gameObject);            
         }
     }
     

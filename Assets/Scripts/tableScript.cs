@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tableScript : MonoBehaviour
+public class TableScript : MonoBehaviour
 {
     public Transform place1;
     public Transform place2;
@@ -17,12 +17,16 @@ public class tableScript : MonoBehaviour
     public static bool place5used = false;
     public static bool place6used = false;
     
-    public  bool lugar1bien = false;
-    public  bool lugar2bien = false;
-    public  bool lugar3bien = false;
-    public  bool lugar4bien = false;
-    public  bool lugar5bien = false;
-    public  bool lugar6bien = false;
+    public  bool lugar1dish = false;
+    public  bool lugar2bread1 = false;
+    public  bool lugar3meat = false;
+    public  bool lugar4cheese = false;
+    public  bool lugar5lettuce = false;
+    public  bool lugar3bread2 = false;
+    public  bool lugar4bread2 = false;
+    public  bool lugar5bread2 = false;
+    public  bool lugar6bread2 = false;
+    public  bool showingResultPlate = false; 
 
     public GameObject helpd;
     public GameObject helpb1;
@@ -31,6 +35,7 @@ public class tableScript : MonoBehaviour
     public GameObject helpb23;
     public GameObject helpb24;
     public GameObject ejemplo;
+    public GameObject ejemplomalo;
 
     Transform child1 = null;
     Transform child2 = null;
@@ -38,6 +43,8 @@ public class tableScript : MonoBehaviour
     Transform child4 = null;
     Transform child5 = null;
     Transform child6 = null;
+
+    public static int points = 0;
 
     void Start()
     {
@@ -55,6 +62,7 @@ public class tableScript : MonoBehaviour
         helpb23 = GameObject.Find("helpb23");
         helpb24 = GameObject.Find("helpb24");
         ejemplo = GameObject.Find("ejemplo");
+        ejemplomalo = GameObject.Find("ejemplomalo");
     }
 
     void Update()
@@ -144,11 +152,11 @@ public class tableScript : MonoBehaviour
             child1 = place1.GetChild(1);
             if (child1.CompareTag("tDish"))
             {
-                lugar1bien = true;
+                lugar1dish = true;
             }
             else
             {
-                lugar1bien = false;
+                lugar1dish = false;
             }
         } else
         {
@@ -160,11 +168,11 @@ public class tableScript : MonoBehaviour
             child2 = place2.GetChild(1);
             if (child2.CompareTag("tBread1"))
             {
-                lugar2bien = true;
+                lugar2bread1 = true;
             }
             else
             {
-                lugar2bien = false;
+                lugar2bread1 = false;
             }
         } else
         {
@@ -176,11 +184,19 @@ public class tableScript : MonoBehaviour
             child3 = place3.GetChild(1);
             if (child3.CompareTag("tMeat"))
             {
-                lugar3bien = true;
+                    lugar3meat = true;
+                }
+                else
+                {
+                    lugar3meat = false;
             }
-            else
+            if (child3.CompareTag("tBread2"))
             {
-                lugar3bien = false;
+                    lugar3bread2 = true;
+                }
+                else
+                {
+                    lugar3bread2 = false;
             }
         } else
         {
@@ -192,11 +208,19 @@ public class tableScript : MonoBehaviour
             child4 = place4.GetChild(1);
             if (child4.CompareTag("tCheese"))
             {
-                lugar4bien = true;
+                    lugar4cheese = true;
+                }
+                else
+                {
+                    lugar4cheese = false;
             }
-            else
+            if (child4.CompareTag("tBread2"))
             {
-                lugar4bien = false;
+                    lugar4bread2 = true;
+                }
+                else
+                {
+                    lugar4bread2 = false;
             }
         } else
         {
@@ -208,11 +232,19 @@ public class tableScript : MonoBehaviour
             child5 = place5.GetChild(1);
             if (child5.CompareTag("tLettuce"))
             {
-                lugar5bien = true;
+                    lugar5lettuce = true;
+                }
+                else
+                {
+                    lugar5lettuce = false;
             }
-            else
+            if (child5.CompareTag("tBread2"))
             {
-                lugar5bien = false;
+                    lugar5bread2 = true;
+                }
+                else
+                {
+                    lugar5bread2 = false;
             }
         } else
         {
@@ -224,18 +256,18 @@ public class tableScript : MonoBehaviour
             child6 = place6.GetChild(1);
             if (child6.CompareTag("tBread2"))
             {
-                lugar6bien = true;
-            }
-            else
-            {
-                lugar6bien = false;
+                    lugar6bread2 = true;
+                }
+                else
+                {
+                    lugar6bread2 = false;
             }
         } else
         {
             child6 = null;
         }
 
-        if ((lugar1bien && lugar2bien && lugar3bien && lugar4bien && lugar5bien && lugar6bien) && (child1 != null && child2 != null && child3 != null && child4 != null && child5 != null && child6 != null))
+        if ((lugar1dish && lugar2bread1 && lugar3meat && lugar4cheese && lugar5lettuce && lugar6bread2) && (child6 != null))
         {
             Destroy(child1.gameObject);
             Destroy(child2.gameObject);
@@ -244,10 +276,52 @@ public class tableScript : MonoBehaviour
             Destroy(child5.gameObject);
             Destroy(child6.gameObject);
             
-            ejemplo.GetComponent<SpriteRenderer>().enabled = true;
+            StartCoroutine(ShowResult());
         }
 
-         if (place1.transform.childCount == 1)
+        if ((lugar1dish && lugar2bread1 && lugar3bread2) && (child3 != null))
+        {
+            Destroy(child1.gameObject);
+            Destroy(child2.gameObject);
+            Destroy(child3.gameObject);
+            
+            StartCoroutine(ShowResultWrong());
+        }
+
+        if ((lugar1dish && lugar2bread1 && lugar4bread2) && (child4 != null))
+        {
+            Destroy(child1.gameObject);
+            Destroy(child2.gameObject);
+            Destroy(child3.gameObject);
+            Destroy(child4.gameObject);
+            
+            StartCoroutine(ShowResultWrong());
+        }
+
+        if ((lugar1dish && lugar2bread1 && lugar5bread2) && (child5 != null))
+        {
+            Destroy(child1.gameObject);
+            Destroy(child2.gameObject);
+            Destroy(child3.gameObject);
+            Destroy(child4.gameObject);
+            Destroy(child5.gameObject);
+            
+            StartCoroutine(ShowResultWrong());
+        }
+
+        if ((lugar1dish && lugar2bread1 && !lugar3meat && !lugar4cheese && !lugar5lettuce && lugar6bread2) && (child6 != null))
+        {
+            Destroy(child1.gameObject);
+            Destroy(child2.gameObject);
+            Destroy(child3.gameObject);
+            Destroy(child4.gameObject);
+            Destroy(child5.gameObject);
+            Destroy(child6.gameObject);
+            
+            StartCoroutine(ShowResultWrong());
+        }
+
+         if (place1.transform.childCount == 1 && !showingResultPlate)
         {
                 helpd.GetComponent<SpriteRenderer>().enabled = true;
             }
@@ -255,7 +329,7 @@ public class tableScript : MonoBehaviour
             {
                 helpd.GetComponent<SpriteRenderer>().enabled = false;
             }
-            if (place2.transform.childCount == 1)
+            if (place2.transform.childCount == 1 && !showingResultPlate)
             {
                 helpb1.GetComponent<SpriteRenderer>().enabled = true;
             }
@@ -263,7 +337,7 @@ public class tableScript : MonoBehaviour
             {
                 helpb1.GetComponent<SpriteRenderer>().enabled = false;
             }
-            if (place3.transform.childCount == 1)
+            if (place3.transform.childCount == 1 && !showingResultPlate)
             {
                 helpb21.GetComponent<SpriteRenderer>().enabled = true;
             }
@@ -295,5 +369,30 @@ public class tableScript : MonoBehaviour
             {
                 helpb24.GetComponent<SpriteRenderer>().enabled = false;
         }
+    }
+
+    IEnumerator ShowResult()
+    {
+        showingResultPlate = true;
+        GrabNDrop.callDestroyed = true;
+        ejemplo.GetComponent<SpriteRenderer>().enabled = true;
+        points ++;
+        yield return new WaitForSeconds(2f);
+        ejemplo.GetComponent<SpriteRenderer>().enabled = false;
+        showingResultPlate = false;
+    }
+
+    IEnumerator ShowResultWrong()
+    {
+        showingResultPlate = true;
+        GrabNDrop.callDestroyed = true;
+        ejemplomalo.GetComponent<SpriteRenderer>().enabled = true;
+        if (points > 0)
+        {
+            points --;
+        }
+        yield return new WaitForSeconds(2f);
+        ejemplomalo.GetComponent<SpriteRenderer>().enabled = false;
+        showingResultPlate = false;
     }
 }
