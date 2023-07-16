@@ -15,7 +15,7 @@ public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Vector2 targetPosition;
     public float moveSpeed = 5f;
     static bool canBePaused;
-    static bool isPaused;
+    public static bool isPaused;
     private int defaultLayer;
 
     private void Start()

@@ -24,8 +24,6 @@ public class ContarClones : MonoBehaviour
         {
             canSpawn = true;
         }
-
-        Debug.Log(canSpawn);
     }
 
     int CountClones()

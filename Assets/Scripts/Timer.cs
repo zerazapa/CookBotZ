@@ -12,6 +12,8 @@ public class Timer : MonoBehaviour
     public float mins;
     public float minsShow;
     public float secs;
+    public static bool isStarting = true;
+    public static bool isGameOver = false;
 
     TextMeshProUGUI textMeshProUGUI; // Referencia al componente TextMeshProUGUI
 
@@ -23,6 +25,15 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
+        if (time == maxTime)
+        {
+            isStarting = true;
+        }
+        else
+        {
+            isStarting = false;
+        }
+        
         if (time > 0f && !isCounting)
         {
             StartCoroutine(Tick());
@@ -93,11 +104,16 @@ public class Timer : MonoBehaviour
         {
             textMeshProUGUI.text = minsShowString; // Asigna el valor de minsShowString al componente TextMeshProUGUI
         }
-        if (textMeshProUGUI.gameObject.name == "tiemposecs") // Verifica si el objeto de TextMeshProUGUI tiene el nombre "tiempomins"
+        if (textMeshProUGUI.gameObject.name == "tiemposecs") // Verifica si el objeto de TextMeshProUGUI tiene el nombre "tiemposecs"
         {
             textMeshProUGUI.text = secsString; // Asigna el valor de minsShowString al componente TextMeshProUGUI
         }
-        
+
+        if (time == 0)
+        {
+            BController.isPaused = true;
+            isGameOver = true;
+        }
     }
 
     IEnumerator Tick()

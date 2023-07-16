@@ -20,10 +20,23 @@ public class Score : MonoBehaviour
 
     void Update()
     {
+        if (Timer.isStarting)
+        {
+            TableScript.points = 0;
+        }
+        
         puntaje = TableScript.points;
 
         string scoreString = puntaje.ToString();
 
-        textMeshProUGUI.text = scoreString;
+        if (textMeshProUGUI.gameObject.name == "score" || textMeshProUGUI.gameObject.name == "finalscore")
+        {
+            textMeshProUGUI.text = scoreString;
+        }
+
+        if (Timer.isGameOver && textMeshProUGUI.gameObject.name == "gameover")
+        {
+            textMeshProUGUI.gameObject.SetActive(true);
+        }
     }
 }

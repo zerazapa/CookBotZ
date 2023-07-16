@@ -20,10 +20,16 @@ public class TableScript : MonoBehaviour
     public  bool lugar1dish = false;
     public  bool lugar2bread1 = false;
     public  bool lugar3meat = false;
-    public  bool lugar4cheese = false;
-    public  bool lugar5lettuce = false;
+    public  bool lugar3cheese = false;
+    public  bool lugar3lettuce = false;
     public  bool lugar3bread2 = false;
+    public  bool lugar4meat= false;
+    public  bool lugar4cheese = false;
+    public  bool lugar4lettuce = false;
     public  bool lugar4bread2 = false;
+    public  bool lugar5meat = false;
+    public  bool lugar5cheese = false;
+    public  bool lugar5lettuce = false;
     public  bool lugar5bread2 = false;
     public  bool lugar6bread2 = false;
     public  bool showingResultPlate = false; 
@@ -34,7 +40,13 @@ public class TableScript : MonoBehaviour
     public GameObject helpb22;
     public GameObject helpb23;
     public GameObject helpb24;
-    public GameObject ejemplo;
+    public GameObject ejemplo1;
+    public GameObject ejemplo2;
+    public GameObject ejemplo3;
+    public GameObject ejemplo4;
+    public GameObject ejemplo5;
+    public GameObject ejemplo6;
+    public GameObject ejemplo7;
     public GameObject ejemplomalo;
 
     Transform child1 = null;
@@ -61,7 +73,13 @@ public class TableScript : MonoBehaviour
         helpb22 = GameObject.Find("helpb22");
         helpb23 = GameObject.Find("helpb23");
         helpb24 = GameObject.Find("helpb24");
-        ejemplo = GameObject.Find("ejemplo");
+        ejemplo1 = GameObject.Find("ejemplo1");
+        ejemplo2 = GameObject.Find("ejemplo2");
+        ejemplo3 = GameObject.Find("ejemplo3");
+        ejemplo4 = GameObject.Find("ejemplo4");
+        ejemplo5 = GameObject.Find("ejemplo5");
+        ejemplo6 = GameObject.Find("ejemplo6");
+        ejemplo7 = GameObject.Find("ejemplo7");
         ejemplomalo = GameObject.Find("ejemplomalo");
     }
 
@@ -190,6 +208,22 @@ public class TableScript : MonoBehaviour
                 {
                     lugar3meat = false;
             }
+            if (child3.CompareTag("tCheese"))
+            {
+                    lugar3cheese = true;
+                }
+                else
+                {
+                    lugar3cheese = false;
+            }
+            if (child3.CompareTag("tLettuce"))
+            {
+                    lugar3lettuce = true;
+                }
+                else
+                {
+                    lugar3lettuce = false;
+            }
             if (child3.CompareTag("tBread2"))
             {
                     lugar3bread2 = true;
@@ -206,6 +240,14 @@ public class TableScript : MonoBehaviour
         if (place4.childCount > 1)
         {
             child4 = place4.GetChild(1);
+            if (child4.CompareTag("tMeat"))
+            {
+                    lugar4meat = true;
+                }
+                else
+                {
+                    lugar4meat = false;
+            }
             if (child4.CompareTag("tCheese"))
             {
                     lugar4cheese = true;
@@ -213,6 +255,14 @@ public class TableScript : MonoBehaviour
                 else
                 {
                     lugar4cheese = false;
+            }
+            if (child4.CompareTag("tLettuce"))
+            {
+                    lugar4lettuce = true;
+                }
+                else
+                {
+                    lugar4lettuce = false;
             }
             if (child4.CompareTag("tBread2"))
             {
@@ -230,6 +280,22 @@ public class TableScript : MonoBehaviour
         if (place5.childCount > 1)
         {
             child5 = place5.GetChild(1);
+            if (child5.CompareTag("tMeat"))
+            {
+                    lugar5meat = true;
+                }
+                else
+                {
+                    lugar5meat = false;
+            }
+            if (child5.CompareTag("tCheese"))
+            {
+                    lugar5cheese = true;
+                }
+                else
+                {
+                    lugar5cheese = false;
+            }
             if (child5.CompareTag("tLettuce"))
             {
                     lugar5lettuce = true;
@@ -267,7 +333,7 @@ public class TableScript : MonoBehaviour
             child6 = null;
         }
 
-        if ((lugar1dish && lugar2bread1 && lugar3meat && lugar4cheese && lugar5lettuce && lugar6bread2) && (child6 != null))
+        if ((lugar1dish && lugar2bread1 && lugar3meat && lugar4cheese && lugar5lettuce && lugar6bread2) && (child6 != null)) //full
         {
             Destroy(child1.gameObject);
             Destroy(child2.gameObject);
@@ -276,7 +342,75 @@ public class TableScript : MonoBehaviour
             Destroy(child5.gameObject);
             Destroy(child6.gameObject);
             
-            StartCoroutine(ShowResult());
+            StartCoroutine(ShowResult1());
+        }
+
+        if ((lugar1dish && lugar2bread1 && lugar3cheese && lugar4cheese && lugar5cheese && lugar6bread2) && (child6 != null)) //3cheese
+        {
+            Destroy(child1.gameObject);
+            Destroy(child2.gameObject);
+            Destroy(child3.gameObject);
+            Destroy(child4.gameObject);
+            Destroy(child5.gameObject);
+            Destroy(child6.gameObject);
+            
+            StartCoroutine(ShowResult2());
+        }
+
+        if ((lugar1dish && lugar2bread1 && lugar3meat && lugar4bread2) && (child4 != null)) //1meat
+        {
+            Destroy(child1.gameObject);
+            Destroy(child2.gameObject);
+            Destroy(child3.gameObject);
+            Destroy(child4.gameObject);
+            
+            StartCoroutine(ShowResult3());
+        }
+
+        if ((lugar1dish && lugar2bread1 && lugar3meat && lugar4cheese && lugar5meat && lugar6bread2) && (child6 != null)) //meat cheese meat
+        {
+            Destroy(child1.gameObject);
+            Destroy(child2.gameObject);
+            Destroy(child3.gameObject);
+            Destroy(child4.gameObject);
+            Destroy(child5.gameObject);
+            Destroy(child6.gameObject);
+            
+            StartCoroutine(ShowResult4());
+        }
+
+        if ((lugar1dish && lugar2bread1 && lugar3meat && lugar4lettuce && lugar5bread2) && (child5 != null)) //meat lettuce
+        {
+            Destroy(child1.gameObject);
+            Destroy(child2.gameObject);
+            Destroy(child3.gameObject);
+            Destroy(child4.gameObject);
+            Destroy(child5.gameObject);
+            
+            StartCoroutine(ShowResult5());
+        }
+
+        if ((lugar1dish && lugar2bread1 && lugar3meat && lugar4cheese && lugar5bread2) && (child5 != null)) //meat cheese
+        {
+            Destroy(child1.gameObject);
+            Destroy(child2.gameObject);
+            Destroy(child3.gameObject);
+            Destroy(child4.gameObject);
+            Destroy(child5.gameObject);
+            
+            StartCoroutine(ShowResult6());
+        }
+
+        if ((lugar1dish && lugar2bread1 && lugar3lettuce && lugar4meat && lugar5lettuce && lugar6bread2) && (child6 != null)) //let mea let
+        {
+            Destroy(child1.gameObject);
+            Destroy(child2.gameObject);
+            Destroy(child3.gameObject);
+            Destroy(child4.gameObject);
+            Destroy(child5.gameObject);
+            Destroy(child6.gameObject);
+            
+            StartCoroutine(ShowResult7());
         }
 
         if ((lugar1dish && lugar2bread1 && lugar3bread2) && (child3 != null))
@@ -371,28 +505,97 @@ public class TableScript : MonoBehaviour
         }
     }
 
-    IEnumerator ShowResult()
+    IEnumerator ShowResult1()
     {
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
-        ejemplo.GetComponent<SpriteRenderer>().enabled = true;
+        ejemplo1.GetComponent<SpriteRenderer>().enabled = true;
         points ++;
         yield return new WaitForSeconds(2f);
-        ejemplo.GetComponent<SpriteRenderer>().enabled = false;
+        ejemplo1.GetComponent<SpriteRenderer>().enabled = false;
+        showingResultPlate = false;
+    }
+
+    IEnumerator ShowResult2()
+    {
+        showingResultPlate = true;
+        GrabNDrop.callDestroyed = true;
+        ejemplo2.GetComponent<SpriteRenderer>().enabled = true;
+        points ++;
+        yield return new WaitForSeconds(2f);
+        ejemplo2.GetComponent<SpriteRenderer>().enabled = false;
+        showingResultPlate = false;
+    }
+
+    IEnumerator ShowResult3()
+    {
+        showingResultPlate = true;
+        GrabNDrop.callDestroyed = true;
+        ejemplo3.GetComponent<SpriteRenderer>().enabled = true;
+        points ++;
+        yield return new WaitForSeconds(2f);
+        ejemplo3.GetComponent<SpriteRenderer>().enabled = false;
+        showingResultPlate = false;
+    }
+
+    IEnumerator ShowResult4()
+    {
+        showingResultPlate = true;
+        GrabNDrop.callDestroyed = true;
+        ejemplo4.GetComponent<SpriteRenderer>().enabled = true;
+        points ++;
+        yield return new WaitForSeconds(2f);
+        ejemplo4.GetComponent<SpriteRenderer>().enabled = false;
+        showingResultPlate = false;
+    }
+
+    IEnumerator ShowResult5()
+    {
+        showingResultPlate = true;
+        GrabNDrop.callDestroyed = true;
+        ejemplo5.GetComponent<SpriteRenderer>().enabled = true;
+        points ++;
+        yield return new WaitForSeconds(2f);
+        ejemplo5.GetComponent<SpriteRenderer>().enabled = false;
+        showingResultPlate = false;
+    }
+
+    IEnumerator ShowResult6()
+    {
+        showingResultPlate = true;
+        GrabNDrop.callDestroyed = true;
+        ejemplo6.GetComponent<SpriteRenderer>().enabled = true;
+        points ++;
+        yield return new WaitForSeconds(2f);
+        ejemplo6.GetComponent<SpriteRenderer>().enabled = false;
+        showingResultPlate = false;
+    }
+
+    IEnumerator ShowResult7()
+    {
+        showingResultPlate = true;
+        GrabNDrop.callDestroyed = true;
+        ejemplo7.GetComponent<SpriteRenderer>().enabled = true;
+        points ++;
+        yield return new WaitForSeconds(2f);
+        ejemplo7.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
     }
 
     IEnumerator ShowResultWrong()
     {
-        showingResultPlate = true;
-        GrabNDrop.callDestroyed = true;
-        ejemplomalo.GetComponent<SpriteRenderer>().enabled = true;
-        if (points > 0)
+        if (!showingResultPlate)
         {
-            points --;
+            showingResultPlate = true;
+            GrabNDrop.callDestroyed = true;
+            ejemplomalo.GetComponent<SpriteRenderer>().enabled = true;
+            if (points > 0)
+            {
+                points --;
+            }
+            yield return new WaitForSeconds(2f);
+            ejemplomalo.GetComponent<SpriteRenderer>().enabled = false;
+            showingResultPlate = false;
         }
-        yield return new WaitForSeconds(2f);
-        ejemplomalo.GetComponent<SpriteRenderer>().enabled = false;
-        showingResultPlate = false;
     }
 }
