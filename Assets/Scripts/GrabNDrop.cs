@@ -49,6 +49,8 @@ public class GrabNDrop : MonoBehaviour
     
     public static bool callDestroyed = false;
 
+    public ContarClones contarClones;
+
     void Start()
     {
         GameObject handObject = GameObject.FindGameObjectWithTag("hand");
@@ -60,6 +62,7 @@ public class GrabNDrop : MonoBehaviour
         playerMovement = player.GetComponent<PlayerMovement>();
         Transform child = transform.GetChild(0);
         childCollider = transform.GetChild(0).GetComponent<Collider2D>();
+        contarClones = GameObject.FindObjectOfType<ContarClones>();
 
         Player = GameObject.Find("Player").transform;
         hand = GameObject.Find("hand").transform;
@@ -79,7 +82,6 @@ public class GrabNDrop : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(callDestroyed);
         hFacing = playerMovement.hFacing;
 
         spacePressed = handScript.spacePressed;
@@ -248,27 +250,34 @@ public class GrabNDrop : MonoBehaviour
         if (gameObject.tag == "dDish")
             {
                 gameObject.tag = "tDish";
+                gameObject.name = "Dish (Table)";
             }
             if (gameObject.tag == "dBread1")
             {
                 gameObject.tag = "tBread1";
+                gameObject.name = "Bread1 (Table)";
             }
             if (gameObject.tag == "dBread2")
             {
                 gameObject.tag = "tBread2";
+                gameObject.name = "Bread2 (Table)";
             }
             if (gameObject.tag == "dMeat")
             {
                 gameObject.tag = "tMeat";
+                gameObject.name = "Meat (Table)";
             }
             if (gameObject.tag == "dCheese")
             {
                 gameObject.tag = "tCheese";
+                gameObject.name = "Cheese (Table)";
             }
             if (gameObject.tag == "dLettuce")
             {
                 gameObject.tag = "tLettuce";
+                gameObject.name = "Lettuce (Table)";
         }
+        contarClones.ReduceCloneCount();
     }
     
 
@@ -478,7 +487,7 @@ public class GrabNDrop : MonoBehaviour
             StartCoroutine(Grab());
         }
         
-        if (collision.gameObject.CompareTag("platform") && (gameObject.CompareTag("hDish") || gameObject.CompareTag("hBread1") || gameObject.CompareTag("hBread2") || gameObject.CompareTag("hCheese") || gameObject.CompareTag("hLettuce")))
+        if (collision.gameObject.CompareTag("platform"))
         {
             falling = false;
         }
@@ -491,7 +500,7 @@ public class GrabNDrop : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("platform") && (gameObject.CompareTag("hDish") || gameObject.CompareTag("hBread1") || gameObject.CompareTag("hBread2") || gameObject.CompareTag("hCheese") || gameObject.CompareTag("hLettuce")))
+        if (collision.gameObject.CompareTag("platform"))
         {
             falling = true;
         }
@@ -506,7 +515,8 @@ public class GrabNDrop : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("despawner"))
         {
-            Destroy(gameObject);            
+            Destroy(gameObject);
+            contarClones.ReduceCloneCount();            
         }
     }
     

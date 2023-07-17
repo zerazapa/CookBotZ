@@ -341,7 +341,7 @@ public class TableScript : MonoBehaviour
             Destroy(child4.gameObject);
             Destroy(child5.gameObject);
             Destroy(child6.gameObject);
-            
+            //if dishmade == dishasked {showresult}
             StartCoroutine(ShowResult1());
         }
 
@@ -510,7 +510,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo1.GetComponent<SpriteRenderer>().enabled = true;
-        points ++;
+        points += 300;
         yield return new WaitForSeconds(2f);
         ejemplo1.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -521,7 +521,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo2.GetComponent<SpriteRenderer>().enabled = true;
-        points ++;
+        points += 300;
         yield return new WaitForSeconds(2f);
         ejemplo2.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -532,7 +532,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo3.GetComponent<SpriteRenderer>().enabled = true;
-        points ++;
+        points += 100;
         yield return new WaitForSeconds(2f);
         ejemplo3.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -543,7 +543,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo4.GetComponent<SpriteRenderer>().enabled = true;
-        points ++;
+        points += 300;
         yield return new WaitForSeconds(2f);
         ejemplo4.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -554,7 +554,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo5.GetComponent<SpriteRenderer>().enabled = true;
-        points ++;
+        points += 200;
         yield return new WaitForSeconds(2f);
         ejemplo5.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -565,7 +565,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo6.GetComponent<SpriteRenderer>().enabled = true;
-        points ++;
+        points += 200;
         yield return new WaitForSeconds(2f);
         ejemplo6.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -576,7 +576,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo7.GetComponent<SpriteRenderer>().enabled = true;
-        points ++;
+        points += 300;
         yield return new WaitForSeconds(2f);
         ejemplo7.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -588,10 +588,34 @@ public class TableScript : MonoBehaviour
         {
             showingResultPlate = true;
             GrabNDrop.callDestroyed = true;
+            if (!ContarClones.canSpawn2)
+            {
+                    BController.isGameOver = true;
+                }
+                if (!ContarClones.canSpawn3)
+                {
+                    ContarClones.canSpawn2 = false;
+                }
+                if (!ContarClones.canSpawn4)
+                {
+                    ContarClones.canSpawn3 = false;
+                }
+                if (!ContarClones.canSpawn5)
+                {
+                    ContarClones.canSpawn4 = false;
+                }
+                if (!ContarClones.canSpawn6)
+                {
+                    ContarClones.canSpawn5 = false;
+                }
+                if (ContarClones.canSpawn6)
+                {
+                    ContarClones.canSpawn6 = false;
+            }
             ejemplomalo.GetComponent<SpriteRenderer>().enabled = true;
             if (points > 0)
             {
-                points --;
+                points -= 150;
             }
             yield return new WaitForSeconds(2f);
             ejemplomalo.GetComponent<SpriteRenderer>().enabled = false;

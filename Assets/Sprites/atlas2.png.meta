@@ -365,7 +365,7 @@ TextureImporter:
         width: 16
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -373,6 +373,237 @@ TextureImporter:
       bones: []
       spriteID: 8b0f028b35a87b5428f0780341b05024
       internalID: -2041075011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spot_used
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 55
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374a3935b300b8a40bf2488f9a942c67
+      internalID: -79493131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spot_unused
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 55
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc8dfd3a2826e354e92cd4d159d4e3cc
+      internalID: -533264030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spot_erased
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 55
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1881ce433882f72498a151511ea2a989
+      internalID: -769710894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: points_1_true
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 85
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8276b067329771e4da40ff4b2c95b6e5
+      internalID: -757553919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: points_2_true
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 83
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb5d1454d969c7c45b4abaa827eef7ac
+      internalID: 824385905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: points_3_true
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 81
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f1cf06b0621ac94b90682a0295daeef
+      internalID: 2101688590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: points_4_true
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 79
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 363fbce122ba57544937803afee9ca70
+      internalID: 1775067286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: points_1_false
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 74
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176328bcada2683498b37755c00f2d79
+      internalID: 1113463079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: points_2_false
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 72
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75b12081934556145a75a57afdaeaa1b
+      internalID: -528465065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: points_3_false
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 70
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe5048ed9d697084a90cf1bf43b42910
+      internalID: 402640124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: points_4_false
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 68
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9071719b24801d64cad4b94015ad37b7
+      internalID: 1778832297
       vertices: []
       indices: 
       edges: []
@@ -388,19 +619,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      spot_used: -79493131
       atlas2_11: 1839398605
       atlas2_9: 306206294
+      spot_erased: -769710894
       atlas2_6: 1279796109
       atlas2_4: -1360740163
       atlas2_12: -2041075011
+      points_4_false: 1778832297
+      points_1_true: -757553919
       atlas2_0: -1616378288
+      spot_unused: -533264030
+      points_4_true: -1855222748
       atlas2_2: 1366668993
       atlas2_7: -1180623506
       atlas2_5: 202509100
+      points_3_false: 402640124
       atlas2_10: 54340574
       atlas2_1: 336753647
       atlas2_3: -576391637
+      points_1_false: 1113463079
+      points_2_true: 824385905
+      points_3_true: 2101688590
       atlas2_8: 1153832460
+      points_2_false: -528465065
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Score : MonoBehaviour
@@ -29,14 +30,25 @@ public class Score : MonoBehaviour
 
         string scoreString = puntaje.ToString();
 
-        if (textMeshProUGUI.gameObject.name == "score" || textMeshProUGUI.gameObject.name == "finalscore")
+        if (textMeshProUGUI != null)
         {
-            textMeshProUGUI.text = scoreString;
+            if (textMeshProUGUI.gameObject.name == "score" || textMeshProUGUI.gameObject.name == "finalscore")
+            {
+                textMeshProUGUI.text = scoreString;
+            }
         }
-
+        
         if (Timer.isGameOver && textMeshProUGUI.gameObject.name == "gameover")
         {
             textMeshProUGUI.gameObject.SetActive(true);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Scene1")
+        {
+            if (gameObject.name == "points_p" || gameObject.name == "points_e")
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }

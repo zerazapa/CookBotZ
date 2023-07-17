@@ -41,7 +41,19 @@ public class Timer : MonoBehaviour
 
         mins = time / 60f;
 
-        if (mins > 2f && mins < 3f)
+        if (mins >= 5f && mins < 6f)
+        {
+            minsShow = 5f;
+        }
+        else if (mins > 4f && mins < 5f)
+        {
+            minsShow = 4f;
+        }
+        else if (mins > 3f && mins < 4f)
+        {
+            minsShow = 3f;
+        }
+        else if (mins > 2f && mins < 3f)
         {
             minsShow = 2f;
         }
@@ -49,7 +61,7 @@ public class Timer : MonoBehaviour
         {
             minsShow = 1f;
         }
-        if (mins < 1f)
+        else if (mins < 1f)
         {
             minsShow = 0f;
         }

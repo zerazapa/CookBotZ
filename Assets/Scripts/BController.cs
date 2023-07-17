@@ -16,6 +16,7 @@ public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public float moveSpeed = 5f;
     static bool canBePaused;
     public static bool isPaused;
+    public static bool isGameOver = false;
     private int defaultLayer;
 
     private void Start()
@@ -54,7 +55,7 @@ public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             targetPosition = originalPosition;
         }
 
-        if (isPaused && Input.GetMouseButtonDown(0) && !IsPointerOverUIObject())
+        if (isPaused && Input.GetMouseButtonDown(0) && !IsPointerOverUIObject() && !isGameOver)
         {
             isPaused = false;
             Time.timeScale = 1f;
@@ -67,6 +68,11 @@ public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         else
         {
             Time.timeScale = 1f;
+        }
+
+        if (isGameOver)
+        {
+            Debug.Log("perdiste wachite");
         }
     }
 
