@@ -6,8 +6,9 @@ using UnityEngine.EventSystems;
 
 public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    string nivel1 = "Scene1";
-    string menu = "Scene2";
+    string nivel1 = "nv1";
+    string menu = "menu";
+    string tuto = "tuto";
     private RectTransform buttonRectTransform;
     private Vector2 originalPosition;
     public float newX = 10f;
@@ -19,12 +20,18 @@ public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public static bool isGameOver = false;
     private int defaultLayer;
 
+    public GameObject popupObject;
+    public bool popup;
+
     private void Start()
     {
         buttonRectTransform = GetComponent<RectTransform>();
         originalPosition = buttonRectTransform.anchoredPosition;
         targetPosition = originalPosition;
         defaultLayer = LayerMask.NameToLayer("Default");
+
+        popup = PlayerPrefs.GetInt("popup", 1) == 1;
+
     }
 
     public void Pausedd()
@@ -85,7 +92,6 @@ public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             {
                 isPaused = false;
             }
-            
         }
     }
 
