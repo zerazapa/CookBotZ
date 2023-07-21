@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    string nivel1 = "nv1";
+    string estaescena = "";
     string menu = "menu";
     string tuto = "tuto";
     private RectTransform buttonRectTransform;
@@ -20,18 +20,14 @@ public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public static bool isGameOver = false;
     private int defaultLayer;
 
-    public GameObject popupObject;
-    public bool popup;
-
     private void Start()
     {
+        estaescena = SceneManager.GetActiveScene().name;
         buttonRectTransform = GetComponent<RectTransform>();
         originalPosition = buttonRectTransform.anchoredPosition;
         targetPosition = originalPosition;
         defaultLayer = LayerMask.NameToLayer("Default");
-
-        popup = PlayerPrefs.GetInt("popup", 1) == 1;
-
+        isPaused = false;
     }
 
     public void Pausedd()
@@ -87,11 +83,7 @@ public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (isPaused)
         {
-            SceneManager.LoadScene(nivel1);
-            for(int a = 0; a<10; a++)
-            {
-                isPaused = false;
-            }
+            SceneManager.LoadScene(estaescena);
         }
     }
 

@@ -17,6 +17,22 @@ public class Score : MonoBehaviour
         textMeshProUGUI = GetComponent<TextMeshProUGUI>();
         GameObject tableObject = GameObject.FindGameObjectWithTag("table");
         tableScript = tableObject.GetComponent<TableScript>();
+
+        if (gameObject.name == "points_p")
+        {
+            if (SceneManager.GetActiveScene().name == "practice" || SceneManager.GetActiveScene().name == "tuto")
+            {
+                gameObject.SetActive(false);
+            }
+        }
+        if (gameObject.name == "points_e")
+        {
+            if (SceneManager.GetActiveScene().name != "nv3")
+            {
+                gameObject.SetActive(false);
+            }
+        }
+        
     }
 
     void Update()
@@ -41,14 +57,6 @@ public class Score : MonoBehaviour
         if (Timer.isGameOver && textMeshProUGUI.gameObject.name == "gameover")
         {
             textMeshProUGUI.gameObject.SetActive(true);
-        }
-
-        if (SceneManager.GetActiveScene().name == "Scene1")
-        {
-            if (gameObject.name == "points_p" || gameObject.name == "points_e")
-            {
-                gameObject.SetActive(false);
-            }
         }
     }
 }

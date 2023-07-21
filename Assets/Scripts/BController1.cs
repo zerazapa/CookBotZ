@@ -30,13 +30,13 @@ public class BController1 : MonoBehaviour
 
     public void OnYesClicked()
     {
-        //hacer que aparezca el tutorial
-        popupObject.gameObject.SetActive(false);
+        //hacer que desaparezca y luego cargue la escena, necesita IEnumerator
+        SceneManager.LoadScene(tuto);
     }
 
     public void OnNoClicked()
     {
-        //hacer que se vaya al menu
+        //hacer que desaparezca y luego cargue la escena, necesita IEnumerator
         SceneManager.LoadScene(menu);
     }
 }
