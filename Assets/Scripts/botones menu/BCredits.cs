@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BCredits : MonoBehaviour
 {
     bool pressed = false;
-    public GameObject ob1;
+    GameObject ob1;
     GameObject ob2;
     GameObject ob3;
     GameObject ob4;
@@ -20,6 +20,7 @@ public class BCredits : MonoBehaviour
     Animator a5;
     Animator a6;
     Animator a7;
+    public GameObject panel;
 
     public void Start()
     {
@@ -37,6 +38,7 @@ public class BCredits : MonoBehaviour
         a5 = ob5.GetComponent<Animator>();
         a6 = ob6.GetComponent<Animator>();
         a7 = ob7.GetComponent<Animator>();
+        //panel = GameObject.Find("panel credits");
     }
 
     public void Click()
@@ -44,12 +46,14 @@ public class BCredits : MonoBehaviour
         if (!pressed)
         {
             LeanTween.moveLocal(gameObject, new Vector2(0, 435), .75f).setEaseInOutCirc();
+            panel.SetActive(true); //podria tener transicion en animator
             pressed = true;
             DissapearEm();
         }
         else
         {
             LeanTween.moveLocal(gameObject, new Vector2(326.2209f, -607.5311f), .75f).setEaseInOutCirc();
+            panel.SetActive(false); //podria tener transicion en animator
             pressed = false;
             AppearEm();
         }
