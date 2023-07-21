@@ -38,6 +38,7 @@ TagManager:
   - tMeat
   - tCheese
   - tLettuce
+  - Button
   layers:
   - Default
   - TransparentFX

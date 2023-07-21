@@ -47,11 +47,7 @@ public class BMenu : MonoBehaviour
     }
     public void Settings()
     {
-        settingsPressed = true;
-    }
-    public void Inputs()
-    {
-        inputsPressed = true;
+        LeanTween.scale(gameObject, new Vector3 (0,0,0), 0.5f);
     }
     public void Credits()
     {
@@ -60,10 +56,6 @@ public class BMenu : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-    }
-    public void Pressed()
-    {
-        pressed = true;
     }
 
     private bool IsPointerOverUIObject()
