@@ -20,6 +20,7 @@ public class BSettings : MonoBehaviour
     Animator a5;
     Animator a6;
     Animator a7;
+    public GameObject panel;
 
     public void Start()
     {
@@ -44,12 +45,14 @@ public class BSettings : MonoBehaviour
         if (!pressed)
         {
             LeanTween.moveLocal(gameObject, new Vector2(0, 435), .75f).setEaseInOutCirc();
+            panel.SetActive(true);
             pressed = true;
             DissapearEm();
         }
         else
         {
             LeanTween.moveLocal(gameObject, new Vector2(326.2209f, -396.8312f), .75f).setEaseInOutCirc();
+            panel.SetActive(false);
             pressed = false;
             AppearEm();
         }

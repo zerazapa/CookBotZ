@@ -4,18 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class BController : MonoBehaviour
 {
     string estaescena = "";
     string menu = "menu";
-    string tuto = "tuto";
     private RectTransform buttonRectTransform;
     private Vector2 originalPosition;
     public float newX = 10f;
     public float newY = 10f;
     public Vector2 targetPosition;
     public float moveSpeed = 5f;
-    static bool canBePaused;
     public static bool isPaused;
     public static bool isGameOver = false;
     private int defaultLayer;
@@ -35,15 +33,6 @@ public class BController : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         isPaused = true;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        canBePaused = true;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        canBePaused = false;
-    }
 
     private void Update()
     {

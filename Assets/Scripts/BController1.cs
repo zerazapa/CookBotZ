@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class BController1 : MonoBehaviour
 {
-    string nivel1 = "nv1";
     string menu = "menu";
     string tuto = "tuto";
 

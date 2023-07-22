@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class FirstTime : MonoBehaviour
 {
-    public static bool noHacerlo;
+    public static bool isFirstTime;
     public GameObject popupObject;
 
     private string filePath;
@@ -14,28 +14,35 @@ public class FirstTime : MonoBehaviour
     void Start()
     {
         filePath = Path.Combine(Application.persistentDataPath, "data.txt");
-        
-        if (File.Exists(filePath)) //si archivo existe
+
+        if (File.Exists(filePath)) // Si archivo existe
         {
-            string content = File.ReadAllText(filePath);
-            if (content.Trim() == "1")
+            using (StreamReader reader = new StreamReader(filePath))
             {
-                noHacerlo = true;
-            } //si dice 1, hacerlo es verdadero
+                string firstLine = reader.ReadLine();
+                if (firstLine == "1")
+                {
+                    isFirstTime = false;
+                }
+                else
+                {
+                    isFirstTime = true;
+                }
+            }
         }
-        else // si archivo no existe, se crea el archivo para la proxima vez
+        else // Si archivo no existe, se crea el archivo para la próxima vez
         {
-            noHacerlo = false;
+            isFirstTime = true;
             File.WriteAllText(filePath, "1");
         }
 
-        if (noHacerlo)
+        if (!isFirstTime)
         {
             SceneManager.LoadScene("menu");
         }
         else
         {
-          //ienumerator para que aparezca de a poco
+            // IEnumerator para que aparezca de a poco
             popupObject.gameObject.SetActive(true);
         }
     }
