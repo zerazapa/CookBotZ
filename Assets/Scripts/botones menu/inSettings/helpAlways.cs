@@ -10,7 +10,7 @@ public class helpAlways : MonoBehaviour
     public Sprite img1;
     public Sprite img2;
     private Image buttonImage;
-    bool alwaysActive;
+    public static bool alwaysActive;
     string filePath;
     string firstLine;
     string secondLine;
@@ -37,7 +37,7 @@ public class helpAlways : MonoBehaviour
                 thirdLine = reader.ReadLine();
                 fourthLine = reader.ReadLine();
                 fifthLine = reader.ReadLine();
-                reader.Close(); // Cerrar el lector después de leer las líneas
+                reader.Close();
                 if (string.IsNullOrEmpty(fifthLine))
                 {
                     File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + thirdLine + "\n" + fourthLine + "\n" + "0");
@@ -85,6 +85,5 @@ public class helpAlways : MonoBehaviour
             }
             rewrite = false;
         }
-        Debug.Log(alwaysActive);
     }
 }

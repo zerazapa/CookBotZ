@@ -88,7 +88,7 @@ public class HandScript : MonoBehaviour
             spacePressed = false;
         }
 
-        if (!spacePressed)
+        if (!spacePressed && !Timer.isBeggining && !Timer.isGameOver)
         {
             GetComponent<SpriteRenderer>().enabled = true;
             transform.localPosition = new Vector3 ((0.24f * hFacing), -0.12f, 0f);

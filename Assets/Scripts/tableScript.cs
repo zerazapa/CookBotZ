@@ -510,7 +510,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo1.GetComponent<SpriteRenderer>().enabled = true;
-        points += 300;
+        points = points + 300;
         yield return new WaitForSeconds(2f);
         ejemplo1.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -521,7 +521,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo2.GetComponent<SpriteRenderer>().enabled = true;
-        points += 300;
+        points = points + 300;
         yield return new WaitForSeconds(2f);
         ejemplo2.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -532,7 +532,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo3.GetComponent<SpriteRenderer>().enabled = true;
-        points += 100;
+        points = points + 100;
         yield return new WaitForSeconds(2f);
         ejemplo3.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -543,7 +543,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo4.GetComponent<SpriteRenderer>().enabled = true;
-        points += 300;
+        points = points + 300;
         yield return new WaitForSeconds(2f);
         ejemplo4.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -554,7 +554,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo5.GetComponent<SpriteRenderer>().enabled = true;
-        points += 200;
+        points = points + 200;
         yield return new WaitForSeconds(2f);
         ejemplo5.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -565,7 +565,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo6.GetComponent<SpriteRenderer>().enabled = true;
-        points += 200;
+        points = points + 200;
         yield return new WaitForSeconds(2f);
         ejemplo6.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -576,7 +576,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo7.GetComponent<SpriteRenderer>().enabled = true;
-        points += 300;
+        points = points + 300;
         yield return new WaitForSeconds(2f);
         ejemplo7.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;

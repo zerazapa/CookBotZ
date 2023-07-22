@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
     public float time;
     public float maxTime;
     bool isCounting;
+    public static bool isBeggining;
 
     public float mins;
     public float minsShow;
@@ -21,10 +22,14 @@ public class Timer : MonoBehaviour
     {
         textMeshProUGUI = GetComponent<TextMeshProUGUI>();
         time = maxTime;
+        isBeggining = true;
+        isGameOver = false;
     }
 
     void Update()
     {
+        StartCoroutine(Begin());
+
         if (time == maxTime)
         {
             isStarting = true;
@@ -34,7 +39,7 @@ public class Timer : MonoBehaviour
             isStarting = false;
         }
         
-        if (time > 0f && !isCounting)
+        if (time > 0f && !isCounting && !isBeggining)
         {
             StartCoroutine(Tick());
         }
@@ -123,8 +128,7 @@ public class Timer : MonoBehaviour
 
         if (time == 0)
         {
-            BController.isPaused = true;
-            isGameOver = true;
+            StartCoroutine(GameOver());
         }
     }
 
@@ -134,5 +138,18 @@ public class Timer : MonoBehaviour
         yield return new WaitForSeconds(1f);
         time = time - 1;
         isCounting = false;
+    }
+
+    IEnumerator GameOver()
+    {
+        isGameOver = true;
+        yield return new WaitForSeconds(3.5f);
+        BController.isPaused = true;
+    }
+
+    IEnumerator Begin()
+    {
+        yield return new WaitForSeconds(2f);
+        isBeggining = false;
     }
 }

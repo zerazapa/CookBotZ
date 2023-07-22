@@ -18,9 +18,15 @@ public class Score : MonoBehaviour
         GameObject tableObject = GameObject.FindGameObjectWithTag("table");
         tableScript = tableObject.GetComponent<TableScript>();
 
+        
+        if (Timer.isStarting)
+        {
+            TableScript.points = 0;
+        }
+
         if (gameObject.name == "points_p")
         {
-            if (SceneManager.GetActiveScene().name == "practice" || SceneManager.GetActiveScene().name == "tuto")
+            if (SceneManager.GetActiveScene().name == "practice")
             {
                 gameObject.SetActive(false);
             }
@@ -37,11 +43,6 @@ public class Score : MonoBehaviour
 
     void Update()
     {
-        if (Timer.isStarting)
-        {
-            TableScript.points = 0;
-        }
-        
         puntaje = TableScript.points;
 
         string scoreString = puntaje.ToString();
@@ -54,9 +55,12 @@ public class Score : MonoBehaviour
             }
         }
         
-        if (Timer.isGameOver && textMeshProUGUI.gameObject.name == "gameover")
+        if (textMeshProUGUI != null)
         {
-            textMeshProUGUI.gameObject.SetActive(true);
+            if (Timer.isGameOver && textMeshProUGUI.gameObject.name == "gameover")
+            {
+                textMeshProUGUI.gameObject.SetActive(true);
+            }
         }
     }
 }

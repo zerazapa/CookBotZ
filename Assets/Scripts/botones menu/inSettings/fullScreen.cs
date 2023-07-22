@@ -13,6 +13,9 @@ public class fullScreen : MonoBehaviour
     string filePath;
     string firstLine;
     string secondLine;
+    string thirdLine;
+    string fourthLine;
+    string fifthLine;
     bool rewrite;
 
     void Start()
@@ -20,16 +23,22 @@ public class fullScreen : MonoBehaviour
         filePath = Path.Combine(Application.persistentDataPath, "data.txt");
         firstLine = "";
         secondLine = "";
+        thirdLine = "";
+        fourthLine = "";
+        fifthLine = "";
         if (File.Exists(filePath))
         {
             using (StreamReader reader = new StreamReader(filePath))
             {
                 firstLine = reader.ReadLine();
                 secondLine = reader.ReadLine();
+                thirdLine = reader.ReadLine();
+                fourthLine = reader.ReadLine();
+                fifthLine = reader.ReadLine();
                 reader.Close();
                 if (string.IsNullOrEmpty(secondLine))
                 {
-                    File.WriteAllText(filePath, firstLine + "\n" + "0");
+                    File.WriteAllText(filePath, firstLine + "\n" + "0\n" + thirdLine + "\n" + fourthLine + "\n" + fifthLine);
                 }
                 else if (secondLine == "1")
                 {
@@ -64,11 +73,11 @@ public class fullScreen : MonoBehaviour
         {
             if (Screen.fullScreen)
             {
-                File.WriteAllText(filePath, firstLine + "\n" + "1");
+                File.WriteAllText(filePath, firstLine + "\n" + "1\n" + thirdLine + "\n" + fourthLine + "\n" + fifthLine);
             }
             else if (!Screen.fullScreen)
             {
-                File.WriteAllText(filePath, firstLine + "\n" + "0");
+                File.WriteAllText(filePath, firstLine + "\n" + "0\n" + thirdLine + "\n" + fourthLine + "\n" + fifthLine);
             }
             rewrite = false;
         }

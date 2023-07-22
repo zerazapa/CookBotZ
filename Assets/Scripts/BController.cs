@@ -47,10 +47,14 @@ public class BController : MonoBehaviour
             targetPosition = originalPosition;
         }
 
-        if (isPaused && Input.GetMouseButtonDown(0) && !IsPointerOverUIObject() && !isGameOver)
+        if ((isPaused && Input.GetMouseButtonDown(0) && !IsPointerOverUIObject() && !isGameOver))
         {
             isPaused = false;
-            Time.timeScale = 1f;
+        }
+
+        if (Input.GetKey(KeyCode.Escape) && isPaused)
+        {
+            isPaused = false;
         }
 
         if (isPaused)
@@ -74,6 +78,7 @@ public class BController : MonoBehaviour
         {
             SceneManager.LoadScene(estaescena);
         }
+        Timer.isGameOver = false;
     }
 
     public void BackToMenu()

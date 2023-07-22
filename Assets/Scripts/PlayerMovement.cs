@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+        animator.SetBool("off", false);
     }
 
     void Update()
@@ -26,39 +28,58 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-        Vector2 moveDirection = new Vector2(moveX, moveY).normalized;
-        rb.velocity = moveDirection * speed;
-
-        targetDirection = target.position - transform.position;
-        targetDirection.Normalize();
-
-        float targetAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-        animator.SetFloat("TargetX", targetDirection.x);
-        animator.SetFloat("TargetY", targetDirection.y);
-
-        if (targetAngle > 90f || targetAngle < -90f)
+        if (!Timer.isBeggining && !Timer.isGameOver)
         {
-            hFacing = -1f;
-        }
-        else
-        {
-            hFacing = 1f;
-        }
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveY = Input.GetAxisRaw("Vertical");
+            Vector2 moveDirection = new Vector2(moveX, moveY).normalized;
+            rb.velocity = moveDirection * speed;
 
-        foreach (Transform child in transform)
-        {
-            Vector3 childRotation = child.localRotation.eulerAngles;
-            childRotation.y = 0f;
-            child.localRotation = Quaternion.Euler(childRotation);
+            targetDirection = target.position - transform.position;
+            targetDirection.Normalize();
 
-            if (hFacing == 1 || hFacing == -1)
+            float targetAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+            animator.SetFloat("TargetX", targetDirection.x);
+            animator.SetFloat("TargetY", targetDirection.y);
+
+            if (targetAngle > 90f || targetAngle < -90f)
             {
-                Vector3 childPosition = child.localPosition;
-                childPosition.x = Mathf.Abs(childPosition.x) * hFacing;
-                child.localPosition = childPosition;
+                hFacing = -1f;
             }
+            else
+            {
+                hFacing = 1f;
+            }
+
+            foreach (Transform child in transform)
+            {
+                Vector3 childRotation = child.localRotation.eulerAngles;
+                childRotation.y = 0f;
+                child.localRotation = Quaternion.Euler(childRotation);
+
+                if (hFacing == 1 || hFacing == -1)
+                {
+                    Vector3 childPosition = child.localPosition;
+                    childPosition.x = Mathf.Abs(childPosition.x) * hFacing;
+                    child.localPosition = childPosition;
+                }
+            }
+        }
+
+        if (Timer.isGameOver)
+        {
+            StartCoroutine(Fall());
+        }
+    }
+
+    IEnumerator Fall()
+    {
+        animator.SetBool("off", true);
+        yield return new WaitForSeconds(1.5f);
+        if (!FloatingOverPlatform.isDoingIt)
+        {
+            rb.gravityScale = 2.5f;
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 }
