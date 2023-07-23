@@ -24,10 +24,12 @@ public class DishToDo : MonoBehaviour
     public Image display;
     public static int points;
     public static int score;
+    public static int escore;
 
     void Start()
     {
         score = 3;
+        escore = 3;
         actualDish = 0;
         RandomNewPlate();
     }
@@ -39,6 +41,11 @@ public class DishToDo : MonoBehaviour
             ChangePoints();
         }
         ChangeImage();
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            escore = 4;
+        }
     }
 
     void RandomNewPlate()

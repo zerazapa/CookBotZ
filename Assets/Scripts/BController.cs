@@ -12,10 +12,11 @@ public class BController : MonoBehaviour
     private Vector2 originalPosition;
     public float newX = 10f;
     public float newY = 10f;
+    public float finishX = 10f;
+    public float finishY = 10f;
     public Vector2 targetPosition;
-    public float moveSpeed = 5f;
+    public float moveSpeed = 3f;
     public static bool isPaused;
-    public static bool isGameOver = false;
     private int defaultLayer;
 
     private void Start()
@@ -40,14 +41,20 @@ public class BController : MonoBehaviour
 
         if (isPaused)
         {
-            targetPosition = new Vector2(newX, newY);
+            if (gameObject.name != "display help")
+            {
+                targetPosition = new Vector2(newX, newY);
+            }
         }
         else
         {
-            targetPosition = originalPosition;
+            if (gameObject.name != "display help")
+            {
+                targetPosition = originalPosition;
+            }
         }
 
-        if ((isPaused && Input.GetMouseButtonDown(0) && !IsPointerOverUIObject() && !isGameOver))
+        if ((isPaused && Input.GetMouseButtonDown(0) && !IsPointerOverUIObject() && !Timer.isGameOver))
         {
             isPaused = false;
         }
@@ -66,9 +73,9 @@ public class BController : MonoBehaviour
             Time.timeScale = 1f;
         }
 
-        if (isGameOver)
+        if (Timer.isGameOver)
         {
-            Debug.Log("perdiste wachite");
+            targetPosition = new Vector2(finishX, finishY);
         }
     }
 

@@ -144,7 +144,6 @@ public class Timer : MonoBehaviour
     {
         isGameOver = true;
         yield return new WaitForSeconds(3.5f);
-        BController.isPaused = true;
     }
 
     IEnumerator Begin()

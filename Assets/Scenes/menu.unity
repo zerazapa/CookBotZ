@@ -5769,10 +5769,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: espanol
+  m_text: espa+ol
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 941a3981f369dfa4694a9d9e3fd1aee9, type: 2}
-  m_sharedMaterial: {fileID: 3842510017533252255, guid: 941a3981f369dfa4694a9d9e3fd1aee9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 11f716373c437a045a10ba62c7c9c1b1, type: 2}
+  m_sharedMaterial: {fileID: 1441565608928415514, guid: 11f716373c437a045a10ba62c7c9c1b1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

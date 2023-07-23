@@ -8,52 +8,84 @@ public class NarradorScript : MonoBehaviour
     public static string narrador;
     public static bool texto1 = true;
     public static bool stopp = true;
+    bool hasWon = false;
     TextMeshProUGUI textMeshProUGUI;
     
     void Start()
     {
         textMeshProUGUI = GetComponent<TextMeshProUGUI>();
+        texto1 = false;
+        stopp = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (texto1)
-        {
-            StartCoroutine(Texto1());
-        }
-
         textMeshProUGUI.text = narrador;
+
+        if (Score.youWin && !hasWon)
+        {
+            hasWon = true;
+            StartCoroutine(WinText());
+        }
+        if (Score.youLoose && !hasWon)
+        {
+            hasWon = true;
+            StartCoroutine(LooseText());
+        }
 
     }
 
-    IEnumerator Texto1()
+    IEnumerator WinText()
     {
-        yield return new WaitForSeconds(3f);
         stopp = false;
-        narrador = "B";
+        narrador = "f";
         yield return new WaitForSeconds(0.175f);
-        narrador = "BU";
+        narrador = "fe";
         yield return new WaitForSeconds(0.175f);
-        narrador = "BUE";
+        narrador = "fel";
         yield return new WaitForSeconds(0.175f);
-        narrador = "BUEN";
+        narrador = "feli";
         yield return new WaitForSeconds(0.175f);
-        narrador = "BUEN ";
+        narrador = "felic";
         yield return new WaitForSeconds(0.175f);
-        narrador = "BUEN I";
+        narrador = "felici";
         yield return new WaitForSeconds(0.175f);
-        narrador = "BUEN IN";
+        narrador = "felicid";
         yield return new WaitForSeconds(0.175f);
-        narrador = "BUEN INT";
+        narrador = "felicida";
         yield return new WaitForSeconds(0.175f);
-        narrador = "BUEN INTE";
+        narrador = "felicidad";
         yield return new WaitForSeconds(0.175f);
-        narrador = "BUEN INTEN";
+        narrador = "felicidade";
         yield return new WaitForSeconds(0.175f);
-        narrador = "BUEN INTENT";
+        narrador = "felicidades";
         yield return new WaitForSeconds(0.175f);
-        narrador = "BUEN INTENTO";
+        stopp = true;
+    }
+    IEnumerator LooseText()
+    {
+        stopp = false;
+        narrador = "q";
+        yield return new WaitForSeconds(0.175f);
+        narrador = "qu";
+        yield return new WaitForSeconds(0.175f);
+        narrador = "que";
+        yield return new WaitForSeconds(0.175f);
+        narrador = "que ";
+        yield return new WaitForSeconds(0.175f);
+        narrador = "que l";
+        yield return new WaitForSeconds(0.175f);
+        narrador = "que la";
+        yield return new WaitForSeconds(0.175f);
+        narrador = "que las";
+        yield return new WaitForSeconds(0.175f);
+        narrador = "que last";
+        yield return new WaitForSeconds(0.175f);
+        narrador = "que lasti";
+        yield return new WaitForSeconds(0.175f);
+        narrador = "que lastim";
+        yield return new WaitForSeconds(0.175f);
+        narrador = "que lastima";
         yield return new WaitForSeconds(0.175f);
         stopp = true;
     }

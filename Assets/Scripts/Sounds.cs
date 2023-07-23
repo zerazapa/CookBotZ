@@ -13,6 +13,32 @@ public class Sounds : MonoBehaviour
 
     void Start()
     {
+        src = GetComponent<AudioSource>();
+        a = Resources.Load<AudioClip>("a");
+        b = Resources.Load<AudioClip>("b");
+        c = Resources.Load<AudioClip>("c");
+        e = Resources.Load<AudioClip>("e");
+        f = Resources.Load<AudioClip>("f");
+        g = Resources.Load<AudioClip>("g");
+        h = Resources.Load<AudioClip>("h");
+        i = Resources.Load<AudioClip>("i");
+        j = Resources.Load<AudioClip>("j");
+        k = Resources.Load<AudioClip>("k");
+        l = Resources.Load<AudioClip>("l");
+        m = Resources.Load<AudioClip>("m");
+        n = Resources.Load<AudioClip>("n");
+        nn = Resources.Load<AudioClip>("ñ");
+        o = Resources.Load<AudioClip>("o");
+        p = Resources.Load<AudioClip>("p");
+        q = Resources.Load<AudioClip>("q");
+        r = Resources.Load<AudioClip>("r");
+        s = Resources.Load<AudioClip>("s");
+        t = Resources.Load<AudioClip>("t");
+        u = Resources.Load<AudioClip>("u");
+        v = Resources.Load<AudioClip>("v");
+        w = Resources.Load<AudioClip>("w");
+        y = Resources.Load<AudioClip>("y");
+        z = Resources.Load<AudioClip>("z");
     }
 
     void Update()
@@ -30,189 +56,189 @@ public class Sounds : MonoBehaviour
 
     IEnumerator PlaySound()
     {
-            if (ultimaLetra == 'A')
+            if (ultimaLetra == 'a')
             {
                 src.clip = a;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'B')
+            if (ultimaLetra == 'b')
             {
                 src.clip = b;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'C')
+            if (ultimaLetra == 'c')
             {
                 src.clip = c;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'D')
+            if (ultimaLetra == 'd')
             {
                 src.clip = b;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'E')
+            if (ultimaLetra == 'e')
             {
                 src.clip = e;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'F')
+            if (ultimaLetra == 'f')
             {
                 src.clip = f;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'G')
+            if (ultimaLetra == 'g')
             {
                 src.clip = g;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'H')
+            if (ultimaLetra == 'h')
             {
                 src.clip = h;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'I')
+            if (ultimaLetra == 'i')
             {
                 src.clip = i;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'J')
+            if (ultimaLetra == 'j')
             {
                 src.clip = j;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'K')
+            if (ultimaLetra == 'k')
             {
                 src.clip = k;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'L')
+            if (ultimaLetra == 'l')
             {
                 src.clip = l;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'M')
+            if (ultimaLetra == 'm')
             {
                 src.clip = m;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'N')
+            if (ultimaLetra == 'n')
             {
                 src.clip = n;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'Ñ')
+            if (ultimaLetra == '+')
             {
                 src.clip = nn;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'O')
+            if (ultimaLetra == 'o')
             {
                 src.clip = o;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'P')
+            if (ultimaLetra == 'p')
             {
                 src.clip = p;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'Q')
+            if (ultimaLetra == 'q')
             {
                 src.clip = q;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'R')
+            if (ultimaLetra == 'r')
             {
                 src.clip = r;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'S')
+            if (ultimaLetra == 's')
             {
                 src.clip = s;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'T')
+            if (ultimaLetra == 't')
             {
                 src.clip = t;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'U')
+            if (ultimaLetra == 'u')
             {
                 src.clip = u;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'V')
+            if (ultimaLetra == 'v')
             {
                 src.clip = v;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'W')
+            if (ultimaLetra == 'w')
             {
                 src.clip = w;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'X')
+            if (ultimaLetra == 'x')
             {
                 src.clip = s;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'Y')
+            if (ultimaLetra == 'y')
             {
                 src.clip = y;
                 src.Play();
                 yield return new WaitForSeconds(0.175f);
                 src.Stop();
             }
-            if (ultimaLetra == 'Z')
+            if (ultimaLetra == 'z')
             {
                 src.clip = z;
                 src.Play();

@@ -505,6 +505,13 @@ public class TableScript : MonoBehaviour
             {
                 helpb24.GetComponent<SpriteRenderer>().enabled = false;
         }
+
+        if (Timer.isGameOver)
+        {
+            helpd.SetActive(false);
+            helpb1.SetActive(false);
+            helpb21.SetActive(false);
+        }
     }
 
     IEnumerator ShowResult1()
@@ -592,7 +599,7 @@ public class TableScript : MonoBehaviour
             GrabNDrop.callDestroyed = true;
             if (!ContarClones.canSpawn2)
             {
-                    BController.isGameOver = true;
+                    Timer.isGameOver = true;
                 }
                 if (!ContarClones.canSpawn3)
                 {

@@ -18,8 +18,7 @@ public class volumeLevel : MonoBehaviour
     public Image barra7;
     public Image barra8;
     public Image barra9;
-    bool changeInVol;
-    public static float volume;
+    public static float volume = 0.5f;
     string filePath;
     string firstLine;
     string secondLine;
@@ -96,6 +95,7 @@ public class volumeLevel : MonoBehaviour
     }
     public void VolumeUp()
     {
+        rewrite = true;
         if (volume == 0.8f)
         {
             volume = 1f;
@@ -132,11 +132,11 @@ public class volumeLevel : MonoBehaviour
         {
             volume = 0.1f;
         }
-        changeInVol = true;
     }
 
     public void VolumeDown()
     {
+        rewrite = true;
         if (volume == 1f)
         {
             volume = 0.8f;
@@ -173,7 +173,6 @@ public class volumeLevel : MonoBehaviour
         {
             volume = 0f;
         }
-        changeInVol = true;
     }
 
     void Update()
@@ -224,129 +223,126 @@ public class volumeLevel : MonoBehaviour
             rewrite = false;
         }
 
-        if (changeInVol)
+        if (volume == 0f)
         {
-            if (volume == 0f)
-            {
-                barra1.sprite = off;
-                barra2.sprite = off;
-                barra3.sprite = off;
-                barra4.sprite = off;
-                barra5.sprite = off;
-                barra6.sprite = off;
-                barra7.sprite = off;
-                barra8.sprite = off;
-                barra9.sprite = off;
-            }
-            if (volume == 0.1f)
-            {
-                barra1.sprite = on;
-                barra2.sprite = off;
-                barra3.sprite = off;
-                barra4.sprite = off;
-                barra5.sprite = off;
-                barra6.sprite = off;
-                barra7.sprite = off;
-                barra8.sprite = off;
-                barra9.sprite = off;
-            }
-            if (volume == 0.2f)
-            {
-                barra1.sprite = on;
-                barra2.sprite = on;
-                barra3.sprite = off;
-                barra4.sprite = off;
-                barra5.sprite = off;
-                barra6.sprite = off;
-                barra7.sprite = off;
-                barra8.sprite = off;
-                barra9.sprite = off;
-            }
-            if (volume == 0.3f)
-            {
-                barra1.sprite = on;
-                barra2.sprite = on;
-                barra3.sprite = on;
-                barra4.sprite = off;
-                barra5.sprite = off;
-                barra6.sprite = off;
-                barra7.sprite = off;
-                barra8.sprite = off;
-                barra9.sprite = off;
-            }
-            if (volume == 0.4f)
-            {
-                barra1.sprite = on;
-                barra2.sprite = on;
-                barra3.sprite = on;
-                barra4.sprite = on;
-                barra5.sprite = off;
-                barra6.sprite = off;
-                barra7.sprite = off;
-                barra8.sprite = off;
-                barra9.sprite = off;
-            }
-            if (volume == 0.5f)
-            {
-                barra1.sprite = on;
-                barra2.sprite = on;
-                barra3.sprite = on;
-                barra4.sprite = on;
-                barra5.sprite = on;
-                barra6.sprite = off;
-                barra7.sprite = off;
-                barra8.sprite = off;
-                barra9.sprite = off;
-            }
-            if (volume == 0.6f)
-            {
-                barra1.sprite = on;
-                barra2.sprite = on;
-                barra3.sprite = on;
-                barra4.sprite = on;
-                barra5.sprite = on;
-                barra6.sprite = on;
-                barra7.sprite = off;
-                barra8.sprite = off;
-                barra9.sprite = off;
-            }
-            if (volume == 0.7f)
-            {
-                barra1.sprite = on;
-                barra2.sprite = on;
-                barra3.sprite = on;
-                barra4.sprite = on;
-                barra5.sprite = on;
-                barra6.sprite = on;
-                barra7.sprite = on;
-                barra8.sprite = off;
-                barra9.sprite = off;
-            }
-            if (volume == 0.8f)
-            {
-                barra1.sprite = on;
-                barra2.sprite = on;
-                barra3.sprite = on;
-                barra4.sprite = on;
-                barra5.sprite = on;
-                barra6.sprite = on;
-                barra7.sprite = on;
-                barra8.sprite = on;
-                barra9.sprite = off;
-            }
-            if (volume == 1f)
-            {
-                barra1.sprite = on;
-                barra2.sprite = on;
-                barra3.sprite = on;
-                barra4.sprite = on;
-                barra5.sprite = on;
-                barra6.sprite = on;
-                barra7.sprite = on;
-                barra8.sprite = on;
-                barra9.sprite = on;
-            }
-            changeInVol = false;
+            barra1.sprite = off;
+            barra2.sprite = off;
+            barra3.sprite = off;
+            barra4.sprite = off;
+            barra5.sprite = off;
+            barra6.sprite = off;
+            barra7.sprite = off;
+            barra8.sprite = off;
+            barra9.sprite = off;
         }
+        if (volume == 0.1f)
+        {
+            barra1.sprite = on;
+            barra2.sprite = off;
+            barra3.sprite = off;
+            barra4.sprite = off;
+            barra5.sprite = off;
+            barra6.sprite = off;
+            barra7.sprite = off;
+            barra8.sprite = off;
+            barra9.sprite = off;
+        }
+        if (volume == 0.2f)
+        {
+            barra1.sprite = on;
+            barra2.sprite = on;
+            barra3.sprite = off;
+            barra4.sprite = off;
+            barra5.sprite = off;
+            barra6.sprite = off;
+            barra7.sprite = off;
+            barra8.sprite = off;
+            barra9.sprite = off;
+        }
+        if (volume == 0.3f)
+        {
+            barra1.sprite = on;
+            barra2.sprite = on;
+            barra3.sprite = on;
+            barra4.sprite = off;
+            barra5.sprite = off;
+            barra6.sprite = off;
+            barra7.sprite = off;
+            barra8.sprite = off;
+            barra9.sprite = off;
+        }
+        if (volume == 0.4f)
+        {
+            barra1.sprite = on;
+            barra2.sprite = on;
+            barra3.sprite = on;
+            barra4.sprite = on;
+            barra5.sprite = off;
+            barra6.sprite = off;
+            barra7.sprite = off;
+            barra8.sprite = off;
+            barra9.sprite = off;
+        }
+        if (volume == 0.5f)
+        {
+            barra1.sprite = on;
+            barra2.sprite = on;
+            barra3.sprite = on;
+            barra4.sprite = on;
+            barra5.sprite = on;
+            barra6.sprite = off;
+            barra7.sprite = off;
+            barra8.sprite = off;
+            barra9.sprite = off;
+        }
+        if (volume == 0.6f)
+        {
+            barra1.sprite = on;
+            barra2.sprite = on;
+            barra3.sprite = on;
+            barra4.sprite = on;
+            barra5.sprite = on;
+            barra6.sprite = on;
+            barra7.sprite = off;
+            barra8.sprite = off;
+            barra9.sprite = off;
+        }
+        if (volume == 0.7f)
+        {
+            barra1.sprite = on;
+            barra2.sprite = on;
+            barra3.sprite = on;
+            barra4.sprite = on;
+            barra5.sprite = on;
+            barra6.sprite = on;
+            barra7.sprite = on;
+            barra8.sprite = off;
+            barra9.sprite = off;
+        }
+        if (volume == 0.8f)
+        {
+            barra1.sprite = on;
+            barra2.sprite = on;
+            barra3.sprite = on;
+            barra4.sprite = on;
+            barra5.sprite = on;
+            barra6.sprite = on;
+            barra7.sprite = on;
+            barra8.sprite = on;
+            barra9.sprite = off;
+        }
+        if (volume == 1f)
+        {
+            barra1.sprite = on;
+            barra2.sprite = on;
+            barra3.sprite = on;
+            barra4.sprite = on;
+            barra5.sprite = on;
+            barra6.sprite = on;
+            barra7.sprite = on;
+            barra8.sprite = on;
+            barra9.sprite = on;
+        }
+        
     }
 }

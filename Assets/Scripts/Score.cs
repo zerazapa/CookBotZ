@@ -20,6 +20,8 @@ public class Score : MonoBehaviour
     public Sprite sc3;
     public Sprite sc4;
     TextMeshProUGUI textMeshProUGUI;
+    public static bool youWin;
+    public static bool youLoose;
 
     void Start()
     {
@@ -27,7 +29,9 @@ public class Score : MonoBehaviour
         GameObject tableObject = GameObject.FindGameObjectWithTag("table");
         tableScript = tableObject.GetComponent<TableScript>();
 
-        
+        youWin = false;
+        youLoose = false;
+
         if (Timer.isStarting)
         {
             DishToDo.points = 0;
@@ -58,14 +62,6 @@ public class Score : MonoBehaviour
                 textMeshProUGUI.text = scoreString;
             }
         }
-        
-        if (textMeshProUGUI != null)
-        {
-            if (Timer.isGameOver && textMeshProUGUI.gameObject.name == "gameover")
-            {
-                textMeshProUGUI.gameObject.SetActive(true);
-            }
-        }
 
         if (DishToDo.score == 1)
         {
@@ -82,14 +78,25 @@ public class Score : MonoBehaviour
         else if (DishToDo.score == 4)
         {
             pScore.GetComponent<Image>().sprite = sc4;
-            StartCoroutine(Finish());
+            StartCoroutine(Win());
+        }
+
+        if (DishToDo.escore == 4)
+        {
+            StartCoroutine(Loose());
         }
     }
 
-    IEnumerator Finish()
+    IEnumerator Win()
     {
-        Timer.isGameOver = true;
+        youWin = true;
         yield return new WaitForSeconds(2f);
-        BController.isPaused = true;
+        Timer.isGameOver = true;
+    }
+    IEnumerator Loose()
+    {
+        youLoose = true;
+        yield return new WaitForSeconds(2f);
+        Timer.isGameOver = true;
     }
 }

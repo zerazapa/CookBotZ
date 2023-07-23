@@ -163,7 +163,7 @@ public class ContarClones : MonoBehaviour
         {
             imageComponent.sprite = perdido;
         }
-        if (BController.isGameOver && gameObject.name == "spot (1)")
+        if (Timer.isGameOver && gameObject.name == "spot (1)")
         {
             imageComponent.sprite = perdido;
         }
