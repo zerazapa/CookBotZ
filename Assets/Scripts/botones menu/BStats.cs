@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class BStats : MonoBehaviour
 {
     bool pressed = false;
-    public GameObject ob1;
+    GameObject ob1;
     GameObject ob2;
     GameObject ob3;
     GameObject ob4;
     GameObject ob5;
     GameObject ob6;
     GameObject ob7;
+    public GameObject panNiv;
     Animator a1;
     Animator a2;
     Animator a3;
@@ -20,6 +21,7 @@ public class BStats : MonoBehaviour
     Animator a5;
     Animator a6;
     Animator a7;
+    public GameObject panel;
 
     public void Start()
     {
@@ -44,12 +46,15 @@ public class BStats : MonoBehaviour
         if (!pressed)
         {
             LeanTween.moveLocal(gameObject, new Vector2(0, 435), .75f).setEaseInOutCirc();
+            panel.SetActive(true);
             pressed = true;
             DissapearEm();
+            panNiv.SetActive(false);
         }
         else
         {
             LeanTween.moveLocal(gameObject, new Vector2(787.421f, -396.8311f), .75f).setEaseInOutCirc();
+            panel.SetActive(false);
             pressed = false;
             AppearEm();
         }

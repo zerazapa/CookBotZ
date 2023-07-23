@@ -21,7 +21,7 @@ public class Score : MonoBehaviour
         
         if (Timer.isStarting)
         {
-            TableScript.points = 0;
+            DishToDo.points = 0;
         }
 
         if (gameObject.name == "points_p")
@@ -43,7 +43,7 @@ public class Score : MonoBehaviour
 
     void Update()
     {
-        puntaje = TableScript.points;
+        puntaje = DishToDo.points;
 
         string scoreString = puntaje.ToString();
 

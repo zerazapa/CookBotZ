@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class BSettings : MonoBehaviour
 {
     bool pressed = false;
-    public GameObject ob1;
+    GameObject ob1;
     GameObject ob2;
     GameObject ob3;
     GameObject ob4;
     GameObject ob5;
     GameObject ob6;
     GameObject ob7;
+    public GameObject panNiv;
     Animator a1;
     Animator a2;
     Animator a3;
@@ -48,6 +49,7 @@ public class BSettings : MonoBehaviour
             panel.SetActive(true);
             pressed = true;
             DissapearEm();
+            panNiv.SetActive(false);
         }
         else
         {

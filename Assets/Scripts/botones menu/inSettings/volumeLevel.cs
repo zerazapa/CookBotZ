@@ -47,7 +47,7 @@ public class volumeLevel : MonoBehaviour
                 fourthLine = reader.ReadLine();
                 fifthLine = reader.ReadLine();
                 reader.Close();
-                if (string.IsNullOrEmpty(fifthLine))
+                if (string.IsNullOrEmpty(thirdLine))
                 {
                     File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + "5\n" + fourthLine + "\n" + fifthLine);
                 }

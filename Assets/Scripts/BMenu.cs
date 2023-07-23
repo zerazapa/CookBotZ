@@ -16,6 +16,9 @@ public class BMenu : MonoBehaviour
     public static bool inputsPressed = false;
     public static bool creditsPressed = false;
 
+    public GameObject PlayBut;
+    public GameObject niveles;
+
     void Start()
     {
         Time.timeScale = 1f;
@@ -31,6 +34,11 @@ public class BMenu : MonoBehaviour
     }
 
     public void Play()
+    {
+        PlayBut.GetComponent<Animator>().SetBool("dis", true);
+        niveles.SetActive(true);
+    }
+    public void Play1()
     {
         SceneManager.LoadScene(nivel1);
     }

@@ -32,7 +32,7 @@ public class TableScript : MonoBehaviour
     public  bool lugar5lettuce = false;
     public  bool lugar5bread2 = false;
     public  bool lugar6bread2 = false;
-    public  bool showingResultPlate = false; 
+    public static bool showingResultPlate = false; 
 
     public GameObject helpd;
     public GameObject helpb1;
@@ -57,6 +57,7 @@ public class TableScript : MonoBehaviour
     Transform child6 = null;
 
     public static int points = 0;
+    public static int dishDone;
 
     void Start()
     {
@@ -81,6 +82,8 @@ public class TableScript : MonoBehaviour
         ejemplo6 = GameObject.Find("ejemplo6");
         ejemplo7 = GameObject.Find("ejemplo7");
         ejemplomalo = GameObject.Find("ejemplomalo");
+
+        dishDone = 0;
     }
 
     void Update()
@@ -341,7 +344,6 @@ public class TableScript : MonoBehaviour
             Destroy(child4.gameObject);
             Destroy(child5.gameObject);
             Destroy(child6.gameObject);
-            //if dishmade == dishasked {showresult}
             StartCoroutine(ShowResult1());
         }
 
@@ -510,7 +512,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo1.GetComponent<SpriteRenderer>().enabled = true;
-        points = points + 300;
+        dishDone = 1;
         yield return new WaitForSeconds(2f);
         ejemplo1.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -521,7 +523,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo2.GetComponent<SpriteRenderer>().enabled = true;
-        points = points + 300;
+        dishDone = 2;
         yield return new WaitForSeconds(2f);
         ejemplo2.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -532,7 +534,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo3.GetComponent<SpriteRenderer>().enabled = true;
-        points = points + 100;
+        dishDone = 3;
         yield return new WaitForSeconds(2f);
         ejemplo3.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -543,7 +545,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo4.GetComponent<SpriteRenderer>().enabled = true;
-        points = points + 300;
+        dishDone = 4;
         yield return new WaitForSeconds(2f);
         ejemplo4.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -554,7 +556,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo5.GetComponent<SpriteRenderer>().enabled = true;
-        points = points + 200;
+        dishDone = 5;
         yield return new WaitForSeconds(2f);
         ejemplo5.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -565,7 +567,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo6.GetComponent<SpriteRenderer>().enabled = true;
-        points = points + 200;
+        dishDone = 6;
         yield return new WaitForSeconds(2f);
         ejemplo6.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -576,7 +578,7 @@ public class TableScript : MonoBehaviour
         showingResultPlate = true;
         GrabNDrop.callDestroyed = true;
         ejemplo7.GetComponent<SpriteRenderer>().enabled = true;
-        points = points + 300;
+        dishDone = 7;
         yield return new WaitForSeconds(2f);
         ejemplo7.GetComponent<SpriteRenderer>().enabled = false;
         showingResultPlate = false;
@@ -613,10 +615,7 @@ public class TableScript : MonoBehaviour
                     ContarClones.canSpawn6 = false;
             }
             ejemplomalo.GetComponent<SpriteRenderer>().enabled = true;
-            if (points > 0)
-            {
-                points -= 150;
-            }
+            dishDone = 8;
             yield return new WaitForSeconds(2f);
             ejemplomalo.GetComponent<SpriteRenderer>().enabled = false;
             showingResultPlate = false;

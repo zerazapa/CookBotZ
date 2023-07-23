@@ -13,6 +13,7 @@ public class BCredits : MonoBehaviour
     GameObject ob5;
     GameObject ob6;
     GameObject ob7;
+    public GameObject panNiv;
     Animator a1;
     Animator a2;
     Animator a3;
@@ -38,7 +39,6 @@ public class BCredits : MonoBehaviour
         a5 = ob5.GetComponent<Animator>();
         a6 = ob6.GetComponent<Animator>();
         a7 = ob7.GetComponent<Animator>();
-        //panel = GameObject.Find("panel credits");
     }
 
     public void Click()
@@ -49,6 +49,7 @@ public class BCredits : MonoBehaviour
             panel.SetActive(true); //podria tener transicion en animator
             pressed = true;
             DissapearEm();
+            panNiv.SetActive(false);
         }
         else
         {
