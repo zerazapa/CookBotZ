@@ -22,10 +22,12 @@ public class DishToDo : MonoBehaviour
     public Sprite d6o;
     public Sprite d7o;
     public Image display;
-    public static int points; 
+    public static int points;
+    public static int score;
 
     void Start()
     {
+        score = 3;
         actualDish = 0;
         RandomNewPlate();
     }
@@ -34,7 +36,6 @@ public class DishToDo : MonoBehaviour
     {
         if (TableScript.showingResultPlate)
         {
-            Debug.Log(actualDish + " y " + TableScript.dishDone);
             ChangePoints();
         }
         ChangeImage();
@@ -142,30 +143,37 @@ public class DishToDo : MonoBehaviour
             if (actualDish == 1)
             {
                 points += 300;
+                score += 1;
             }
             else if (actualDish == 2)
             {
                 points += 300;
+                score += 1;
             }
             else if (actualDish == 3)
             {
                 points += 100;
+                score += 1;
             }
             else if (actualDish == 4)
             {
                 points += 300;
+                score += 1;
             }
             else if (actualDish == 5)
             {
                 points += 200;
+                score += 1;
             }
             else if (actualDish == 6)
             {
                 points += 200;
+                score += 1;
             }
             else if (actualDish == 7)
             {
                 points += 300;
+                score += 1;
             }                
         }
         else

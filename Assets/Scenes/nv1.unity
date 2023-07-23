@@ -2615,7 +2615,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047552235}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.26, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5360,6 +5360,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tableScript: {fileID: 0}
   puntaje: 0
+  pScore: {fileID: 1942567526}
+  eScore: {fileID: 1963929690}
+  scDisplay: {fileID: 1942567528}
+  escDisplay: {fileID: 1963929692}
+  sc1: {fileID: -1397848236, guid: 7c1dd285f3b0f1d41a4243d4d066610b, type: 3}
+  sc2: {fileID: 921212127, guid: 7c1dd285f3b0f1d41a4243d4d066610b, type: 3}
+  sc3: {fileID: 780589617, guid: 7c1dd285f3b0f1d41a4243d4d066610b, type: 3}
+  sc4: {fileID: 1061741922, guid: 7c1dd285f3b0f1d41a4243d4d066610b, type: 3}
 --- !u!114 &1856379418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5680,7 +5688,6 @@ GameObject:
   - component: {fileID: 1942567527}
   - component: {fileID: 1942567529}
   - component: {fileID: 1942567528}
-  - component: {fileID: 1942567530}
   m_Layer: 5
   m_Name: points_p
   m_TagString: Untagged
@@ -5746,20 +5753,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942567526}
   m_CullTransparentMesh: 1
---- !u!114 &1942567530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1942567526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 634e3ebc0c6528d4f81d7a4fce6dafe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tableScript: {fileID: 0}
-  puntaje: 0
 --- !u!1 &1963929690
 GameObject:
   m_ObjectHideFlags: 0
@@ -5771,7 +5764,6 @@ GameObject:
   - component: {fileID: 1963929691}
   - component: {fileID: 1963929693}
   - component: {fileID: 1963929692}
-  - component: {fileID: 1963929694}
   m_Layer: 5
   m_Name: points_e
   m_TagString: Untagged
@@ -5837,20 +5829,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963929690}
   m_CullTransparentMesh: 1
---- !u!114 &1963929694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1963929690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 634e3ebc0c6528d4f81d7a4fce6dafe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tableScript: {fileID: 0}
-  puntaje: 0
 --- !u!1 &2012069497
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,13 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
+using System.IO;
 
 public class Score : MonoBehaviour
 {
     
     public TableScript tableScript;
-    public int puntaje = 0; 
-    
+    public int puntaje = 0;
+    public GameObject pScore;
+    public GameObject eScore; 
+    public Image scDisplay;
+    public Image escDisplay;
+    public Sprite sc1;
+    public Sprite sc2;
+    public Sprite sc3;
+    public Sprite sc4;
     TextMeshProUGUI textMeshProUGUI;
 
     void Start()
@@ -24,20 +33,15 @@ public class Score : MonoBehaviour
             DishToDo.points = 0;
         }
 
-        if (gameObject.name == "points_p")
+        if (SceneManager.GetActiveScene().name == "practice")
         {
-            if (SceneManager.GetActiveScene().name == "practice")
-            {
-                gameObject.SetActive(false);
-            }
+            pScore.SetActive(false);
         }
-        if (gameObject.name == "points_e")
+        if (SceneManager.GetActiveScene().name != "nv3")
         {
-            if (SceneManager.GetActiveScene().name != "nv3")
-            {
-                gameObject.SetActive(false);
-            }
+            eScore.SetActive(false);
         }
+        
         
     }
 
@@ -62,5 +66,30 @@ public class Score : MonoBehaviour
                 textMeshProUGUI.gameObject.SetActive(true);
             }
         }
+
+        if (DishToDo.score == 1)
+        {
+            pScore.GetComponent<Image>().sprite = sc1;
+        }
+        else if (DishToDo.score == 2)
+        {
+            pScore.GetComponent<Image>().sprite = sc2;
+        }
+        else if (DishToDo.score == 3)
+        {
+            pScore.GetComponent<Image>().sprite = sc3;
+        }
+        else if (DishToDo.score == 4)
+        {
+            pScore.GetComponent<Image>().sprite = sc4;
+            StartCoroutine(Finish());
+        }
+    }
+
+    IEnumerator Finish()
+    {
+        Timer.isGameOver = true;
+        yield return new WaitForSeconds(2f);
+        BController.isPaused = true;
     }
 }

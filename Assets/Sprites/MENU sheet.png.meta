@@ -193,7 +193,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 105
-        y: 22
+        y: 31
         width: 24
         height: 24
       alignment: 0
@@ -205,6 +205,27 @@ TextureImporter:
       bones: []
       spriteID: d835ce4740c51a44091671374b3c375e
       internalID: 2026641201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MENU sheet_5
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 6
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15a604ded036cfb4d8ad734b46a10e68
+      internalID: 1055050205
       vertices: []
       indices: 
       edges: []
@@ -221,6 +242,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       MENU sheet_1: 355664999
+      MENU sheet_5: 1055050205
       MENU sheet_4: 2026641201
       MENU sheet_3: -1538410133
       MENU sheet_0: 2088563269
