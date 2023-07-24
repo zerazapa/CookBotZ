@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 191872795}
   - component: {fileID: 191872797}
   m_Layer: 5
-  m_Name: logo
+  m_Name: logo eyes
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3605,9 +3605,9 @@ MonoBehaviour:
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: 
-    m_SelectedTrigger: 
-    m_DisabledTrigger: 
+    m_PressedTrigger: Highlighted
+    m_SelectedTrigger: Highlighted
+    m_DisabledTrigger: Normal
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1222674127}
   m_OnClick:
