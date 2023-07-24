@@ -18,7 +18,7 @@ public class volumeLevel : MonoBehaviour
     public Image barra7;
     public Image barra8;
     public Image barra9;
-    public static float volume = 0.5f;
+    public static float volume;
     string filePath;
     string firstLine;
     string secondLine;

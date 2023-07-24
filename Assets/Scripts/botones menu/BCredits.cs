@@ -48,19 +48,19 @@ public class BCredits : MonoBehaviour
             LeanTween.moveLocal(gameObject, new Vector2(0, 435), .75f).setEaseInOutCirc();
             panel.SetActive(true); //podria tener transicion en animator
             pressed = true;
-            DissapearEm();
             panNiv.SetActive(false);
+            StartCoroutine(DisappearEm());
         }
         else
         {
             LeanTween.moveLocal(gameObject, new Vector2(326.2209f, -607.5311f), .75f).setEaseInOutCirc();
             panel.SetActive(false); //podria tener transicion en animator
             pressed = false;
-            AppearEm();
+            StartCoroutine(AppearEm());
         }
     }
 
-    void DissapearEm()
+    IEnumerator DisappearEm()
     {
         a1.SetBool("dis", true);
         a2.SetBool("dis", true);
@@ -69,9 +69,10 @@ public class BCredits : MonoBehaviour
         a5.SetBool("dis", true);
         a6.SetBool("dis", true);
         a7.SetBool("dis", true);
+        yield return new WaitForSeconds(1f);
     }
 
-    void AppearEm()
+    IEnumerator AppearEm()
     {
         a1.SetBool("dis", false);
         a2.SetBool("dis", false);
@@ -80,5 +81,6 @@ public class BCredits : MonoBehaviour
         a5.SetBool("dis", false);
         a6.SetBool("dis", false);
         a7.SetBool("dis", false);
+        yield return new WaitForSeconds(1f);
     }
 }
