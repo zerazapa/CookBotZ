@@ -22,6 +22,7 @@ public class Score : MonoBehaviour
     TextMeshProUGUI textMeshProUGUI;
     public static bool youWin;
     public static bool youLoose;
+    public static bool endForTime;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class Score : MonoBehaviour
 
         youWin = false;
         youLoose = false;
+        endForTime = false;
 
         if (Timer.isStarting)
         {
@@ -78,25 +80,45 @@ public class Score : MonoBehaviour
         else if (DishToDo.score == 4)
         {
             pScore.GetComponent<Image>().sprite = sc4;
-            StartCoroutine(Win());
+            StartCoroutine(Ending());
         }
 
         if (DishToDo.escore == 4)
         {
-            StartCoroutine(Loose());
+            StartCoroutine(Ending());
+        }
+
+        if (endForTime || !ContarClones.canSpawn1)
+        {
+            StartCoroutine(Ending());
         }
     }
 
+    IEnumerator Ending()
+    {
+        yield return new WaitForSeconds(.75f);
+        if (DishToDo.score == 4)
+        {
+            StartCoroutine(Win());
+        }
+        else if (DishToDo.escore == 4 || endForTime || !ContarClones.canSpawn1)
+        {
+            StartCoroutine(Loose());
+        }
+        
+    }
     IEnumerator Win()
     {
-        youWin = true;
-        yield return new WaitForSeconds(2f);
         Timer.isGameOver = true;
+        youWin = true;
+        yield return new WaitForSeconds(3.5f);
+        BController.isPaused = true;
     }
     IEnumerator Loose()
     {
-        youLoose = true;
-        yield return new WaitForSeconds(2f);
         Timer.isGameOver = true;
+        youLoose = true;
+        yield return new WaitForSeconds(3.5f);
+        BController.isPaused = true;
     }
 }

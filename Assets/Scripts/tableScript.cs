@@ -599,27 +599,27 @@ public class TableScript : MonoBehaviour
             GrabNDrop.callDestroyed = true;
             if (!ContarClones.canSpawn2)
             {
-                    Timer.isGameOver = true;
-                }
-                if (!ContarClones.canSpawn3)
-                {
-                    ContarClones.canSpawn2 = false;
-                }
-                if (!ContarClones.canSpawn4)
-                {
-                    ContarClones.canSpawn3 = false;
-                }
-                if (!ContarClones.canSpawn5)
-                {
-                    ContarClones.canSpawn4 = false;
-                }
-                if (!ContarClones.canSpawn6)
-                {
-                    ContarClones.canSpawn5 = false;
-                }
-                if (ContarClones.canSpawn6)
-                {
-                    ContarClones.canSpawn6 = false;
+                ContarClones.canSpawn1 = false;
+            }
+            if (!ContarClones.canSpawn3)
+            {
+                ContarClones.canSpawn2 = false;
+            }
+            if (!ContarClones.canSpawn4)
+            {
+                ContarClones.canSpawn3 = false;
+            }
+            if (!ContarClones.canSpawn5)
+            {
+                ContarClones.canSpawn4 = false;
+            }
+            if (!ContarClones.canSpawn6)
+            {
+                ContarClones.canSpawn5 = false;
+            }
+            if (ContarClones.canSpawn6)
+            {
+                ContarClones.canSpawn6 = false;
             }
             ejemplomalo.GetComponent<SpriteRenderer>().enabled = true;
             dishDone = 8;

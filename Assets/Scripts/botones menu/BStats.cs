@@ -48,18 +48,18 @@ public class BStats : MonoBehaviour
             LeanTween.moveLocal(gameObject, new Vector2(0, 435), .75f).setEaseInOutCirc();
             panel.SetActive(true);
             pressed = true;
-            StartCoroutine(DisappearEm());
+            DisappearEm();
         }
         else
         {
             LeanTween.moveLocal(gameObject, new Vector2(787.421f, -396.8311f), .75f).setEaseInOutCirc();
             panel.SetActive(false);
             pressed = false;
-            StartCoroutine(AppearEm());
+            AppearEm();
         }
     }
 
-    IEnumerator DisappearEm()
+    void DisappearEm()
     {
         a1.SetBool("dis", true);
         a2.SetBool("dis", true);
@@ -68,10 +68,9 @@ public class BStats : MonoBehaviour
         a5.SetBool("dis", true);
         a6.SetBool("dis", true);
         a7.SetBool("dis", true);
-        yield return new WaitForSeconds(1f);
     }
 
-    IEnumerator AppearEm()
+    void AppearEm()
     {
         a1.SetBool("dis", false);
         a2.SetBool("dis", false);
@@ -80,6 +79,5 @@ public class BStats : MonoBehaviour
         a5.SetBool("dis", false);
         a6.SetBool("dis", false);
         a7.SetBool("dis", false);
-        yield return new WaitForSeconds(1f);
     }
 }

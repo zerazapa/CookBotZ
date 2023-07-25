@@ -49,6 +49,7 @@ public class volumeLevel : MonoBehaviour
                 if (string.IsNullOrEmpty(thirdLine))
                 {
                     File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + "5\n" + fourthLine + "\n" + fifthLine);
+                    volume = .5f;
                 }
                 else if (thirdLine == "0")
                 {

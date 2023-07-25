@@ -17,14 +17,6 @@ public class BController1 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            NarradorScript.texto1 = true;
-        }
-        else
-        {
-            NarradorScript.texto1 = false;
-        }
     }
 
     public void OnYesClicked()

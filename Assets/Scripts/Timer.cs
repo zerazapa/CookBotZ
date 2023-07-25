@@ -24,6 +24,7 @@ public class Timer : MonoBehaviour
         time = maxTime;
         isBeggining = true;
         isGameOver = false;
+        isCounting = false;
     }
 
     void Update()
@@ -39,7 +40,7 @@ public class Timer : MonoBehaviour
             isStarting = false;
         }
         
-        if (time > 0f && !isCounting && !isBeggining)
+        if ((time > 0f && !isCounting && !isBeggining) && !isGameOver)
         {
             StartCoroutine(Tick());
         }
@@ -54,7 +55,7 @@ public class Timer : MonoBehaviour
         {
             minsShow = 4f;
         }
-        else if (mins > 3f && mins < 4f)
+        else if (mins >= 3f && mins < 4f)
         {
             minsShow = 3f;
         }
@@ -128,7 +129,7 @@ public class Timer : MonoBehaviour
 
         if (time == 0)
         {
-            StartCoroutine(GameOver());
+            Score.endForTime = true;
         }
     }
 
@@ -140,11 +141,6 @@ public class Timer : MonoBehaviour
         isCounting = false;
     }
 
-    IEnumerator GameOver()
-    {
-        isGameOver = true;
-        yield return new WaitForSeconds(3.5f);
-    }
 
     IEnumerator Begin()
     {

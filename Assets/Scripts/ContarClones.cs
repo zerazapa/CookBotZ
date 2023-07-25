@@ -12,6 +12,7 @@ public class ContarClones : MonoBehaviour
     public Sprite usado;
     public Sprite perdido;
 
+    public static bool canSpawn1 = true;
     public static bool canSpawn2 = true;
     public static bool canSpawn3 = true;
     public static bool canSpawn4 = true;
@@ -21,6 +22,7 @@ public class ContarClones : MonoBehaviour
     void Start()
     {
         imageComponent = GetComponent<Image>();
+        canSpawn1 = true;
         canSpawn2 = true;
         canSpawn3 = true;
         canSpawn4 = true;
@@ -163,7 +165,7 @@ public class ContarClones : MonoBehaviour
         {
             imageComponent.sprite = perdido;
         }
-        if (Timer.isGameOver && gameObject.name == "spot (1)")
+        if (!canSpawn1 && gameObject.name == "spot (1)")
         {
             imageComponent.sprite = perdido;
         }

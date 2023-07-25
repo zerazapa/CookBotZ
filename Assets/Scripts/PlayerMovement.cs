@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Fall()
     {
         animator.SetBool("off", true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.75f);
         if (!FloatingOverPlatform.isDoingIt)
         {
             rb.gravityScale = 2.5f;

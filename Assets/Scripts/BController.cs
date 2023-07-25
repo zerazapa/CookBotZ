@@ -39,19 +39,23 @@ public class BController : MonoBehaviour
     {
         buttonRectTransform.anchoredPosition = Vector2.Lerp(buttonRectTransform.anchoredPosition, targetPosition, moveSpeed * Time.unscaledDeltaTime);
 
-        if (isPaused)
+        if ((isPaused && !Timer.isGameOver) || (isPaused && Timer.isGameOver))
         {
             if (gameObject.name != "display help")
             {
                 targetPosition = new Vector2(newX, newY);
             }
         }
-        else
+        else if (!isPaused && !Timer.isGameOver)
         {
             if (gameObject.name != "display help")
             {
                 targetPosition = originalPosition;
             }
+        }
+        else if (!isPaused && Timer.isGameOver)
+        {
+            targetPosition = new Vector2(finishX, finishY);
         }
 
         if ((isPaused && Input.GetMouseButtonDown(0) && !IsPointerOverUIObject() && !Timer.isGameOver))
@@ -71,11 +75,6 @@ public class BController : MonoBehaviour
         else
         {
             Time.timeScale = 1f;
-        }
-
-        if (Timer.isGameOver)
-        {
-            targetPosition = new Vector2(finishX, finishY);
         }
     }
 

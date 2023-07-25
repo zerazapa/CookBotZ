@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sounds : MonoBehaviour
+public class SoundEffects : MonoBehaviour
 {
     public AudioSource src;
-    public AudioClip felicidades, lastima;
+    public AudioClip victory, loss;
 
     private bool isWinSoundPlayed = false;
     private bool isLoseSoundPlayed = false;
@@ -13,25 +13,25 @@ public class Sounds : MonoBehaviour
     void Start()
     {
         src = GetComponent<AudioSource>();
-        felicidades = Resources.Load<AudioClip>("felicidades");
-        lastima = Resources.Load<AudioClip>("lastima");
+        victory = Resources.Load<AudioClip>("victory");
+        loss = Resources.Load<AudioClip>("loss");
     }
 
     void Update()
-    {
-        src.volume = volumeLevel.volume;
-        
+    {        
         if (Score.youWin && !isWinSoundPlayed)
         {
-            src.clip = felicidades;
+            src.clip = victory;
             src.Play();
             isWinSoundPlayed = true;
+            src.volume = volumeLevel.volume * .4f;
         }
         if (Score.youLoose && !isLoseSoundPlayed)
         {
-            src.clip = lastima;
+            src.clip = loss;
             src.Play();
             isLoseSoundPlayed = true;
+            src.volume = volumeLevel.volume;
         }
     }
 }
