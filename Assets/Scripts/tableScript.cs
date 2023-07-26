@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TableScript : MonoBehaviour
 {
@@ -597,27 +598,27 @@ public class TableScript : MonoBehaviour
         {
             showingResultPlate = true;
             GrabNDrop.callDestroyed = true;
-            if (!ContarClones.canSpawn2)
+            if (!ContarClones.canSpawn2 && SceneManager.GetActiveScene().name != "tuto")
             {
                 ContarClones.canSpawn1 = false;
             }
-            if (!ContarClones.canSpawn3)
+            if (!ContarClones.canSpawn3 && SceneManager.GetActiveScene().name != "tuto")
             {
                 ContarClones.canSpawn2 = false;
             }
-            if (!ContarClones.canSpawn4)
+            if (!ContarClones.canSpawn4 && SceneManager.GetActiveScene().name != "tuto")
             {
                 ContarClones.canSpawn3 = false;
             }
-            if (!ContarClones.canSpawn5)
+            if (!ContarClones.canSpawn5 && SceneManager.GetActiveScene().name != "tuto")
             {
                 ContarClones.canSpawn4 = false;
             }
-            if (!ContarClones.canSpawn6)
+            if (!ContarClones.canSpawn6 && SceneManager.GetActiveScene().name != "tuto")
             {
                 ContarClones.canSpawn5 = false;
             }
-            if (ContarClones.canSpawn6)
+            if (ContarClones.canSpawn6 && SceneManager.GetActiveScene().name != "tuto")
             {
                 ContarClones.canSpawn6 = false;
             }

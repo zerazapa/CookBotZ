@@ -16,6 +16,7 @@ public class fullScreen : MonoBehaviour
     string thirdLine;
     string fourthLine;
     string fifthLine;
+    string sixthLine;
     bool rewrite;
 
     void Start()
@@ -26,6 +27,7 @@ public class fullScreen : MonoBehaviour
         thirdLine = "";
         fourthLine = "";
         fifthLine = "";
+        sixthLine = "";
         if (File.Exists(filePath))
         {
             using (StreamReader reader = new StreamReader(filePath))
@@ -35,16 +37,17 @@ public class fullScreen : MonoBehaviour
                 thirdLine = reader.ReadLine();
                 fourthLine = reader.ReadLine();
                 fifthLine = reader.ReadLine();
+                sixthLine = reader.ReadLine();
                 reader.Close();
                 if (string.IsNullOrEmpty(secondLine))
                 {
-                    File.WriteAllText(filePath, firstLine + "\n" + "0\n" + thirdLine + "\n" + fourthLine + "\n" + fifthLine);
+                    File.WriteAllText(filePath, firstLine + "\n" + "0\n" + thirdLine + "\n" + fourthLine + "\n" + fifthLine + "\n" + sixthLine);
                 }
-                else if (secondLine == "1")
+                else if (secondLine == "0")
                 {
                     Screen.fullScreen = false;
                 }
-                else if (secondLine == "0")
+                else if (secondLine == "1")
                 {
                     Screen.fullScreen = true;
                 }
@@ -73,11 +76,11 @@ public class fullScreen : MonoBehaviour
         {
             if (Screen.fullScreen)
             {
-                File.WriteAllText(filePath, firstLine + "\n" + "1\n" + thirdLine + "\n" + fourthLine + "\n" + fifthLine);
+                File.WriteAllText(filePath, firstLine + "\n" + "0\n" + thirdLine + "\n" + fourthLine + "\n" + fifthLine + "\n" + sixthLine);
             }
             else if (!Screen.fullScreen)
             {
-                File.WriteAllText(filePath, firstLine + "\n" + "0\n" + thirdLine + "\n" + fourthLine + "\n" + fifthLine);
+                File.WriteAllText(filePath, firstLine + "\n" + "1\n" + thirdLine + "\n" + fourthLine + "\n" + fifthLine + "\n" + sixthLine);
             }
             rewrite = false;
         }

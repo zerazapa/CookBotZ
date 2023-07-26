@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class DishToDo : MonoBehaviour
 {
@@ -25,13 +26,44 @@ public class DishToDo : MonoBehaviour
     public static int points;
     public static int score;
     public static int escore;
+    public static bool didRight = false;
+    public static bool didWrong = false;
 
     void Start()
     {
-        score = 3;
-        escore = 3;
+        score = 0;
+        escore = 0;
         actualDish = 0;
-        RandomNewPlate();
+        didWrong = false;
+
+        if (Timer.estaescena != "tuto")
+        {
+            RandomNewPlate();
+        }
+        else
+        {
+            display.enabled = false;
+        }
+        string filePath = Path.Combine(Application.persistentDataPath, "data.txt");
+
+        using (StreamReader reader = new StreamReader(filePath))
+            {
+                string firstLine = reader.ReadLine();
+                string secondLine = reader.ReadLine();
+                string thirdLine = reader.ReadLine();
+                string fourthLine = reader.ReadLine();
+                string fifthLine = reader.ReadLine();
+                reader.Close();
+                if (fifthLine == "1")
+                {
+                    helpAlways.alwaysActive = true;
+                }
+                else if (fifthLine == "0")
+                {
+                    helpAlways.alwaysActive = false;
+                }
+            }
+        
     }
 
     void Update()
@@ -42,10 +74,16 @@ public class DishToDo : MonoBehaviour
         }
         ChangeImage();
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (NarradorScript.appearRecipe)
         {
-            escore = 4;
+            FirstPlate();
         }
+    }
+
+    void FirstPlate()
+    {
+        actualDish = 1;
+        display.enabled = true;
     }
 
     void RandomNewPlate()
@@ -185,10 +223,10 @@ public class DishToDo : MonoBehaviour
         }
         else
         {
-            if (points > 150)
+            if (points >= 150)
             {
                 points = points - 150;
-            } 
+            }
         }
         RandomNewPlate();
     }

@@ -25,6 +25,7 @@ public class volumeLevel : MonoBehaviour
     string thirdLine;
     string fourthLine;
     string fifthLine;
+    string sixthLine;
     bool rewrite;
 
     void Start()
@@ -35,6 +36,7 @@ public class volumeLevel : MonoBehaviour
         thirdLine = "";
         fourthLine = "";
         fifthLine = "";
+        sixthLine = "";
 
         if (File.Exists(filePath))
         {
@@ -45,10 +47,11 @@ public class volumeLevel : MonoBehaviour
                 thirdLine = reader.ReadLine();
                 fourthLine = reader.ReadLine();
                 fifthLine = reader.ReadLine();
+                sixthLine = reader.ReadLine();
                 reader.Close();
                 if (string.IsNullOrEmpty(thirdLine))
                 {
-                    File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + "5\n" + fourthLine + "\n" + fifthLine);
+                    File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + "5\n" + fourthLine + "\n" + fifthLine + "\n" + sixthLine);
                     volume = .5f;
                 }
                 else if (thirdLine == "0")

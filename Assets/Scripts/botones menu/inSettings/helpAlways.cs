@@ -17,6 +17,7 @@ public class helpAlways : MonoBehaviour
     string thirdLine;
     string fourthLine;
     string fifthLine;
+    string sixthLine;
     bool rewrite;
 
     void Start()
@@ -27,6 +28,7 @@ public class helpAlways : MonoBehaviour
         thirdLine = "";
         fourthLine = "";
         fifthLine = "";
+        sixthLine = "";
 
         if (File.Exists(filePath))
         {
@@ -37,10 +39,12 @@ public class helpAlways : MonoBehaviour
                 thirdLine = reader.ReadLine();
                 fourthLine = reader.ReadLine();
                 fifthLine = reader.ReadLine();
+                sixthLine = reader.ReadLine();
                 reader.Close();
                 if (string.IsNullOrEmpty(fifthLine))
                 {
-                    File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + thirdLine + "\n" + fourthLine + "\n" + "0");
+                    File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + thirdLine + "\n" + fourthLine + "\n" + "1\n" + sixthLine);
+                    alwaysActive = true;
                 }
                 else if (fifthLine == "1")
                 {
@@ -77,11 +81,11 @@ public class helpAlways : MonoBehaviour
         {
             if (alwaysActive)
             {
-                File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + thirdLine + "\n" + fourthLine + "\n" + "1");
+                File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + thirdLine + "\n" + fourthLine + "\n" + "1\n" + sixthLine);
             }
             else if (!alwaysActive)
             {
-                File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + thirdLine + "\n" + fourthLine + "\n" + "0");
+                File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + thirdLine + "\n" + fourthLine + "\n" + "0\n" + sixthLine);
             }
             rewrite = false;
         }

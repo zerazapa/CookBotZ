@@ -83,7 +83,6 @@ public class GrabNDrop : MonoBehaviour
     void Update()
     {
         hFacing = playerMovement.hFacing;
-
         spacePressed = handScript.spacePressed;
         lClick = handScript.lClick;
         rClick = handScript.rClick;
@@ -365,27 +364,27 @@ public class GrabNDrop : MonoBehaviour
 
             if (gameObject.tag == "hDish") //tag h->d
             {
-                    gameObject.tag = "dDish";
-                }
-                if (gameObject.tag == "hBread1")
-                {
-                    gameObject.tag = "dBread1";
-                }
-                if (gameObject.tag == "hBread2")
-                {
-                    gameObject.tag = "dBread2";
-                }
-                if (gameObject.tag == "hMeat")
-                {
-                    gameObject.tag = "dMeat";
-                }
-                if (gameObject.tag == "hCheese")
-                {
-                    gameObject.tag = "dCheese";
-                }
-                if (gameObject.tag == "hLettuce")
-                {
-                    gameObject.tag = "dLettuce";
+                gameObject.tag = "dDish";
+            }
+            if (gameObject.tag == "hBread1")
+            {
+                gameObject.tag = "dBread1";
+            }
+            if (gameObject.tag == "hBread2")
+            {
+                gameObject.tag = "dBread2";
+            }
+            if (gameObject.tag == "hMeat")
+            {
+                gameObject.tag = "dMeat";
+            }
+            if (gameObject.tag == "hCheese")
+            {
+                gameObject.tag = "dCheese";
+            }
+            if (gameObject.tag == "hLettuce")
+            {
+                gameObject.tag = "dLettuce";
             }
 
             if (touchingTable && (item1Right || item2Right || item3Right || item4Right || item5Right || item6Right))

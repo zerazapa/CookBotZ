@@ -23,7 +23,7 @@ public class HandScript : MonoBehaviour
     public bool rClick = false;
     public bool spacePressed = false;
 
-    public bool isTouchingDish = false;
+    public static bool isTouchingDish = false;
     public bool isTouchingBread1 = false;
     public bool isTouchingBread2 = false;
     public bool isTouchingMeat = false;

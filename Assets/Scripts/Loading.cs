@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Loading : MonoBehaviour
 {
-    public bool isTouchingDish = false;
     public bool isTouchingBread1 = false;
     public bool isTouchingBread2 = false;
     public bool isTouchingMeat = false;
@@ -25,7 +24,6 @@ public class Loading : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isTouchingDish = handScript.isTouchingDish;
         isTouchingBread1 = handScript.isTouchingBread1;
         isTouchingBread2 = handScript.isTouchingBread2;
         isTouchingMeat = handScript.isTouchingMeat;
@@ -34,7 +32,7 @@ public class Loading : MonoBehaviour
 
         if (transform.parent.gameObject.CompareTag("Dish"))
         {
-            if (HandScript.isSpawning && isTouchingDish && !HandScript.spawn6used)
+            if (HandScript.isSpawning && HandScript.isTouchingDish && !HandScript.spawn6used)
             {
                 animator.SetBool("load", true);
             }

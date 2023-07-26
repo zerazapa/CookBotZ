@@ -39,9 +39,10 @@ public class Score : MonoBehaviour
             DishToDo.points = 0;
         }
 
-        if (SceneManager.GetActiveScene().name == "practice")
+        if (SceneManager.GetActiveScene().name == "practice" || Timer.estaescena == "tuto")
         {
             pScore.SetActive(false);
+            textMeshProUGUI.enabled = false;
         }
         if (SceneManager.GetActiveScene().name != "nv3")
         {
@@ -53,6 +54,11 @@ public class Score : MonoBehaviour
 
     void Update()
     {
+        if (NarradorScript.appearScore)
+        {
+            textMeshProUGUI.enabled = true;
+        }
+        
         puntaje = DishToDo.points;
 
         string scoreString = puntaje.ToString();

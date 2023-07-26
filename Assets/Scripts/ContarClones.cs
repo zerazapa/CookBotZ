@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ContarClones : MonoBehaviour
 {   
@@ -28,10 +29,21 @@ public class ContarClones : MonoBehaviour
         canSpawn4 = true;
         canSpawn5 = true;
         canSpawn6 = true;
+        if (SceneManager.GetActiveScene().name != "tuto" && imageComponent != null)
+        {
+            imageComponent.enabled = true;
+        }
+
     }
 
     void Update()
     {
+
+        if (NarradorScript.appearSpots && imageComponent != null)
+        {
+            imageComponent.enabled = true;
+        }
+
         int cloneCount = CountClones();
 
         if (cloneCount == 0)

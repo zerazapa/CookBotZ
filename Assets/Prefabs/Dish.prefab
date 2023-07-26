@@ -218,17 +218,25 @@ MonoBehaviour:
   spawn4: {fileID: 0}
   spawn5: {fileID: 0}
   spawn6: {fileID: 0}
-  isSpawningDish: 0
-  isSpawningBread1: 0
-  isSpawningBread2: 0
-  isSpawningMeat: 0
-  isSpawningCheese: 0
-  isSpawningLettuce: 0
   playerMovement: {fileID: 0}
   hFacing: 0
-  isOnTable: 0
   thisIsClosest: 0
-  falling: 0
+  falling: 1
+  place1: {fileID: 0}
+  place2: {fileID: 0}
+  place3: {fileID: 0}
+  place4: {fileID: 0}
+  place5: {fileID: 0}
+  place6: {fileID: 0}
+  touchingTable: 0
+  item1Right: 0
+  item2Right: 0
+  item3Right: 0
+  item4Right: 0
+  item5Right: 0
+  item6Right: 0
+  tieneTTag: 0
+  contarClones: {fileID: 0}
 --- !u!114 &6131366834098964320
 MonoBehaviour:
   m_ObjectHideFlags: 0

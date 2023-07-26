@@ -1437,7 +1437,6 @@ MonoBehaviour:
   lClick: 0
   rClick: 0
   spacePressed: 0
-  isTouchingDish: 0
   isTouchingBread1: 0
   isTouchingBread2: 0
   isTouchingMeat: 0
@@ -1716,8 +1715,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 11f716373c437a045a10ba62c7c9c1b1, type: 2}
-  m_sharedMaterial: {fileID: 1441565608928415514, guid: 11f716373c437a045a10ba62c7c9c1b1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cc1c9f231214d2d4195922fa44272a0c, type: 2}
+  m_sharedMaterial: {fileID: 6422026121668090646, guid: cc1c9f231214d2d4195922fa44272a0c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1806,6 +1805,46 @@ MonoBehaviour:
   src: {fileID: 0}
   felicidades: {fileID: 0}
   lastima: {fileID: 0}
+  first: {fileID: 0}
+  second: {fileID: 0}
+  third: {fileID: 0}
+  fourth: {fileID: 0}
+  fifth: {fileID: 0}
+  sixth: {fileID: 0}
+  seventh: {fileID: 0}
+  eighth: {fileID: 0}
+  eighth2: {fileID: 0}
+  nineth: {fileID: 0}
+  tenth: {fileID: 0}
+  eleventh: {fileID: 0}
+  twelfth: {fileID: 0}
+  thirteenth: {fileID: 0}
+  fourteenth: {fileID: 0}
+  fifteenth: {fileID: 0}
+  sixteenth: {fileID: 0}
+  seventeenth: {fileID: 0}
+  eighteenth: {fileID: 0}
+  nineteenth: {fileID: 0}
+  twentieth: {fileID: 0}
+  twentyfirst: {fileID: 0}
+  twentysecond: {fileID: 0}
+  twentythird: {fileID: 0}
+  twentyfourth: {fileID: 0}
+  twentyfifth: {fileID: 0}
+  twentysixth: {fileID: 0}
+  veintisiete: {fileID: 0}
+  veintiocho: {fileID: 0}
+  veintinueve: {fileID: 0}
+  treinta: {fileID: 0}
+  treintaiuno: {fileID: 0}
+  treintaidos: {fileID: 0}
+  treintaitres: {fileID: 0}
+  treintaicuatro: {fileID: 0}
+  treintaicinco: {fileID: 0}
+  treintaiseis: {fileID: 0}
+  treintaisiete: {fileID: 0}
+  treintaiocho: {fileID: 0}
+  treintainueve: {fileID: 0}
 --- !u!82 &537177044
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2080,6 +2119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   src: {fileID: 0}
+  src2: {fileID: 0}
   song: {fileID: 0}
 --- !u!1 &769919529
 GameObject:
@@ -2305,7 +2345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801502205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.19, y: -0.04, z: 0}
+  m_LocalPosition: {x: 0, y: -0.99, z: 0}
   m_LocalScale: {x: 4.2, y: 4.2, z: 4.2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3582,6 +3622,7 @@ MonoBehaviour:
   mins: 0
   minsShow: 0
   secs: 0
+  timeShown: {fileID: 0}
 --- !u!114 &1103616509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3876,6 +3917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   src: {fileID: 0}
+  src2: {fileID: 0}
   song: {fileID: 0}
 --- !u!82 &1167401689
 AudioSource:
@@ -4591,6 +4633,7 @@ MonoBehaviour:
   mins: 0
   minsShow: 0
   secs: 0
+  timeShown: {fileID: 0}
 --- !u!114 &1338882029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5235,7 +5278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1741008747}
   m_Layer: 0
-  m_Name: time
+  m_Name: timeShown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

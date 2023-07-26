@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 0c589d440b799df448c24ecd9f05547b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - cookbotz
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b05762308ddb7f94f82fe826e346446d, type: 3}
+  - {fileID: 12800000, guid: 145c914c795f593419a5b634e5ccd807, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

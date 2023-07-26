@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -15,8 +16,12 @@ public class Timer : MonoBehaviour
     public float secs;
     public static bool isStarting = true;
     public static bool isGameOver = false;
+    public static string estaescena;
 
     TextMeshProUGUI textMeshProUGUI; // Referencia al componente TextMeshProUGUI
+
+    public Transform timeShown;
+    bool hasMoved = false;
 
     void Start()
     {
@@ -25,10 +30,18 @@ public class Timer : MonoBehaviour
         isBeggining = true;
         isGameOver = false;
         isCounting = false;
+        estaescena = SceneManager.GetActiveScene().name;
+        timeShown = GameObject.Find("timeShown").transform;
     }
 
     void Update()
     {
+        if (NarradorScript.appearTime && !hasMoved)
+        {
+            timeShown.position = new Vector2(0, 5.4f);
+            hasMoved = true;
+        }
+
         StartCoroutine(Begin());
 
         if (time == maxTime)
@@ -42,7 +55,18 @@ public class Timer : MonoBehaviour
         
         if ((time > 0f && !isCounting && !isBeggining) && !isGameOver)
         {
-            StartCoroutine(Tick());
+            if (SceneManager.GetActiveScene().name == "tuto")
+            {
+                if (NarradorScript.appearTime)
+                {
+                    StartCoroutine(Tick());
+                }
+            }
+            else
+            {
+                StartCoroutine(Tick());
+            }
+            
         }
 
         mins = time / 60f;

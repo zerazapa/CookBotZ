@@ -11,6 +11,7 @@ public class CheckVolume : MonoBehaviour
     string thirdLine;
     string fourthLine;
     string fifthLine;
+    string sixthLine;
     bool rewrite;
 
     void Start()
@@ -21,7 +22,8 @@ public class CheckVolume : MonoBehaviour
         thirdLine = "";
         fourthLine = "";
         fifthLine = "";
-
+        sixthLine = "";
+    
         if (File.Exists(filePath))
         {
             using (StreamReader reader = new StreamReader(filePath))
@@ -31,10 +33,11 @@ public class CheckVolume : MonoBehaviour
                 thirdLine = reader.ReadLine();
                 fourthLine = reader.ReadLine();
                 fifthLine = reader.ReadLine();
+                sixthLine = reader.ReadLine();
                 reader.Close();
                 if (string.IsNullOrEmpty(thirdLine))
                 {
-                    File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + "5\n" + fourthLine + "\n" + fifthLine);
+                    File.WriteAllText(filePath, firstLine + "\n" + secondLine + "\n" + "5\n" + fourthLine + "\n" + fifthLine + "\n" + sixthLine);
                     volumeLevel.volume = .5f;
                 }
                 else if (thirdLine == "0")
@@ -77,7 +80,6 @@ public class CheckVolume : MonoBehaviour
                 {
                     volumeLevel.volume = 1f;
                 }
-                Debug.Log(volumeLevel.volume);
             }
         }
     }

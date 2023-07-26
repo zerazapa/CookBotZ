@@ -255,7 +255,7 @@ TextureImporter:
       name: platos_7
       rect:
         serializedVersion: 2
-        x: 126
+        x: 145
         y: 0
         width: 19
         height: 22
@@ -268,27 +268,6 @@ TextureImporter:
       bones: []
       spriteID: 8ad7c1b4079d4ae47a3e51a881feb187
       internalID: -1394039893
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: platos_8
-      rect:
-        serializedVersion: 2
-        x: 145
-        y: 0
-        width: 19
-        height: 22
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f7d5475f0b353f04fbd32314cf43c3b2
-      internalID: -1138508668
       vertices: []
       indices: 
       edges: []

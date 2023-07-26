@@ -7,7 +7,7 @@ public class BSettings : MonoBehaviour
 {
     bool pressed = false;
     GameObject ob1;
-    GameObject ob2;
+    // GameObject ob2;
     GameObject ob3;
     GameObject ob4;
     GameObject ob5;
@@ -15,7 +15,7 @@ public class BSettings : MonoBehaviour
     GameObject ob7;
     public GameObject panNiv;
     Animator a1;
-    Animator a2;
+    // Animator a2;
     Animator a3;
     Animator a4;
     Animator a5;
@@ -26,14 +26,14 @@ public class BSettings : MonoBehaviour
     public void Start()
     {
         ob1 = GameObject.Find("play");
-        ob2 = GameObject.Find("prac");
+        // ob2 = GameObject.Find("prac");
         ob3 = GameObject.Find("tut");
         ob4 = GameObject.Find("logo");
         ob5 = GameObject.Find("stats");
         ob6 = GameObject.Find("cred");
         ob7 = GameObject.Find("exit");
         a1 = ob1.GetComponent<Animator>();
-        a2 = ob2.GetComponent<Animator>();
+        // a2 = ob2.GetComponent<Animator>();
         a3 = ob3.GetComponent<Animator>();
         a4 = ob4.GetComponent<Animator>();
         a5 = ob5.GetComponent<Animator>();
@@ -63,7 +63,7 @@ public class BSettings : MonoBehaviour
     void DisappearEm()
     {
         a1.SetBool("dis", true);
-        a2.SetBool("dis", true);
+        // a2.SetBool("dis", true);
         a3.SetBool("dis", true);
         a4.SetBool("dis", true);
         a5.SetBool("dis", true);
@@ -74,7 +74,7 @@ public class BSettings : MonoBehaviour
     void AppearEm()
     {
         a1.SetBool("dis", false);
-        a2.SetBool("dis", false);
+        // a2.SetBool("dis", false);
         a3.SetBool("dis", false);
         a4.SetBool("dis", false);
         a5.SetBool("dis", false);
